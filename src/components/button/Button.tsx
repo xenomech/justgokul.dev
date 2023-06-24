@@ -22,6 +22,12 @@ export default function Button({
         className
       );
       break;
+    case 'Navigator':
+      style = classNames(
+        'rounded-lg border-[1px] border-black border-opacity-40 px-3 py-2 transition-all duration-100 ease-in-out hover:scale-105 bg-base-100',
+        className
+      );
+      break;
   }
   return <button className={style}>{children}</button>;
 }

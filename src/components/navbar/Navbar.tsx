@@ -10,7 +10,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed left-1/2 z-30 mt-6 w-full max-w-[343px]	-translate-x-1/2 rounded-full border-[1px] border-black border-opacity-10 bg-base-100 opacity-80 backdrop-blur backdrop-filter md:max-w-xl lg:w-[900px] lg:max-w-full">
+    <nav className="fixed left-1/2 z-30 mt-6 w-full max-w-[343px]	-translate-x-1/2 rounded-full border-[1px] border-black border-opacity-10 bg-base-100 opacity-80 backdrop-blur-sm backdrop-filter md:max-w-xl lg:w-[900px] lg:max-w-full">
       <div className="flex items-center justify-between p-4">
         <Image
           src="/favicon/android-chrome-512x512.png"
@@ -18,7 +18,7 @@ export default function Navbar() {
           height={28}
           alt="logo"
         />
-        <div className="hidden items-center gap-8 px-4 font-inter lg:flex">
+        <div className="hidden items-center gap-8 px-4 lg:flex">
           {NAV_LINKS.map((item) => (
             <Link
               className="capitalize text-dawn-900 hover:text-black"

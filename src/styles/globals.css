@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 .bg {
-  @apply fixed left-0 top-0 min-h-full min-w-full scale-150 bg-[url('/matrix.png')] bg-cover bg-repeat opacity-30 lg:scale-110;
+  @apply fixed left-0 top-0 min-h-full min-w-full scale-150 bg-[url('/matrix.png')] bg-cover bg-repeat opacity-30 bg-blend-multiply lg:scale-110;
 }
 body {
-  @apply bg-base-100;
+  @apply bg-base-100 font-inter;
 }
 
 .heading {
-  @apply font-inter text-5xl font-extrabold leading-[71.4px] tracking-[-1.36px] md:text-6xl;
+  @apply text-5xl font-extrabold leading-[71.4px] tracking-[-1.36px] md:text-6xl;
 }
 .subheading {
-  @apply font-inter text-2xl text-black opacity-30 md:text-3xl;
+  @apply text-2xl text-black opacity-30 md:text-3xl;
 }

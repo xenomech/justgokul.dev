@@ -22,7 +22,7 @@ export default function ListCard({
       href={`${type}/${slug}`}
     >
       <div className="flex flex-col items-start justify-start gap-3">
-        <p className="font-inter text-lg font-semibold">{title}</p>
+        <p className="text-lg font-semibold">{title}</p>
         <p className="text-sm opacity-60">
           Posted {date} • {readingTime}
         </p>
