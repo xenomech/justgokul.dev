@@ -6,9 +6,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        base: {
+          100: '#F7F1E8',
+        },
+        dawn: {
+          900: '#97948F',
+        },
+      },
       fontFamily: {
-        body: ['var(--font-inter)'],
-        heading: ['var(--font-manrope)'],
+        inter: ['var(--font-inter)'],
+        manrope: ['var(--font-manrope)'],
       },
     },
   },

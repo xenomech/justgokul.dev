@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg {
+  @apply bg-[url('/matrix.png')] bg-repeat opacity-30 bg-cover fixed top-0 left-0 min-h-full min-w-full;
+}
+body {
+  @apply bg-base-100;
+}

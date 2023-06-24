@@ -1,3 +1,4 @@
+import Navbar from '@/components/navbar/Navbar';
 import '@/styles/globals.css';
 import { Inter, Manrope } from 'next/font/google';
 
@@ -20,6 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${manrope.variable}`}>
+        <div className="bg"></div>
+        <Navbar />
         {children}
       </body>
     </html>
