@@ -1,13 +1,15 @@
+'use client';
 import { allPosts } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import Button from '@/components/button/Button';
 import ListCard from '@/components/list/ListCard';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-export default function page() {
+export default function Blog() {
   const posts = sortFrontMatter(allPosts);
-
+  const router = useRouter();
   return (
     <div className="mx-4 max-w-4xl py-48 lg:mx-auto">
       <div className="flex flex-col items-start justify-start gap-28">
@@ -15,8 +17,10 @@ export default function page() {
           <div className="flex flex-col items-start justify-start gap-6">
             <Button
               className="flex items-center justify-center gap-2"
-              onClick={() => {}}
               type="Navigator"
+              onClick={() => {
+                router.back();
+              }}
             >
               <ArrowIcon className="h-4 w-4 rotate-180" />
               <p>Go Back</p>

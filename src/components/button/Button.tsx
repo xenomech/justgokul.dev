@@ -1,15 +1,14 @@
+'use client';
 import classNames from 'classnames';
 
 type PropType = {
-  isLink?: boolean;
   type?: string;
   className?: string;
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 };
 export default function Button({
-  //   onClick,
-  //   isLink,
+  onClick,
   type,
   className,
   children,
@@ -29,5 +28,9 @@ export default function Button({
       );
       break;
   }
-  return <button className={style}>{children}</button>;
+  return (
+    <button className={style} onClick={onClick}>
+      {children}
+    </button>
+  );
 }

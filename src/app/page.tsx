@@ -1,3 +1,4 @@
+'use client';
 import { allPosts, allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import Button from '@/components/button/Button';
