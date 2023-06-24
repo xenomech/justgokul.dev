@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${manrope.variable}`}>
-        <div className="bg"></div>
+        <div className="bg -z-30"></div>
         <Navbar />
         {children}
       </body>

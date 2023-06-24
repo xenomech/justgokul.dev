@@ -47,4 +47,38 @@ function GithubIcon({ className }: PropType) {
   );
 }
 
-export { GithubIcon, TwitterIcon };
+function MenuIcon({ className }: PropType) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2.66675 4H13.3334M2.66675 8H13.3334M2.66675 12H13.3334"
+        stroke="currentColor"
+        strokeWidth="1.33333"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+function ArrowIcon({ className }: PropType) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 18 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16.8641 8.70711C17.2546 8.31658 17.2546 7.68342 16.8641 7.29289L10.5001 0.928932C10.1096 0.538408 9.47644 0.538408 9.08591 0.928932C8.69539 1.31946 8.69539 1.95262 9.08591 2.34315L14.7428 8L9.08591 13.6569C8.69539 14.0474 8.69539 14.6805 9.08591 15.0711C9.47644 15.4616 10.1096 15.4616 10.5001 15.0711L16.8641 8.70711ZM0.156982 9H16.157V7L0.156982 7L0.156982 9Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export { ArrowIcon, GithubIcon, MenuIcon, TwitterIcon };
