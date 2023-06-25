@@ -1,13 +1,14 @@
 import { allSnippets } from '.contentlayer/generated';
 import MDXComponents from '@/components/mdx/MDXComponents';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { convertDateToString } from '@/lib/common';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 import Link from 'next/link';
 
 type PropType = { params: { slug: string } };
 
 export default function Snippet({ params }: PropType) {
   const currentSnippet = allSnippets.filter((_) => _.slug === params.slug)[0];
-  const Component = useMDXComponent(currentSnippet?.body?.code);
+  const Component = getMDXComponent(currentSnippet.body.code);
 
   return (
     <div className="mx-auto max-w-4xl py-48">
@@ -22,7 +23,7 @@ export default function Snippet({ params }: PropType) {
           </Link>
           <div className="items-center justify-between xl:flex">
             <h2 className="py-2 text-lg font-medium text-gray-600 dark:text-gray-300">
-              {currentSnippet.date}
+              {convertDateToString(currentSnippet.date)}
               {' • '}
               {currentSnippet.readingTime.text}
             </h2>

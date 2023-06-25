@@ -1,5 +1,6 @@
 import { allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
+import { TWEET_ID } from '@/assets/store';
 import Button from '@/components/button/Button';
 import ListCard from '@/components/list/ListCard';
 import { sortFrontMatter } from '@/lib/common';
@@ -44,7 +45,7 @@ export default function Snippets() {
                 slug={item.slug}
                 readingTime={item.readingTime}
                 date={item.date}
-                type="blog"
+                type="snippets"
                 key={item.slug}
               />
             ))}
@@ -61,14 +62,12 @@ export default function Snippets() {
             </div>
           </div>
           <div className="posts w-full md:w-2/3">
-            {snippets.map((item) => (
+            {TWEET_ID.map((item) => (
               <ListCard
+                key={item.slug}
                 title={item.title}
                 slug={item.slug}
-                readingTime={item.readingTime}
-                date={item.date}
-                type="blog"
-                key={item.slug}
+                type="tweet"
               />
             ))}
           </div>

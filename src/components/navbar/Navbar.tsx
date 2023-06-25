@@ -71,16 +71,28 @@ const NavItems = ({ NAV_LINKS, className, clickHandler }: NavItemType) => {
   return (
     <div className={className}>
       {NAV_LINKS.map((item: string) => (
-        <button
-          className="capitalize text-dawn-900 transition-all duration-150 ease-in-out hover:text-black"
-          key={item}
-          onClick={() => {
-            router.push(`/${item}`);
-            clickHandler && clickHandler();
-          }}
-        >
-          {item}
-        </button>
+        <>
+          {clickHandler ? (
+            <button
+              className="capitalize text-dawn-900 transition-all duration-150 ease-in-out hover:text-black"
+              key={item}
+              onClick={() => {
+                router.push(`/${item}`);
+                clickHandler && clickHandler();
+              }}
+            >
+              {item}
+            </button>
+          ) : (
+            <Link
+              key={item}
+              className="capitalize text-dawn-900 transition-all duration-150 ease-in-out hover:text-black"
+              href={`/${item}`}
+            >
+              {item}
+            </Link>
+          )}
+        </>
       ))}
       <Link href="https://twiiter.com/justgokuldotdev">
         <TwitterIcon className="h-4 w-4 text-dawn-900 transition-all duration-150 ease-in-out hover:text-black" />

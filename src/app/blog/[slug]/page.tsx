@@ -2,13 +2,14 @@ import { allPosts } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import Button from '@/components/button/Button';
 import MDXComponents from '@/components/mdx/MDXComponents';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { convertDateToString } from '@/lib/common';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 
 type PropType = { params: { slug: string } };
 
 export default function Post({ params }: PropType) {
   const currentPost = allPosts.filter((_) => _.slug === params.slug)[0];
-  const Component = useMDXComponent(currentPost?.body?.code);
+  const Component = getMDXComponent(currentPost.body.code);
   return (
     <div className="mx-auto max-w-4xl py-48">
       <div className="px-3 md:p-5">
@@ -27,7 +28,7 @@ export default function Post({ params }: PropType) {
 
           <div className="items-center justify-between xl:flex">
             <h2 className="py-2 text-lg font-medium text-gray-600 dark:text-gray-300">
-              {currentPost.date}
+              {convertDateToString(currentPost.date)}
               {' • '}
               {currentPost.readingTime.text}
             </h2>

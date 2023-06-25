@@ -29,12 +29,10 @@ export default function Home() {
             <ArrowIcon className="h-3 w-3" />
           </Button>
         </section>
-
         <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-28">
           <RenderPostSnippetSection type="blog" data={posts} />
           <RenderPostSnippetSection type="snippets" data={snippets} inverse />
         </div>
-
         <div className="flex w-full flex-col items-start justify-start gap-4 md:mx-auto md:max-w-3xl md:flex-row-reverse">
           <div className="illustration">
             <div className="relative hidden h-40 w-60 md:flex">
@@ -58,7 +56,7 @@ export default function Home() {
             {PROJECTS.map((item) => (
               <Chips
                 key={item.title}
-                src={`${item.url}/static/favicons/android-chrome-512x512.png`}
+                src={item.url}
                 title={item.title}
                 url={item.url}
               />
