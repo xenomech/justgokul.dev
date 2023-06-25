@@ -1,0 +1,70 @@
+---
+title: A Star Rating component
+slug: ratingComponent
+date: 2021-09-16
+excerpt: A rating component
+category: Code
+draft: false
+---
+
+A rating component showcasing Optimistic UI Updates, built using react and redux.
+
+<a href="https://codesandbox.io/s/optimistic-ui-example-sl32o" target="_blank">
+  Visit CodeSandbox
+</a>
+
+```js
+import { useState } from "react";
+import { MdStar } from "react-icons/md";
+import { CgSpinner } from "react-icons/cg";
+
+export const RatingComponent = ({ init, onRatingChange, loading }) => {
+  const [hover, setHover] = useState(null);
+  return (
+    <>
+      <div className="flex justify-center items-center min-h-screen">
+        {[...Array(5)].map((star, starIndex) => {
+          return (
+            <label key={starIndex + 1}>
+              <input
+                className="hidden"
+                type="radio"
+                value={init}
+                onClick={() => {
+                  onRatingChange(starIndex + 1);
+                  setHover(null);
+                }}
+              />
+              <MdStar
+                className="cursor-pointer transition duration-500 ease-in-out"
+                size="4rem"
+                color={starIndex + 1 <= (hover || init) ? "#ffc107" : "#dedede"}
+                onMouseEnter={() => {
+                  setHover(starIndex + 1);
+                }}
+                onMouseLeave={() => {
+                  setHover(null);
+                }}
+              />
+            </label>
+          );
+        })}
+        <div className="flex justify-center items-center p-2">
+          <p className="p-4 w-15 rounded-xl border-2 text-4xl ">{init}</p>
+        </div>
+        <div>
+          <CgSpinner
+            size="3rem"
+            className={loading ? "animate-spin" : "invisible"}
+          />
+        </div>
+      </div>
+    </>
+  );
+};
+```
+
+Read more : 
+<a href="https://engineering.surveysparrow.com/the-magic-of-optimistic-ui-updates-311351df28b" target="_blank">
+  The Magic of Optimistic UI Updates with React and Redux
+</a>

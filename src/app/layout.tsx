@@ -1,3 +1,4 @@
+import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
 import '@/styles/globals.css';
 import { Inter, Manrope } from 'next/font/google';
@@ -24,6 +25,7 @@ export default function RootLayout({
         <div className="bg -z-30"></div>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

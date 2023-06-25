@@ -1,19 +1,20 @@
-'use client';
 import { allPosts, allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
+import { PROJECTS } from '@/assets/store';
 import Button from '@/components/button/Button';
+import Chips from '@/components/chips/Chips';
 import ListCard from '@/components/list/ListCard';
-import { sortFrontMatter } from '@/lib/common';
+import { FrontMatterType, sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
 export default function Home() {
   const posts = sortFrontMatter(allPosts);
   const snippets = sortFrontMatter(allSnippets);
   return (
-    <div className="mx-4 max-w-4xl py-48 lg:mx-auto">
+    <div className="mx-4 max-w-7xl pb-28 pt-44 lg:mx-auto">
       <div className="flex flex-col items-center justify-center gap-28">
-        <section className="flex flex-col items-center justify-center gap-8">
+        <section className="flex w-full flex-col items-center justify-center gap-8 bg-[url('/hero-bg-desktop.png')] bg-cover bg-center pt-10 ">
           <div className="flex flex-col items-center justify-center gap-4 text-center">
-            <h1 className="heading">Hey👋, Im Gokul</h1>
+            <h1 className="heading">Hey, Im Gokul</h1>
             <p className="subheading max-w-2xl">
               Welcome to my spot on the web. I am a software engineer who builds
               and occasionally design websites and apps. I started this blog to
@@ -23,77 +24,98 @@ export default function Home() {
           <Button
             type="Primary"
             className="flex items-center justify-center gap-2 transition-all duration-100 ease-in-out hover:scale-105"
-            onClick={() => {}}
           >
             <p className="font-medium">Connect</p>
             <ArrowIcon className="h-3 w-3" />
           </Button>
         </section>
 
-        {/* Latest Posts section */}
-        <section className="flex w-full flex-col items-start justify-between md:flex-row">
-          <div className="illustration">
-            <div className="relative hidden h-40 w-60 md:flex">
-              <Image
-                src="/assets/latest_posts_desktop.svg"
-                alt="latestPosts"
-                fill
-              />
-            </div>
-            <div className="relative flex h-40 w-60 md:hidden">
-              <Image
-                src="/assets/latest_posts_mobile.svg"
-                alt="latestPosts"
-                fill
-              />
-            </div>
-          </div>
-          <div className="posts w-full md:w-2/3">
-            {posts.slice(0, 5).map((item) => (
-              <ListCard
-                title={item.title}
-                slug={item.slug}
-                readingTime={item.readingTime.text}
-                date={item.date}
-                type="blog"
-                key={item.slug}
-              />
-            ))}
-          </div>
-        </section>
+        <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-28">
+          <RenderPostSnippetSection type="blog" data={posts} />
+          <RenderPostSnippetSection type="snippets" data={snippets} inverse />
+        </div>
 
-        {/* Latest Snippets section */}
-        <section className="flex w-full flex-col items-start justify-between md:flex-row-reverse">
+        <div className="flex w-full flex-col items-start justify-start gap-4 md:mx-auto md:max-w-3xl md:flex-row-reverse">
           <div className="illustration">
             <div className="relative hidden h-40 w-60 md:flex">
               <Image
-                src="/assets/latest_snippets_desktop.svg"
-                alt="latestPosts"
+                src={`/assets/projects_desktop.svg`}
+                alt="Projects"
                 fill
+                priority
               />
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
               <Image
-                src="/assets/latest_snippets_mobile.svg"
-                alt="latestPosts"
+                src={`/assets/projects_mobile.svg`}
+                alt="projects"
                 fill
+                priority
               />
             </div>
           </div>
-          <div className="posts w-full md:w-2/3">
-            {snippets.slice(0, 5).map((item) => (
-              <ListCard
+          <div className="dash flex w-full flex-wrap gap-6 rounded-lg p-6 md:w-[540px]">
+            {PROJECTS.map((item) => (
+              <Chips
+                key={item.title}
+                src={`${item.url}/static/favicons/android-chrome-512x512.png`}
                 title={item.title}
-                slug={item.slug}
-                readingTime={item.readingTime.text}
-                date={item.date}
-                type="blog"
-                key={item.slug}
+                url={item.url}
               />
             ))}
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );
 }
+
+type RenderPostSnippetSectionType = {
+  type: string;
+  inverse?: boolean;
+  data: FrontMatterType[];
+};
+const RenderPostSnippetSection = ({
+  type,
+  inverse,
+  data,
+}: RenderPostSnippetSectionType) => {
+  return (
+    <section
+      className={`flex w-full flex-col items-start justify-between gap-4 md:flex-row ${
+        inverse && 'md:flex-row-reverse'
+      }`}
+    >
+      <div className="illustration">
+        <div className="relative hidden h-40 w-60 md:flex">
+          <Image
+            src={`/assets/latest_${type}_desktop.svg`}
+            alt="latestPosts"
+            fill
+            priority
+          />
+        </div>
+        <div className="relative flex h-40 w-60 md:hidden">
+          <Image
+            src={`/assets/latest_${type}_mobile.svg`}
+            alt="latestPosts"
+            fill
+            priority
+          />
+        </div>
+      </div>
+      <div className="posts w-full md:w-2/3">
+        {data.slice(0, 5).map((item) => (
+          <ListCard
+            title={item.title}
+            slug={item.slug}
+            readingTime={item.readingTime}
+            date={item.date}
+            type={type}
+            key={item.slug}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};

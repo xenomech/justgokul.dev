@@ -1,0 +1,221 @@
+---
+title: Overview of Gatsby
+slug: overview_of_gatsby
+date: 2021-04-27
+category: Code
+excerpt: Overview of Gatsby
+draft: false
+---
+
+Hey there, I've been playing with gatsby for a couple of weeks now. This note is not an in-depth explanation, just the things that we need to get started with gatsby.
+
+What we will be going to look into
+
+1. **The Initial Setup**
+2. **Starters, Themes, and Plugins**
+3. **The folder structure**
+4. **Adding plugins and options**
+5. **Graphql and page queries**
+6. **And Just an overview of gatsby.js files!**
+
+Before we start, we need a glance at a few things.
+
+## What is Gatsby?
+
+Gatsby is a static site generator(SSG), which uses React and GraphQL. It follows the latest web standards and is optimized to be highly performant. To know more about Gatsby visit the [Official Website](https://www.gatsbyjs.com/).
+
+## What is an SSG?
+
+SSG stands for Static Site Generator. An SSG takes in templates, components, and data and provides us with a static HTML page. Static site generators are an alternative to database-driven content management.
+
+## 1. The initial setup
+
+Before setting up Gatsby, we need to install some prerequisites.
+
+1. **Node.js**
+
+   Nodejs is a JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
+
+   Windows users install Node.js from [https://nodejs.org/en/](https://nodejs.org/en/).
+
+   Linux users who are using ubuntu based system install Node.js by typing
+
+   ```shell
+   sudo apt install nodejs
+   ```
+
+   Linux users who are using an Arch-based system install Node.js by typing
+
+   ```shell
+   sudo pacman -S nodejs
+   ```
+
+2. **The gatsby-cli**
+
+   The Gatsby CLI tool lets us run gatsby commands on the command line. It is an npm package that we need to install.
+
+   ```shell
+   npm install -g gatsby-cli
+   ```
+
+   which will install gatsby-cli globally in our system.
+
+   > Windows users need to run the following command to properly use gatsby-cli / any other globally installed npm package.
+
+   ```powershell
+   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+   ```
+
+## 2. Starters, Themes, and Plugins
+
+### What is a Gatsby starter site?
+
+The easiest way to get started with gatsby is to use a starter template from the [Gatsby Starter Library](https://www.gatsbyjs.com/starters/?).
+These are preset gatsby projects which have everything already configured and ready for use.
+The Hello-World starter is a base starter with the basic pre-configured.
+So, now we need to create a new gatsby site from the starter.
+
+```
+gatsby new [YOUR-PROJECT-NAME] https://github.com/gatsbyjs/gatsby-starter-hello-world
+```
+
+Then cd into the project folder.
+
+```
+cd [YOUR-PROJECT-NAME]
+```
+
+Run the development server by :
+
+```shell
+gatsby develop
+```
+
+or
+
+```shell
+npm start
+```
+
+There is an abundance of plugins available for a gatsby project, such as plugins for responsive images, google font injection, stylings, and the list goes on.
+Themes are Plugins that come with pre-configured functionality, data sourcing, or a predesigned UI.
+
+## 3. The folder structure
+
+When we create a new gatsby site from the template, we can see an src folder that contains a pages folder; this folder is responsible for the routing in the gatsby site.
+Every component we create inside this folder creates URL route /(component name)
+
+If we have a component, _about.js_ inside the pages folder.
+
+```js
+import React from "react";
+
+const About = () => {
+  return <h1>The about page</h1>;
+};
+export default NotFound;
+```
+
+This can be accessed via [localhost:8000/about](localhost:8000/about)
+
+If we create a 404.js file, it will be served if the requested route is not found.
+
+## 4. Adding plugins and options
+
+Plugins are usually installed using the npm package manager.
+
+```
+npm install [PLUGIN-NAME]
+```
+
+And configured in the _gatsby-config.js_ file
+
+```js
+module.exports = {
+  plugins: [
+    //plugins are added here with the options they need
+  ],
+};
+```
+
+If we want to install the Google fonts plugin.
+
+```js
+npm install gatsby-plugin-google-fonts
+```
+
+and in the _gatsby-config.js_ file
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `limelight`,
+          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
+        ],
+        display: "swap",
+      },
+    },
+  ],
+};
+```
+
+## 5. Graphql and page queries
+
+[GraphQL](https://graphql.org/) is a query language developed by Facebook. It interacts with APIs. Queries allow us to get all the information we need inside of a single request.
+Gatsby uses Graphql to interact with local files. This allows us to reuse pieces of data.
+
+There are two types of queries we can use in Gatsby, static and page queries.
+
+**Static queries**
+
+We can implement static queries using a react hook called useStaticQuery.Which will query data with Graphql at build time.
+
+[React hooks](https://reactjs.org/docs/hooks-intro.html) let us use state and other React features without writing a class.
+Want to know more about hooks [React Hooks](https://reactjs.org/docs/hooks-overview.html)
+
+```js
+const ComponentName = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      logo: file(relativePath: { eq: "logo.svg" }) {
+        publicURL
+      }
+    }
+  `)
+  return <div><img src={data.logo.publicURL} alt="logo goes here"></div>
+}
+```
+
+Whereas in a **page query**
+
+```js
+export const PageQuery = graphql`
+  query MyQuery {
+    logo: file(relativePath: { eq: "logo.svg" }) {
+      publicURL
+    }
+  }
+`
+
+const ComponentName=({data})=>{
+  return <div><img src={data.logo.publicURL} alt="logo goes here"></div>
+
+}
+```
+
+## 6. Overview of Gatsby files
+
+- _gatsby-node.js_ is executed once in the process of building our site.
+  We can use it to dynamically create pages, add Graphql Nodes, etc.
+
+- _gatsby-config.js_ contains all the plugins and configs for the site, including the site metadata.
+
+- _gatsby-browser.js_ used to respond to browser events and wrap the site with additional components.
+
+- _gatsby-ssr.js_ Related with Server-Side-Rendering. This file will let us alter the content of static HTML files while they are being rendered by the server.
+
+Well, That's a wrap, folks! Hope you enjoyed reading!

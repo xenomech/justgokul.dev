@@ -1,0 +1,35 @@
+---
+title: Search Github
+slug: githubDataFetch
+date: 2021-06-20
+excerpt: Search github
+category: Code
+draft: false
+---
+
+Search Github using as small NodeJs program which accepts the search query from the user.
+
+<a href="https://codesandbox.io/s/nodefetchgithub-civn7" target="_blank">
+  Visit CodeSandbox
+</a>
+
+```js
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+const fetch = require("node-fetch");
+readline.question("Enter query : ", (query) => {
+  fetch(`https://api.github.com/search/repositories?q=${query}`)
+    .then((response) => response.json())
+    .then((data) => {
+      let newdata = new Map();
+      data.items.forEach((item) => {
+        newdata.set(item.html_url, item.full_name);
+      });
+      console.log(newdata);
+    });
+
+  readline.close();
+});
+```

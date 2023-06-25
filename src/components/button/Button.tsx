@@ -1,18 +1,20 @@
 'use client';
 import classNames from 'classnames';
+import { useRouter } from 'next/navigation';
 
 type PropType = {
   type?: string;
   className?: string;
   children: React.ReactNode;
-  onClick?: () => void;
+  action?: string;
 };
 export default function Button({
-  onClick,
   type,
   className,
   children,
+  action,
 }: PropType) {
+  const router = useRouter();
   var style: string = '';
   switch (type) {
     case 'Primary':
@@ -23,13 +25,20 @@ export default function Button({
       break;
     case 'Navigator':
       style = classNames(
-        'rounded-lg border-[1px] border-black border-opacity-40 px-3 py-2 transition-all duration-100 ease-in-out hover:scale-105 bg-base-100',
+        'rounded-lg border-[1px] border-black border-opacity-40 px-3 py-1 transition-all duration-100 ease-in-out hover:scale-105 bg-base-100',
         className
       );
       break;
   }
+  function buttonAction() {
+    switch (action) {
+      case 'Back':
+        router.back();
+        break;
+    }
+  }
   return (
-    <button className={style} onClick={onClick}>
+    <button className={style} onClick={buttonAction}>
       {children}
     </button>
   );

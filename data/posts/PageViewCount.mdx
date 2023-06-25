@@ -1,0 +1,217 @@
+---
+title: Page view count using Supabase ⚡
+slug: page_view_count_using_supabase
+date: 2022-07-30
+category: Code
+excerpt: Tracking page visits with supabase
+draft: false
+---
+
+Hey there! Let's play with numbers today. As we all know, the number of page views helps in analyzing the website's performance. Let's build a page view counter using Supabase rather than resorting to web analytics which is usually ± 10%ish off due to ad blockers and browser extensions blocking the analytics script. Supabase is an open-source alternative for Firebase. Supabase works on top of a Postgres DB with real-time capabilities, authentication, file storage, etc. It harnesses PostgREST for generating APIs. Let's see how we can add the number of page visits to a Next.js application.
+
+Let us start by configuring Supabase.
+
+1. Login into [Supabase](https://supabase.com/) and create a project.
+2. Create a table called **page_views** using the table editor with columns **id**, **post**, **views**, and **created_at**.
+
+<Grid>
+  <Image
+    alt={`create table`}
+    tails={'p-2'}
+    src={`/media/blog/SupabasePageCount/CreateTable.png`}
+    width={500}
+    height={600}
+    priority
+  />
+  Here, we use **id** as the primary key, **post** to store the slug, and **views**
+  to store the number of views each gets. The Supabase interface allows us easily
+  manage Tables, Functions, Triggers, etc. Row-level security (RLS) is a PostgreSQL
+  security feature. It allows us to define policies to control how each row should
+  behave when it is accessed by different roles. However, in this use case, we need
+  not turn this on. Next, we should create a database function for updating the table
+  when a page is visited.
+</Grid>
+3. Head to the **Database** section from the side panel and open **Functions** to
+create a new function.
+
+<Grid>
+
+Database functionality can be extended with the help of user-defined functions and stored procedures through various procedural languages often referred to as stored procedures. PL/pgSQL is a procedural language for the PostgreSQL database system. Creating database functions makes the code more maintainable and reduces the number of round trips between applications and database servers. So, let's create a function called **updateViews** which takes **slug**(varchar data type) as an argument. The return data type is **void**, as this function doesn't return anything.
+
+<Image
+    alt={`create database function`}
+    tails={"p-2"}
+    src={`/media/blog/SupabasePageCount/DatabaseFunction.png`}
+    width={500}
+    height={700}
+    priority
+/>
+</Grid>
+
+The function is defined as:
+
+```sql
+BEGIN
+    IF EXISTS (SELECT views FROM page_views WHERE post=slug) THEN
+        UPDATE page_views
+        SET views = views +1
+        WHERE post = slug;
+    ELSE
+        INSERT into page_views(post) VALUES (slug);
+    END IF;
+END;
+```
+
+Here, we increment the views and update the page_view table if the slug is present. Otherwise, create a new row with the default view value and the slug.
+
+Now let's set up Supabase in our next app.
+
+1. Grab the **supabase URL** and **anon key** from the API tab and add those to the **.env.local** file in your Nextjs application.
+
+   > If you are creating a **.env** file make sure to add the file to your **.gitignore**.
+
+2. Install the Supabase client package and SWR
+
+We will need the Supabase Client library to interact with the database.
+
+```shell
+npm install @supabase/supabase-js swr
+
+or
+
+yarn add @supabase/supabase-js swr
+```
+
+SWR is a tiny data-fetching react library created by Vercel. It stands for stale-while-revalidate. The strategy behind SWR is to first return the data from the cache, then send the fetch request and finally come up with the updated data. SWR provides fast and lightweight data fetching and helps bring a real-time experience.
+
+3. Setting up the Supabase client.
+
+Create `utils/supabase.js`
+
+```js
+import { createClient } from '@supabase/supabase-js';
+
+const SupabaseAdmin = createClient(
+  process.env.SUPABASE_URL || '',
+  process.env.SUPABASE_API_KEY || ''
+);
+
+export { SupabaseAdmin };
+```
+
+Create a file in the pages folder `api/pageVisits/[slug].js`. Any file inside the folder `pages/api` is treated as an API endpoint instead of a page. To work with an API, we need to create a request handler.
+
+```js
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    // if it is a POST request
+    // do something
+  }
+  if (req.method === 'GET') {
+    // if it is a GET request
+    // do something
+  }
+}
+```
+
+If the request is a POST request, we need to update the database by calling the function created in Supabase. If it is a GET request, fetch the views from the table.
+
+The POST request
+
+```js
+if (req.method === 'POST') {
+  await SupabaseAdmin.rpc(updateViews, { slug: req.query.slug });
+  return res.status(200).json({
+    message: `viewCountUpdated`,
+  });
+}
+```
+
+The GET request
+
+```js
+if (req.method === 'GET') {
+  const { data, error } = await SupabaseAdmin.from(page_views)
+    .select('views')
+    .filter('post', 'eq', req.query.slug);
+  if (data) {
+    return res.status(200).json({
+      views: data[0]?.views || null,
+    });
+  }
+}
+```
+
+`api/pageVisits/[slug].js` will look something like this.
+
+```js
+import { SupabaseAdmin } from 'you want utils/supabase';
+
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    await SupabaseAdmin.rpc(updateViews, { slug: req.query.slug });
+    return res.status(200).json({
+      message: `viewCountUpdated`,
+    });
+  }
+
+  if (req.method === 'GET') {
+    const { data, error } = await SupabaseAdmin.from(page_views)
+      .select('views')
+      .filter('post', 'eq', req.query.slug);
+    if (data) {
+      return res.status(200).json({
+        views: data[0]?.views || null,
+      });
+    }
+  }
+
+  return res.status(400).json({
+    message: 'Unsupported Request',
+  });
+}
+
+// handle exceptions
+```
+
+Let's create a component, `PageViews`, to show the count.
+
+```js
+import useSWR from "swr";
+
+export default function PageViews({ slug }) {
+	const { data, error } = useSWR(`/api/pageVisits/${slug}`, async (input) => {
+		const res = await fetch(input);
+		return res.json();
+	});
+	return (
+			{data ?
+				<p className="font-medium text-gray-600 dark:text-gray-300 mr-1">{data?.views?.toLocaleString()} views</p> :
+				<p className="font-medium text-gray-600 dark:text-gray-300 mr-1 animate-pulse">• views</p>}
+		</div>
+	)
+}
+```
+
+The `PageViews` component accepts the slug as props, sends a GET request to `/api/pageVisits/[slug]`, and fetches the number of views from Supabase. With the help of SWR, it will cache the count and update it if there is a change.
+
+Now, on every page that needs tracking, add a useEffect hook to post a visit for a visitor.
+
+```js
+useEffect(() => {
+  if (!sessionStorage.getItem(`page:[${post.title}]`)) {
+    fetch(`/api/pageViews/${slug}`, {
+      method: 'POST',
+    });
+    sessionStorage.setItem(`page:[${post.title}]`, {
+      visited: true,
+    });
+  }
+}, [slug]);
+```
+
+This useEffect will send a POST request to the API on every page visit and store an object in the session storage to preserve the uniqueness of the count(Updates the count if it is a new session rather than on every reload). We can extend the functionality of this feature by adding referrers to a table and building an analytics dashboard. Now we have a proper count of the page visits on a website.
+
+Well, That's a wrap, folks! Hope you enjoyed reading!
+
+More fun stuff awaits. Happy hacking!

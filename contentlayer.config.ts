@@ -14,7 +14,6 @@ const computedFields: ComputedFields = {
   readingTime: {
     type: 'json',
     resolve: (doc) => {
-      console.log(doc);
       return readingTime(doc.body.raw);
     },
   },

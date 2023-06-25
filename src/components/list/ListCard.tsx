@@ -23,8 +23,10 @@ export default function ListCard({
     >
       <div className="flex flex-col items-start justify-start gap-3">
         <p className="text-lg font-semibold">{title}</p>
-        <p className="text-sm opacity-60">
-          Posted {date} • {readingTime}
+        <p className="flex flex-col items-start justify-between gap-2 text-sm opacity-60 md:flex-row md:items-center">
+          <span>Posted {date}</span>
+          <span className="hidden md:flex"> • </span>
+          <span>{readingTime}</span>
         </p>
       </div>
       <ArrowIcon className="h-4 w-4 text-black" />

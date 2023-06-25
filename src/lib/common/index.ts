@@ -1,14 +1,22 @@
 // common functions to simplify the codebase
-
 import { Post, Snippet } from '.contentlayer/generated';
-
 import format from 'date-fns/format';
 
-export const convertDateToString = (date: string) => {
+export const convertDateToString = (date: string): string => {
   return format(new Date(date), 'PPPP');
 };
 
-export const sortFrontMatter = (data: Post[] | Snippet[]) => {
+export type FrontMatterType = {
+  title: string;
+  date: string;
+  draft: boolean;
+  category: string;
+  readingTime: string;
+  slug: string;
+};
+export const sortFrontMatter = (
+  data: Post[] | Snippet[]
+): FrontMatterType[] => {
   const posts = data.sort(
     (a: Post | Snippet, b: Post | Snippet) =>
       +new Date(b.date) - +new Date(a.date)
@@ -19,7 +27,7 @@ export const sortFrontMatter = (data: Post[] | Snippet[]) => {
       date: convertDateToString(_.date),
       draft: _.draft,
       category: _.category,
-      readingTime: _.readingTime,
+      readingTime: _.readingTime.text,
       slug: _.slug,
     };
   });

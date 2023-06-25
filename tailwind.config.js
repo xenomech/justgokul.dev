@@ -14,11 +14,41 @@ module.exports = {
           900: '#97948F',
         },
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.700'),
+            a: {
+              color: theme('colors.blue.500'),
+              '&:hover': {
+                color: theme('colors.blue.700'),
+              },
+              textDecoration: 'none',
+            },
+            code: { color: theme('colors.blue.400') },
+            blockquote: {
+              borderLeftColor: theme('colors.blue.500'),
+              color: theme('colors.gray.500'),
+              fontStyle: 'normal',
+            },
+            pre: {
+              backgroundColor: theme('colors.base.100'),
+              color: theme('colors.gray.500'),
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+            },
+            thead: {
+              borderBottomColor: theme('colors.gray.200'),
+            },
+            'blockquote p:first-of-type::before': false,
+            'blockquote p:last-of-type::after': false,
+          },
+        },
+      }),
       fontFamily: {
         inter: ['var(--font-inter)'],
         manrope: ['var(--font-manrope)'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

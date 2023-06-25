@@ -1,0 +1,524 @@
+---
+title: The Curved Navigation in Flutter
+slug: curved_nav_flutter
+date: 2021-05-05
+category: Code
+excerpt: Navigation in Flutter
+draft: false
+---
+
+### What is Flutter?
+
+Flutter is an open-source UI software development kit created by Google.
+It helps in creating cross-platform mobile applications using a single codebase.
+
+### What is a Navbar?
+
+A navigation bar is a section of a GUI intended to provide users with the ability to switch between different slices of the app with a single tap.
+
+The curved_navigation_bar is a package used to implement a simple but elegant-looking navbar in a flutter app. The curved_navigation_bar package can replace the bottom navbar provided by the material package from android.
+[Read More](https://pub.dev/packages/curved_navigation_bar)
+
+So, let's start by creating a new flutter project.
+
+```
+flutter create [project-name]
+```
+
+Go ahead and clear all the boilerplate code in the _lib/main.dart_ and make a _lib/pages/index.dart_ while you are at it.
+
+**lib/main.dart**
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_navs/pages/index.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'The Curved Navbar',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: IndexPage());
+  }
+}
+```
+
+**lib/pages/index.dart**
+
+Make a stateful widget called "IndexPage" in the lib/pages/index.dart file.
+
+```dart
+import 'package:flutter/material.dart';
+
+class IndexPage extends StatefulWidget {
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text("Index page"),
+    );
+  }
+}
+
+
+```
+
+The screen should look something like this.
+
+<Image
+  alt={`data`}
+  src={`/media/blog/curved_nav_flutter/Indexpage.png`}
+  width={300}
+  height={600}
+  priority
+/>
+
+The next step is to add the curved_navigation_bar package into the \_pubspec.yaml file.
+
+From the [readme](https://pub.dev/packages/curved_navigation_bar) of curved_navigation_bar at [pub.dev](https://pub.dev/), we can add the following line to the pubspec.yaml file.
+
+```yaml
+dependencies:
+  curved_navigation_bar: ^0.3.7 #latest version
+```
+
+Imagine we have five pages.
+
+1. Home
+2. Wallet
+3. New
+4. Explore
+5. Account
+
+Let's create these pages.
+
+Before we start making the pages, we should preview these pages as we make them. So, to do that, we must edit /lib/pages/index.dart.
+
+**lib/pages/index.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+//import all the pages here
+//eg: import 'package:flutter_navs/pages/wallet.dart';
+
+
+class IndexPage extends StatefulWidget {
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: WalletPage(),//change the widget to preview it
+    );
+  }
+}
+
+```
+
+**1. Home**
+
+**/lib/pages/home.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.home,
+              size: 30,
+            ),
+            Text(
+              "The Home Page",
+              style: TextStyle(fontSize: 30),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+Which will look something like this:
+
+<Image
+  alt={`data`}
+  src={`/media/blog/curved_nav_flutter/home.png`}
+  width={300}
+  height={600}
+  priority
+/>
+
+**2. Wallet**
+
+**/lib/pages/wallet.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+class WalletPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.account_balance_wallet_rounded,
+              size: 30,
+            ),
+            Text(
+              "The Wallet Page",
+              style: TextStyle(fontSize: 30),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+Which will look something like this:
+
+<Image
+  alt={`data`}
+  src={`/media/blog/curved_nav_flutter/wallet.png`}
+  width={300}
+  height={600}
+  priority
+/>
+
+**3. New**
+
+**/lib/pages/new.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+class NewPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.add,
+              size: 30,
+            ),
+            Text(
+              "The add new Page",
+              style: TextStyle(fontSize: 30),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+Which will look something like this:
+
+<Image
+  alt={`data`}
+  src={`/media/blog/curved_nav_flutter/new.png`}
+  width={300}
+  height={600}
+  priority
+/>
+
+**4. Explore**
+
+**/lib/pages/explore.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+class Explore extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.explore_rounded,
+              size: 30,
+            ),
+            Text(
+              "The Explore Page",
+              style: TextStyle(fontSize: 30),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+Which will look something like this:
+
+<Image
+  alt={`data`}
+  src={`/media/blog/curved_nav_flutter/Explore.png`}
+  width={300}
+  height={600}
+  priority
+/>
+
+**5. Account**
+
+**/lib/pages/account.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+class Account extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.account_circle_rounded,
+              size: 30,
+            ),
+            Text(
+              "The Account Page",
+              style: TextStyle(fontSize: 30),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+Which will look something like this:
+
+<Image
+  alt={`data`}
+  src={`/media/blog/curved_nav_flutter/Account.png`}
+  width={300}
+  height={600}
+  priority
+/>
+
+Now let's edit the index page to access all these pages using the navbar.
+To do that, first, import the curved_navigation_bar package.
+
+```dart
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+```
+
+Now declare a variable to access the current nav item.
+
+```dart
+  int _activePage = 0;
+```
+
+Next, declare a list with all the widgets in the order you want to show them because we will be using the index to select it.
+
+```dart
+final List<Widget> tabs = [
+    Home(),
+    Explore(),
+    NewPage(),
+    WalletPage(),
+    Account(),
+  ];
+```
+
+Now use the curved_navigation_bar as the scaffold's bottomNavigationBar property.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_navs/pages/account.dart';
+import 'package:flutter_navs/pages/explore.dart';
+import 'package:flutter_navs/pages/home.dart';
+import 'package:flutter_navs/pages/new.dart';
+import 'package:flutter_navs/pages/wallet.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
+class IndexPage extends StatefulWidget {
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  int _activePage = 0;
+  final List<Widget> tabs = [
+    Home(),
+    Explore(),
+    NewPage(),
+    WalletPage(),
+    Account(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        bottomNavigationBar: CurvedNavigationBar(),
+        body:Home()
+
+  }
+}
+```
+
+Now, add the attributes used by the Curved navbar, Such as items, index, color, backgroundColor, onTap, etc.
+
+Let's add the list of items we had.
+
+```dart
+    bottomNavigationBar: CurvedNavigationBar(
+        items:[
+            Icon(Icons.home, color: Colors.white, size: 30),
+            Icon(Icons.explore_rounded, color: Colors.white, size: 30),
+            Icon(Icons.add, color: Colors.white, size: 30),
+            Icon(Icons.account_balance_wallet_rounded, color: Colors.white, size: 30),
+            Icon(Icons.account_circle_rounded, color: Colors.white, size: 30),
+          ],
+        ), // remember to use the order we used in the list
+    body:Home()
+```
+
+Ok, with that out of the way, we can now take care of the background color, animation duration, etc.
+
+```dart
+    bottomNavigationBar: CurvedNavigationBar(
+          color: Colors.blue,
+          height: 60,
+          backgroundColor: Colors.white,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration(milliseconds: 400),
+          items: [
+            Icon(Icons.home, color: Colors.white, size: 30),
+            Icon(Icons.explore_rounded, color: Colors.white, size: 30),
+            Icon(Icons.add, color: Colors.white, size: 30),
+            Icon(Icons.account_balance_wallet_rounded,
+                color: Colors.white, size: 30),
+            Icon(Icons.account_circle_rounded, color: Colors.white, size: 30),
+          ],
+        ),
+    body:Home()
+```
+
+To navigate to a specific page, we update the \_activePage variable with the selected value from the navbar.
+To be accurate, if the second page is selected, the value of \_activePage will be 2, and the tabs[_activePage] will give you the widget corresponding to the second page.
+The widget corresponding to tabs[_activePage] will be the body property for the scaffold.
+
+So, we need to update the value of \_activePage.
+We use the onTap attribute provided by the package.
+
+```dart
+ onTap: (index) {
+            setState(() {
+              _activePage = index;
+        });
+    },
+```
+
+The above code will set the \_activePage to the index of the item tapped.
+
+Finally, putting together all the pieces we have:
+
+```dart
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_navs/pages/account.dart';
+import 'package:flutter_navs/pages/explore.dart';
+import 'package:flutter_navs/pages/home.dart';
+import 'package:flutter_navs/pages/new.dart';
+import 'package:flutter_navs/pages/wallet.dart';
+
+class IndexPage extends StatefulWidget {
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  int _activePage = 0;
+  final List<Widget> tabs = [
+    Home(),
+    Explore(),
+    NewPage(),
+    WalletPage(),
+    Account(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        bottomNavigationBar: CurvedNavigationBar(
+          color: Colors.blue,
+          height: 60,
+          backgroundColor: Colors.white,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration(milliseconds: 400),
+          items: [
+            Icon(Icons.home, color: Colors.white, size: 30),
+            Icon(Icons.explore_rounded, color: Colors.white, size: 30),
+            Icon(Icons.add, color: Colors.white, size: 30),
+            Icon(Icons.account_balance_wallet_rounded,
+                color: Colors.white, size: 30),
+            Icon(Icons.account_circle_rounded, color: Colors.white, size: 30),
+          ],
+          onTap: (index) {
+            setState(() {
+              _activePage = index;
+              // print(_activePage);
+            });
+          },
+          letIndexChange: (index) => true,
+        ),
+        body: tabs[_activePage]);
+  }
+}
+```
+
+The final output should look something like this:
+
+<Image
+  alt={`data`}
+  src={`/media/blog/curved_nav_flutter/untitled.gif`}
+  width={300}
+  height={600}
+  priority
+/>
+
+Well, That's a wrap, folks! Hope you enjoyed reading!
