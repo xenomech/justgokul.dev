@@ -35,6 +35,8 @@ export default function Button({
       case 'Back':
         router.back();
         break;
+      case 'CopyLink':
+        break;
     }
   }
   return (

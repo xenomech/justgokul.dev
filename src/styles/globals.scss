@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'command.scss';
+.bg {
+  @apply fixed left-0 top-0 min-h-full min-w-full scale-150 bg-[url('/matrix.png')] bg-cover bg-repeat opacity-30 bg-blend-multiply lg:scale-110;
+}
+body {
+  @apply bg-base-100 font-inter;
+}
+
+.heading {
+  @apply text-5xl font-extrabold leading-[71.4px] tracking-[-1.36px] md:text-6xl;
+}
+.subheading {
+  @apply text-2xl text-black opacity-30 md:text-3xl;
+}
+.blog-banner {
+  @apply bg-cover bg-left-top lg:bg-[url('/concentric-circles.png')];
+}
+.snippet-banner {
+  @apply bg-cover bg-left-top lg:bg-[url('/hero-snippets.png')];
+}
+
+.dash {
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+}
+.wavingHand {
+  animation-name: wave-animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: 75% 75%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(10deg);
+  }
+  20% {
+    transform: rotate(-15deg);
+  }
+  30% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

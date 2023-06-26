@@ -27,7 +27,6 @@ export default function Blog() {
             </p>
           </div>
         </section>
-
         <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row lg:-mt-56 lg:ml-80">
           <div className="illustration">
             <div className="relative hidden h-36 w-40 md:flex">

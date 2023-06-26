@@ -1,6 +1,6 @@
 import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
-import '@/styles/globals.css';
+import '@/styles/globals.scss';
 import { Inter, Manrope } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
