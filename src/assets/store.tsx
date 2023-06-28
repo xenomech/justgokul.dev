@@ -90,10 +90,10 @@ export const SOCIALS = [
 ];
 
 export const STACK = [
-  'notion',
-  'figma',
   'vscode',
+  'figma',
   'tailwind',
+  'notion',
   'js',
   'nextjs',
   'sass',

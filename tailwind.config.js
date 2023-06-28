@@ -29,6 +29,7 @@ module.exports = {
             blockquote: {
               borderLeftColor: theme('colors.blue.500'),
               color: theme('colors.gray.500'),
+              backgroundColor: theme('colors.base.100'),
               fontStyle: 'normal',
             },
             pre: {

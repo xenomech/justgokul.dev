@@ -52,7 +52,7 @@ export default async function page() {
               {STACK.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center justify-center justify-self-center rounded-lg border-[1px] border-black border-opacity-10 p-2 transition-all duration-150 ease-in-out hover:scale-110"
+                  className="flex items-center justify-center justify-self-center rounded-lg border-[1px] border-black border-opacity-10 bg-base-100 p-2 transition-all duration-150 ease-in-out hover:scale-110"
                 >
                   <div className="relative h-10 w-10">
                     <Image
