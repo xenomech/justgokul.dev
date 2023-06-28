@@ -1,15 +1,13 @@
 import { OpenExternal } from '@/assets/icons';
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
 
 type PropType = {
-  src: string;
   className?: string;
   title: string;
   url: string;
 };
-export default function Chips({ src, className, url, title }: PropType) {
+export default function Chips({ className, url, title }: PropType) {
   return (
     <Link href={url}>
       <div
@@ -18,11 +16,10 @@ export default function Chips({ src, className, url, title }: PropType) {
           className
         )}
       >
-        <Image src={src} width={56} height={56} alt="projectIcon" />
         <div className="flex items-center justify-center gap-2">
           <p className="font-medium capitalize">{title}</p>
-          <OpenExternal className="h-4 w-4 text-black text-opacity-60" />
         </div>
+        <OpenExternal className="h-4 w-4 text-black text-opacity-60" />
       </div>
     </Link>
   );

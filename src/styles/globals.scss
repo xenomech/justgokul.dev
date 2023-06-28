@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @import 'command.scss';
+@import 'tokenColors.scss';
+@import 'mdx.scss';
+
 .bg {
   @apply fixed left-0 top-0 min-h-full min-w-full scale-150 bg-[url('/matrix.png')] bg-cover bg-repeat opacity-30 bg-blend-multiply lg:scale-110;
 }

@@ -1,7 +1,29 @@
+import {
+  FigmaIcon,
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TwitterIcon,
+} from './icons';
+
+//add type def for constants
 export const PROJECTS = [
-  { title: 'Pokédroid', url: 'https://pokedroid.justgokul.dev', src: '' },
-  { title: 'The blog', url: 'https://justgokul.dev', src: '' },
-  { title: 'Quick Share', url: 'https://justgokul.dev', src: '' },
+  {
+    title: 'Pokédroid',
+    url: 'https://pokedroid.justgokul.dev',
+  },
+  {
+    title: 'The blog',
+    url: 'https://justgokul.dev',
+  },
+  {
+    title: 'Prefixed',
+    url: 'https://github.com/xenomech/Prefixed',
+  },
+  {
+    title: 'Quick Share',
+    url: 'https://share.justgokul.dev',
+  },
 ];
 
 export const TWEET_ID = [
@@ -35,4 +57,45 @@ export const TWEET_ID = [
     slug: 'designDrops',
     desc: 'Every design drops',
   },
+];
+
+export const NAV_LINKS = ['Blog', 'Snippets', 'About'];
+
+export const SOCIALS = [
+  {
+    name: 'Twitter',
+    icon: TwitterIcon,
+    url: 'https://twiiter.com/justgokuldotdev',
+  },
+  {
+    name: 'Github',
+    icon: GithubIcon,
+    url: 'https://github.com/xenomech',
+  },
+  {
+    name: 'Figma',
+    icon: FigmaIcon,
+    url: 'https://www.figma.com/@gokulsuresh',
+  },
+  {
+    name: 'Instagram',
+    icon: InstagramIcon,
+    url: 'https://www.instagram.com/justgokuldotdev/',
+  },
+  {
+    name: 'LinkedIn',
+    icon: LinkedinIcon,
+    url: 'https://www.linkedin.com/in/justgokuldotdev',
+  },
+];
+
+export const STACK = [
+  'notion',
+  'figma',
+  'vscode',
+  'tailwind',
+  'js',
+  'nextjs',
+  'sass',
+  'vercel',
 ];

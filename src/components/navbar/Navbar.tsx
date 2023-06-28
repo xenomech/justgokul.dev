@@ -1,21 +1,18 @@
 'use client';
-import { allPosts, allSnippets } from '.contentlayer/generated';
 import { CloseIcon, GithubIcon, MenuIcon, TwitterIcon } from '@/assets/icons';
-import { sortFrontMatter } from '@/lib/common';
+import { NAV_LINKS } from '@/assets/store';
 import * as Modal from '@radix-ui/react-alert-dialog';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import CommandMenu from '../command/Command';
 
-const NAV_LINKS = ['Blog', 'Snippets', 'About'];
-
+//TODO:: cmd + K implementation
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const postMatter = sortFrontMatter(allPosts);
-  const snippetMatter = sortFrontMatter(allSnippets);
-  const commandOptions = postMatter.concat(snippetMatter);
+  // const postMatter = sortFrontMatter(allPosts);
+  // const snippetMatter = sortFrontMatter(allSnippets);
+  // const commandOptions = postMatter.concat(snippetMatter);
   return (
     <nav className="fixed left-1/2 z-20 mt-6 w-full max-w-[343px]	-translate-x-1/2 rounded-full border-[1px] border-black border-opacity-10 bg-base-100 bg-opacity-80 backdrop-blur-md md:max-w-xl lg:w-[900px] lg:max-w-full">
       <div className="flex items-center justify-between p-4">
@@ -30,7 +27,6 @@ export default function Navbar() {
             alt="logo"
           />
         </Link>
-        <CommandMenu data={commandOptions} />
         <NavItems className="hidden items-center gap-8 px-4 lg:flex" />
 
         <div className="flex lg:hidden">

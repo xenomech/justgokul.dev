@@ -54,12 +54,7 @@ export default function Home() {
           </div>
           <div className="dash flex w-full flex-wrap gap-6 rounded-lg p-6 md:w-[540px]">
             {PROJECTS.map((item) => (
-              <Chips
-                key={item.title}
-                src={item.url}
-                title={item.title}
-                url={item.url}
-              />
+              <Chips key={item.title} title={item.title} url={item.url} />
             ))}
           </div>
         </div>

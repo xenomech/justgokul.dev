@@ -9,7 +9,7 @@ type PropType = {
 };
 const CommandMenu = ({ data }: PropType) => {
   const [open, setOpen] = React.useState(false);
-  const [search, setSearch] = React.useState('');
+  // const [search, setSearch] = React.useState('');
 
   // Toggle the menu when ⌘K is pressed
   React.useEffect(() => {
@@ -23,7 +23,6 @@ const CommandMenu = ({ data }: PropType) => {
         e.preventDefault();
         setOpen((open) => !open);
       }
-      console.log(e);
     };
 
     document.addEventListener('keydown', down);
@@ -31,10 +30,15 @@ const CommandMenu = ({ data }: PropType) => {
   }, []);
 
   return (
-    <div className="vercel">
+    <div>
       <Modal.Root open={open} onOpenChange={setOpen}>
         <Modal.Trigger asChild>
-          <button className="Button violet">Delete account</button>
+          <button className="flex items-center justify-between rounded-lg border-[1px] border-black border-opacity-10 p-2 text-dawn-900">
+            <p>search</p>
+            <p className="rounded-lg border-[1px] border-black border-opacity-10 px-2 py-1 text-xs ">
+              cmd + k
+            </p>
+          </button>
         </Modal.Trigger>
         <Modal.Portal>
           <Modal.Overlay className="fixed inset-0 z-20 bg-base-100 bg-opacity-80 backdrop-blur-sm transition-opacity duration-150 ease-in-out" />
@@ -54,10 +58,10 @@ const CommandMenu = ({ data }: PropType) => {
                   type="text"
                   placeholder="Type actions"
                   className="w-full rounded-lg border-[1px] border-black border-opacity-10 bg-transparent  p-2 transition-all duration-150 ease-in-out hover:border-opacity-100"
-                  onChange={(e) => setSearch(e.target.value)}
+                  // onChange={(e) => setSearch(e.target.value)}
                 ></input>
                 {data.map((item) => (
-                  <p>{item.title}</p>
+                  <p key={item.slug}>{item.title}</p>
                 ))}
               </div>
             </div>

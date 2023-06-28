@@ -8,7 +8,7 @@ import Image from 'next/image';
 export default function Blog() {
   const posts = sortFrontMatter(allPosts);
   return (
-    <div className="mx-4 max-w-7xl pt-14 font-inter lg:mx-auto">
+    <div className="mx-4 max-w-7xl pb-20 pt-14 font-inter lg:mx-auto">
       <div className="flex flex-col items-start justify-start gap-9 md:gap-28">
         <section className="blog-banner flex w-full flex-col items-start justify-center gap-8 pt-36 lg:pb-48">
           <div className="flex flex-col items-start justify-start gap-6 lg:ml-56">

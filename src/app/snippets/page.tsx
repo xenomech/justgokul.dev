@@ -9,7 +9,7 @@ import Image from 'next/image';
 export default function Snippets() {
   const snippets = sortFrontMatter(allSnippets);
   return (
-    <div className="mx-4 max-w-7xl font-inter lg:mx-auto">
+    <div className="mx-4 max-w-7xl pb-20 font-inter lg:mx-auto">
       <div className="flex flex-col items-start justify-start gap-9 md:gap-20">
         <section className="snippet-banner flex w-full flex-col items-start justify-center gap-8 pt-36 lg:pb-44 lg:pt-52">
           <div className="flex flex-col items-start justify-start gap-6 lg:ml-56">

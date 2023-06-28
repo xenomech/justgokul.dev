@@ -6,7 +6,7 @@ import Embed from '@/components/twitter/Embed';
 export default async function Tweet({ params }: { params: { slug: string } }) {
   const tweet = TWEET_ID.filter((item) => item.slug === params.slug)[0];
   return (
-    <div className="mx-4 min-h-screen max-w-7xl pt-28 md:mx-auto">
+    <div className="mx-4 min-h-screen max-w-7xl py-28 md:mx-auto">
       <section className="flex w-full flex-col items-start justify-center gap-8 pt-24">
         <div className="flex flex-col items-start justify-start gap-9 lg:ml-56">
           <Button
