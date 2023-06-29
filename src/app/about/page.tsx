@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 export default async function page() {
   return (
-    <div className="mx-4 max-w-7xl py-40 font-inter lg:mx-auto">
+    <div className="mx-4 max-w-7xl py-40 font-inter xl:mx-auto">
       <div className="flex flex-col items-start justify-start gap-9 md:gap-28">
-        <section className="mt-9 flex w-full flex-col items-start justify-center gap-8 md:mx-56">
+        <section className="mt-9 flex w-full flex-col items-start justify-center gap-8 xl:mx-56">
           <div className="flex flex-col items-start justify-start gap-6 ">
             <Button
               className="flex items-center justify-center gap-2"
@@ -27,7 +27,7 @@ export default async function page() {
           </div>
         </section>
 
-        <div className="flex w-full flex-col-reverse items-center justify-between gap-4 md:flex-row">
+        <div className="flex w-full flex-col-reverse items-center justify-between gap-4 lg:flex-row">
           {/* stack */}
           <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row md:gap-8">
             <div className="illustration">
