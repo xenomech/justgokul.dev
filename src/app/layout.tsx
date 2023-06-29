@@ -11,7 +11,7 @@ const sourceCodePro = Source_Code_Pro({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://blog.justgokul.dev'),
+  metadataBase: new URL('https://justgokul.dev'),
   title: 'Gokul Suresh - Software Developer',
   name: 'Gokul Suresh',
   description: 'All my scribbles are available here',
