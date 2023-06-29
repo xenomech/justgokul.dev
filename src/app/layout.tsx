@@ -16,9 +16,24 @@ export const metadata = {
   name: 'Gokul Suresh',
   description: 'All my scribbles are available here',
   type: 'website',
-  twitterHandle: '@justgokuldotdev',
+  keywords: ['nextjs', 'react', 'javascript', 'software engineer'],
   openGraph: {
-    image: '/media/og_image.png',
+    images: ['/media/og_image.png'],
+  },
+  twitter: {
+    title: 'Gokul Suresh - Software Developer',
+    name: 'Gokul Suresh',
+    description: 'All my scribbles are available here',
+    card: 'summary',
+    site: '@justgokuldotdev',
+    creator: '@justgokuldotdev',
+    images: ['/media/twitter_image.png'],
+  },
+  robots: {
+    googleBot: {
+      index: true,
+      follow: false,
+    },
   },
 };
 
@@ -55,13 +70,6 @@ export default function RootLayout({
         />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff"></meta>
-        {/* TODO: Change to use next13 metadata */}
-        <meta name="twitter:title" content={metadata.title} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:author" content={metadata.twitterHandle} />
-        <meta name="twitter:site" content={metadata.twitterHandle} />
-        <meta name="twitter:description" content={metadata.description} />
-        <meta name="twitter:image" content={metadata.openGraph.image} />
       </head>
       <body className={`${inter.variable} ${sourceCodePro.variable}`}>
         <div className="bg -z-30"></div>
