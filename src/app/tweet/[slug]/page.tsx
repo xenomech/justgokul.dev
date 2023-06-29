@@ -21,7 +21,7 @@ export default async function Tweet({ params }: { params: { slug: string } }) {
             <h1 className="text-3xl font-semibold sm:text-4xl">
               {tweet.title}
             </h1>
-            <p className="py-2 text-lg font-medium text-gray-600">
+            <p className="py-2 text-lg font-medium text-black text-opacity-50">
               {tweet.desc}
             </p>
           </div>

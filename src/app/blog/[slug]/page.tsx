@@ -22,12 +22,12 @@ export default function Post({ params }: PropType) {
             <ArrowIcon className="h-4 w-4 rotate-180" />
             <p>Go Back</p>
           </Button>
-          <h1 className="my-2 pb-2 pt-4 text-3xl font-semibold sm:text-4xl">
+          <h1 className="my-2 pt-4 text-3xl font-semibold sm:text-4xl">
             {currentPost.title}
           </h1>
 
           <div className="items-center justify-between xl:flex">
-            <h2 className="py-2 text-lg font-medium text-gray-600 dark:text-gray-300">
+            <h2 className="py-2 text-lg font-medium text-black text-opacity-50">
               {convertDateToString(currentPost.date)}
               {' • '}
               {currentPost.readingTime.text}
