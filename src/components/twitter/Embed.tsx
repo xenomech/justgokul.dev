@@ -4,7 +4,7 @@ import TweetEmbed from 'react-tweet-embed';
 export default function Embed({ id }: { id: string }) {
   return (
     <TweetEmbed
-      className="flex items-center justify-center m-2"
+      className="m-2 flex items-center justify-center"
       tweetId={id}
       placeholder={'loading'}
     />
