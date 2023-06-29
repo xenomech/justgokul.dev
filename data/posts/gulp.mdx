@@ -1,0 +1,114 @@
+---
+title: 'Gulp: Sipping Code with a Twist of Automation!'
+slug: 'Gulp'
+date: 2023-03-23
+category: 'Code'
+excerpt: 'A quick overview of gulp.js'
+draft: false
+---
+
+Last year I had a chance to work on some pure frontend tasks. This gave me a chance to understand how JS and CSS minification is done in production and gave me a deeper insight into SCSS and the BEM methodology (check out a [blog post](https://css-tricks.com/bem-101/) form CSS tricks to know more.) That is when I came to know about Gulp. Gulp is a famous task runner that helps automate repetitive tasks in web development workflows. So are npm scripts, grunt etc. While they serve similar purposes, they have different approaches and syntaxes. The best part about the JS ecosystem is that it has a variety of plugins available. The common tasks that Gulp takes care of are minification, concatenation, linting, dev server etc. Gulp is built on node streams and follows the code over config approach.
+
+## Getting Started (the usual)
+
+```js
+// Initalize the project
+npm init -y
+
+// Install gulp as a dev dependency
+npm i -D gulp
+```
+
+## The basics
+
+```js
+// file: gulpfile.js
+const gulp = require('gulp');
+
+// define tasks
+// execute tasks
+```
+
+Well, there are a few top level functions which are:
+
+```
+gulp.task - define tasks
+gulp.src - point to source files
+gulp.dest - point to output files
+gulp.watch - watch files or folders for changes
+
+and the .pipe() method pipes two or more operations together
+```
+
+for example this is a sample gulp task that prints a message to the console:
+
+```js
+gulp.task('test', async function () {
+  console.log('this is a test message');
+});
+```
+
+here `test` is the task name and the callback fuction is the task.
+
+### Example tasks
+
+#### Copying HTML to dist folder:
+
+```js
+gulp.task('copyHTML', async function () {
+  return gulp.src('src/*.html').pipe(gulp.dest('dist'));
+});
+```
+
+#### Minifying JS using the uglify plugin:
+
+```bash
+npm i -D gulp-uglify
+```
+
+```js
+const uglify = require('gulp-uglify');
+
+gulp.task('minify', async function () {
+  return gulp.src('src/js/*.js').pipe(uglify()).pipe(gulp.dest('dist/js'));
+});
+```
+
+#### Compiling and watching SCSS files:
+
+```bash
+npm i -D gulp-sass node-sass
+```
+
+```js
+const sass = require('gulp-sass')(require('node-sass'));
+
+gulp.task('sass', async function () {
+  return gulp
+    .src('src/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('dist/css'));
+});
+gulp.task('sass:watch', function () {
+  gulp.watch('src/sass/**/*.scss', ['sass']);
+});
+```
+
+#### Live reload on changes with browser-sync
+
+```js
+// reloads the browser if there is change in the html file
+gulp.task('watch', function () {
+  browserSync.init({
+    server: {
+      baseDir: 'dist',
+    },
+  });
+  gulp.watch('src/*.html').on('change', browserSync.reload);
+});
+```
+
+The amount of tasks that can be automated are endless. With the plugin support big tasks can be automated with ease.
+Well, That's a wrap, folks! Hope you enjoyed reading!
+
+More fun stuff awaits. Happy hacking!

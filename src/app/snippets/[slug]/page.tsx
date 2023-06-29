@@ -1,8 +1,9 @@
 import { allSnippets } from '.contentlayer/generated';
+import { ArrowIcon } from '@/assets/icons';
+import Button from '@/components/button/Button';
 import MDXComponents from '@/components/mdx/MDXComponents';
 import { convertDateToString } from '@/lib/common';
 import { getMDXComponent } from 'next-contentlayer/hooks';
-import Link from 'next/link';
 
 type PropType = { params: { slug: string } };
 
@@ -14,13 +15,18 @@ export default function Snippet({ params }: PropType) {
     <div className="mx-auto max-w-4xl py-48">
       <div className="px-3 md:p-5">
         <div className="pb-5">
-          <Link href="/blog">
-            <div className="cursor-pointer ">
-              <h1 className="my-2 py-2 text-3xl font-semibold sm:text-4xl">
-                {currentSnippet.title}
-              </h1>
-            </div>
-          </Link>
+          <Button
+            className="flex items-center justify-center gap-2"
+            type="Navigator"
+            action="Back"
+          >
+            <ArrowIcon className="h-4 w-4 rotate-180" />
+            <p>Go Back</p>
+          </Button>
+          <h1 className="my-2 pb-2 pt-4 text-3xl font-semibold sm:text-4xl">
+            {currentSnippet.title}
+          </h1>
+
           <div className="items-center justify-between xl:flex">
             <h2 className="py-2 text-lg font-medium text-gray-600 dark:text-gray-300">
               {convertDateToString(currentSnippet.date)}

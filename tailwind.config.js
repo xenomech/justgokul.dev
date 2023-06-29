@@ -33,7 +33,7 @@ module.exports = {
               fontStyle: 'normal',
             },
             pre: {
-              backgroundColor: theme('colors.gray.200'),
+              backgroundColor: theme('colors.gray.100'),
               color: theme('colors.gray.500'),
               border: '1px solid rgba(0, 0, 0, 0.1)',
               fontFamily: theme('fontFamily.code'),

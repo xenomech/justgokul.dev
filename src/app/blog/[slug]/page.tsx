@@ -22,7 +22,7 @@ export default function Post({ params }: PropType) {
             <ArrowIcon className="h-4 w-4 rotate-180" />
             <p>Go Back</p>
           </Button>
-          <h1 className="my-2 py-2 text-3xl font-semibold sm:text-4xl">
+          <h1 className="my-2 pb-2 pt-4 text-3xl font-semibold sm:text-4xl">
             {currentPost.title}
           </h1>
 
