@@ -2,17 +2,24 @@ import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
 import '@/styles/globals.scss';
 import { Analytics } from '@vercel/analytics/react';
-import { Inter, Manrope } from 'next/font/google';
+import { Inter, Source_Code_Pro } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' });
+const sourceCodePro = Source_Code_Pro({
+  subsets: ['latin'],
+  variable: '--font-code',
+});
 
 export const metadata = {
+  metadataBase: new URL('https://blog.justgokul.dev'),
   title: 'Gokul Suresh - Software Developer',
   name: 'Gokul Suresh',
   description: 'All my scribbles are available here',
   type: 'website',
   twitterHandle: '@justgokuldotdev',
+  openGraph: {
+    image: '/media/og_image.png',
+  },
 };
 
 export default function RootLayout({
@@ -48,8 +55,15 @@ export default function RootLayout({
         />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff"></meta>
+        {/* TODO: Change to use next13 metadata */}
+        <meta name="twitter:title" content={metadata.title} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:author" content={metadata.twitterHandle} />
+        <meta name="twitter:site" content={metadata.twitterHandle} />
+        <meta name="twitter:description" content={metadata.description} />
+        <meta name="twitter:image" content={metadata.openGraph.image} />
       </head>
-      <body className={`${inter.variable} ${manrope.variable}`}>
+      <body className={`${inter.variable} ${sourceCodePro.variable}`}>
         <div className="bg -z-30"></div>
         <Navbar />
         {children}

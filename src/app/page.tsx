@@ -1,6 +1,6 @@
 import { allPosts, allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
-import { PROJECTS } from '@/assets/store';
+import { PROJECTS, PUBLICATIONS } from '@/assets/store';
 import Button from '@/components/button/Button';
 import Chips from '@/components/chips/Chips';
 import ListCard from '@/components/list/ListCard';
@@ -29,12 +29,44 @@ export default function Home() {
             <ArrowIcon className="h-3 w-3" />
           </Button>
         </section>
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-28">
+        <div className="mx-auto flex flex-col items-center justify-center gap-28 md:max-w-4xl">
           <RenderPostSnippetSection type="blog" data={posts} />
           <RenderPostSnippetSection type="snippets" data={snippets} inverse />
         </div>
+        <div className="flex w-full flex-col items-start justify-between gap-4 md:mx-auto md:max-w-4xl md:flex-row">
+          <div className="illustration md:-mt-20">
+            <div className="relative hidden h-40 w-60 md:flex">
+              <Image
+                src={`/assets/publications_desktop.svg`}
+                alt="publications"
+                fill
+                priority
+              />
+            </div>
+            <div className="relative flex h-40 w-60 md:hidden">
+              <Image
+                src={`/assets/publications_mobile.svg`}
+                alt="publications"
+                fill
+                priority
+              />
+            </div>
+          </div>
+          <div className="dash flex w-full flex-wrap gap-6 rounded-lg p-6">
+            {PUBLICATIONS.map((item) => (
+              <div key={item.title} className="flex flex-col items-start justify-start gap-2">
+                <a href={item.url} className="text-lg font-semibold transition-all duration-150 ease-in-out hover:translate-x-2">
+                  {item.title}
+                </a>
+                <a href={item.publishedIn.publisherBaseUrl} className="text-sm opacity-60 transition-all duration-150 ease-in-out hover:scale-105">
+                  {item.publishedIn.publisherLabel}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="flex w-full flex-col items-start justify-start gap-4 md:mx-auto md:max-w-3xl md:flex-row-reverse">
-          <div className="illustration">
+          <div className="illustration md:-mt-20">
             <div className="relative hidden h-40 w-60 md:flex">
               <Image
                 src={`/assets/projects_desktop.svg`}
@@ -75,9 +107,8 @@ const RenderPostSnippetSection = ({
 }: RenderPostSnippetSectionType) => {
   return (
     <section
-      className={`flex w-full flex-col items-start justify-between gap-4 md:flex-row ${
-        inverse && 'md:flex-row-reverse'
-      }`}
+      className={`flex w-full flex-col items-start justify-between gap-4 md:flex-row ${inverse && 'md:flex-row-reverse'
+        }`}
     >
       <div className="illustration">
         <div className="relative hidden h-40 w-60 md:flex">

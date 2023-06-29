@@ -5,7 +5,6 @@ pre[class*='language-'] {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  font-family: Roboto Mono, monospace;
   font-size: 0.85em;
   line-height: 1.5em;
 
@@ -99,7 +98,7 @@ pre[class*='language-'] {
 }
 
 .token.comment {
-  color: #aabfc9;
+  color: black;
 }
 
 .token.constant {

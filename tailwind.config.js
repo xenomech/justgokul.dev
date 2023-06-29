@@ -33,9 +33,10 @@ module.exports = {
               fontStyle: 'normal',
             },
             pre: {
-              backgroundColor: theme('colors.base.100'),
+              backgroundColor: theme('colors.gray.200'),
               color: theme('colors.gray.500'),
               border: '1px solid rgba(0, 0, 0, 0.1)',
+              fontFamily: theme('fontFamily.code'),
             },
             thead: {
               borderBottomColor: theme('colors.gray.200'),
@@ -47,7 +48,7 @@ module.exports = {
       }),
       fontFamily: {
         inter: ['var(--font-inter)'],
-        manrope: ['var(--font-manrope)'],
+        code: ['var(--font-code)'],
       },
     },
   },
