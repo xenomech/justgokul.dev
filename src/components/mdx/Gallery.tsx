@@ -9,13 +9,13 @@ export default function Gallery({ className, srcArray }: PropType) {
   return (
     <div
       className={classNames(
-        'mx-auto flex items-center justify-center gap-4',
+        'mx-auto flex flex-wrap items-center justify-center gap-4',
         className
       )}
     >
       {srcArray?.map((item) => (
         <div
-          className="relative flex h-[165px] w-[165px] items-center justify-center"
+          className="relative flex h-[130px] w-[130px] items-center justify-center md:h-[165px] md:w-[165px]"
           key={item.url}
         >
           <Image
