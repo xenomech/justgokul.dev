@@ -7,12 +7,14 @@ type PropType = {
   className?: string;
   children: React.ReactNode;
   action?: string;
+  url?: string;
 };
 export default function Button({
   type,
   className,
   children,
   action,
+  url,
 }: PropType) {
   const router = useRouter();
   var style: string = '';
@@ -36,6 +38,9 @@ export default function Button({
         router.back();
         break;
       case 'CopyLink':
+        break;
+      case 'Link':
+        window.open(url);
         break;
     }
   }

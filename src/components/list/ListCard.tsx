@@ -9,6 +9,7 @@ type PropType = {
   date?: string;
   type?: string;
 };
+
 export default function ListCard({
   title,
   slug,

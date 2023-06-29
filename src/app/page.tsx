@@ -24,6 +24,8 @@ export default function Home() {
           <Button
             type="Primary"
             className="flex items-center justify-center gap-2 transition-all duration-100 ease-in-out hover:scale-105"
+            action="Link"
+            url="https://share.justgokul.dev"
           >
             <p className="font-medium">Connect</p>
             <ArrowIcon className="h-3 w-3" />
