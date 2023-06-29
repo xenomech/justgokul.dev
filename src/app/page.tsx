@@ -16,7 +16,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center gap-4 text-center">
             <h1 className="heading flex flex-wrap items-center justify-center gap-4 text-center">
               <span>Hey,</span>
-              <span className="wavingHand font-emoji">👋</span>
+              <span className="wavingHand">👋</span>
               <span>I&apos;m Gokul</span>
             </h1>
             <p className="subheading max-w-2xl">

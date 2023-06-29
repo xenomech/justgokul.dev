@@ -2,17 +2,12 @@ import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
 import '@/styles/globals.scss';
 import { Analytics } from '@vercel/analytics/react';
-import { Inter, Noto_Color_Emoji, Source_Code_Pro } from 'next/font/google';
+import { Inter, Source_Code_Pro } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const sourceCodePro = Source_Code_Pro({
   subsets: ['latin'],
   variable: '--font-code',
-});
-const notoColorEmoji = Noto_Color_Emoji({
-  subsets: ['emoji'],
-  weight: ['400'],
-  variable: '--emoji',
 });
 
 export const metadata = {
@@ -76,9 +71,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff"></meta>
       </head>
-      <body
-        className={`${inter.variable} ${sourceCodePro.variable} ${notoColorEmoji.variable}`}
-      >
+      <body className={`${inter.variable} ${sourceCodePro.variable}`}>
         <div className="bg -z-30"></div>
         <Navbar />
         {children}

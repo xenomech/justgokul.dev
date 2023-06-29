@@ -49,7 +49,6 @@ module.exports = {
       fontFamily: {
         inter: ['var(--font-inter)'],
         code: ['var(--font-code)'],
-        emoji: ['var(--emoji)'],
       },
     },
   },
