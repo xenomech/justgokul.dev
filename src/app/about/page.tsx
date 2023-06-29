@@ -64,6 +64,11 @@ export default async function page() {
                   </div>
                 </div>
               ))}
+              <div className="flex items-center justify-center rounded-lg border-[1px] border-black border-opacity-10 bg-base-100 p-2 transition-all duration-150 ease-in-out hover:scale-110">
+                <div className="relative flex h-10 w-10 items-center justify-center font-semibold">
+                  + 6
+                </div>
+              </div>
             </div>
           </div>
           {/* socials */}
