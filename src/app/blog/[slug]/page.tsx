@@ -11,7 +11,7 @@ export default function Post({ params }: PropType) {
   const currentPost = allPosts.filter((_) => _.slug === params.slug)[0];
   const Component = getMDXComponent(currentPost.body.code);
   return (
-    <div className="mx-auto max-w-4xl py-48">
+    <div className="md:mx-auto mx-4 max-w-4xl py-48">
       <div className="px-3 md:p-5">
         <div className="pb-5">
           <Button
