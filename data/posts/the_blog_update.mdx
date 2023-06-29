@@ -24,4 +24,21 @@ It's been a while since I wrote something technical. I've been planning an updat
 2. **Image delivery optimisation:** As you might have noticed, the blog is asset-heavy, and everything is served via Vercel's CDN, which is ok for the time being.
 3. **Structured reusable components:** The components are folder organised; as the blog grows, the number of components will also increase. Introducing storybooks and writing tests for components will ensure better-quality failsafe components.
 
+#### Improvements to sitemap!
+
+```JS
+
+const siteMap = {
+  old: {
+    blog: 'blog.justgokul.dev',
+    shareSheet: 'justgokul.dev',
+  },
+  new: {
+    blog: 'justgokul.dev',
+    shareSheet: 'share.justgokul.dev',
+  },
+};
+
+```
+
 _changelog June 2023_
