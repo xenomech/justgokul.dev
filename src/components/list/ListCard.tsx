@@ -23,7 +23,7 @@ export default function ListCard({
       href={`${type}/${slug}`}
     >
       <div className="flex flex-col items-start justify-start gap-3">
-        <p className="max-w-lg truncate text-lg font-semibold">{title}</p>
+        <p className="max-w-xs text-lg font-semibold md:max-w-lg">{title}</p>
         <p className="flex flex-col items-start justify-between gap-2 text-sm opacity-60 md:flex-row md:items-center">
           {date && <span>Posted {date}</span>}
           {date && readingTime && <span className="hidden md:flex"> • </span>}
