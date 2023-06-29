@@ -14,7 +14,11 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center gap-28">
         <section className="flex w-full flex-col items-center justify-center gap-8 bg-[url('/hero-bg-desktop.png')] bg-cover bg-center pt-10 ">
           <div className="flex flex-col items-center justify-center gap-4 text-center">
-            <h1 className="heading">Hey, Im Gokul</h1>
+            <h1 className="heading flex flex-wrap items-center justify-center gap-4 text-center">
+              <span>Hey,</span>
+              <span className="wavingHand font-emoji">👋</span>
+              <span>I&apos;m Gokul</span>
+            </h1>
             <p className="subheading max-w-2xl">
               Welcome to my spot on the web. I am a software engineer who builds
               and occasionally design websites and apps. I started this blog to
