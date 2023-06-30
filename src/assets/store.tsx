@@ -14,7 +14,7 @@ export const PROJECTS = [
   },
   {
     title: 'The blog',
-    url: 'https://blog.justgokul.dev',
+    url: 'https://github.com/xenomech/MySpot',
   },
   {
     title: 'Prefixed',

@@ -118,12 +118,12 @@ const RenderPostSnippetSection = ({
 }: RenderPostSnippetSectionType) => {
   return (
     <section
-      className={`flex w-full flex-col items-start justify-between gap-4 md:flex-row ${
-        inverse && 'md:flex-row-reverse'
+      className={`flex w-full flex-col items-start justify-between gap-4 lg:flex-row ${
+        inverse && 'lg:flex-row-reverse'
       }`}
     >
       <div className="illustration">
-        <div className="relative hidden h-40 w-60 md:flex">
+        <div className="relative hidden h-40 w-60 lg:flex">
           <Image
             src={`/assets/latest_${type}_desktop.svg`}
             alt="latestPosts"
@@ -131,7 +131,7 @@ const RenderPostSnippetSection = ({
             priority
           />
         </div>
-        <div className="relative flex h-40 w-60 md:hidden">
+        <div className="relative flex h-40 w-60 lg:hidden">
           <Image
             src={`/assets/latest_${type}_mobile.svg`}
             alt="latestPosts"
