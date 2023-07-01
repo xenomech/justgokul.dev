@@ -32,10 +32,18 @@ export default function Snippets() {
         <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row">
           <div className="illustration">
             <div className="relative hidden h-36 w-40 md:flex">
-              <Image src="/assets/snippets_desktop.svg" alt="snippets" fill />
+              <Image
+                src="https://static.justgokul.dev/assets/snippets_desktop.svg"
+                alt="snippets"
+                fill
+              />
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
-              <Image src="/assets/snippets_mobile.svg" alt="snippets" fill />
+              <Image
+                src="https://static.justgokul.dev/assets/snippets_mobile.svg"
+                alt="snippets"
+                fill
+              />
             </div>
           </div>
           <div className="posts w-full md:w-2/3">
@@ -55,10 +63,18 @@ export default function Snippets() {
         <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
           <div className="illustration">
             <div className="relative hidden h-36 w-40 md:flex">
-              <Image src="/assets/threads_desktop.svg" alt="snippets" fill />
+              <Image
+                src="https://static.justgokul.dev/assets/threads_desktop.svg"
+                alt="snippets"
+                fill
+              />
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
-              <Image src="/assets/threads_mobile.svg" alt="snippets" fill />
+              <Image
+                src="https://static.justgokul.dev/assets/threads_mobile.svg"
+                alt="snippets"
+                fill
+              />
             </div>
           </div>
           <div className="posts w-full md:w-2/3">

@@ -1,13 +1,10 @@
 import { allPosts, allSnippets } from '.contentlayer/generated';
+import { ArrowIcon } from '@/assets/icons';
+import { PROJECTS, PUBLICATIONS } from '@/assets/store';
 import Button from '@/components/button/Button';
 import Chips from '@/components/chips/Chips';
 import ListCard from '@/components/list/ListCard';
 import { FrontMatterType, sortFrontMatter } from '@/lib/common';
-import { ArrowIcon } from '@https://static.justgokul.dev/assets/icons';
-import {
-  PROJECTS,
-  PUBLICATIONS,
-} from '@https://static.justgokul.dev/assets/store';
 import Image from 'next/image';
 export default function Home() {
   const posts = sortFrontMatter(allPosts);
@@ -15,7 +12,7 @@ export default function Home() {
   return (
     <div className="mx-4 max-w-7xl pb-28 pt-44 lg:mx-auto">
       <div className="flex flex-col items-center justify-center gap-28">
-        <section className="flex w-full flex-col items-center justify-center gap-8 bg-[url('/hero-bg-desktop.png')] bg-cover bg-center pt-10 ">
+        <section className="flex w-full flex-col items-center justify-center gap-8 bg-[url('https://static.justgokul.dev/hero-bg-desktop.png')] bg-cover bg-center pt-10 ">
           <div className="flex flex-col items-center justify-center gap-4 text-center">
             <h1 className="heading">Hey, 👋 I&apos;m Gokul</h1>
             <p className="subheading max-w-2xl">
