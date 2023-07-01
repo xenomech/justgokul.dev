@@ -1,10 +1,13 @@
 import { allPosts, allSnippets } from '.contentlayer/generated';
-import { ArrowIcon } from '@/assets/icons';
-import { PROJECTS, PUBLICATIONS } from '@/assets/store';
 import Button from '@/components/button/Button';
 import Chips from '@/components/chips/Chips';
 import ListCard from '@/components/list/ListCard';
 import { FrontMatterType, sortFrontMatter } from '@/lib/common';
+import { ArrowIcon } from '@https://static.justgokul.dev/assets/icons';
+import {
+  PROJECTS,
+  PUBLICATIONS,
+} from '@https://static.justgokul.dev/assets/store';
 import Image from 'next/image';
 export default function Home() {
   const posts = sortFrontMatter(allPosts);
@@ -39,7 +42,7 @@ export default function Home() {
           <div className="illustration md:-mt-20">
             <div className="relative hidden h-40 w-60 md:flex">
               <Image
-                src={`/assets/publications_desktop.svg`}
+                src={`https://static.justgokul.dev/assets/publications_desktop.svg`}
                 alt="publications"
                 fill
                 priority
@@ -47,7 +50,7 @@ export default function Home() {
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
               <Image
-                src={`/assets/publications_mobile.svg`}
+                src={`https://static.justgokul.dev/assets/publications_mobile.svg`}
                 alt="publications"
                 fill
                 priority
@@ -80,7 +83,7 @@ export default function Home() {
           <div className="illustration md:-mt-20">
             <div className="relative hidden h-40 w-60 md:flex">
               <Image
-                src={`/assets/projects_desktop.svg`}
+                src={`https://static.justgokul.dev/assets/projects_desktop.svg`}
                 alt="Projects"
                 fill
                 priority
@@ -88,7 +91,7 @@ export default function Home() {
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
               <Image
-                src={`/assets/projects_mobile.svg`}
+                src={`https://static.justgokul.dev/assets/projects_mobile.svg`}
                 alt="projects"
                 fill
                 priority
@@ -125,7 +128,7 @@ const RenderPostSnippetSection = ({
       <div className="illustration">
         <div className="relative hidden h-40 w-60 lg:flex">
           <Image
-            src={`/assets/latest_${type}_desktop.svg`}
+            src={`https://static.justgokul.dev/assets/latest_${type}_desktop.svg`}
             alt="latestPosts"
             fill
             priority
@@ -133,7 +136,7 @@ const RenderPostSnippetSection = ({
         </div>
         <div className="relative flex h-40 w-60 lg:hidden">
           <Image
-            src={`/assets/latest_${type}_mobile.svg`}
+            src={`https://static.justgokul.dev/assets/latest_${type}_mobile.svg`}
             alt="latestPosts"
             fill
             priority
