@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         <div className="flex w-full flex-col items-start justify-between gap-4 md:mx-auto md:max-w-4xl md:flex-row">
           <div className="illustration md:-mt-20">
-            <div className="relative hidden h-40 w-60 md:flex">
+            <div className="relative hidden h-40 w-52 md:flex">
               <Image
                 src={`https://static.justgokul.dev/assets/publications_desktop.svg`}
                 alt="publications"
@@ -78,7 +78,7 @@ export default function Home() {
         </div>
         <div className="flex w-full flex-col items-start justify-start gap-4 md:mx-auto md:max-w-3xl md:flex-row-reverse">
           <div className="illustration md:-mt-20">
-            <div className="relative hidden h-40 w-60 md:flex">
+            <div className="relative hidden h-36 w-36 md:flex">
               <Image
                 src={`https://static.justgokul.dev/assets/projects_desktop.svg`}
                 alt="Projects"
@@ -86,7 +86,7 @@ export default function Home() {
                 priority
               />
             </div>
-            <div className="relative flex h-40 w-60 md:hidden">
+            <div className="relative flex h-36 w-44 md:hidden">
               <Image
                 src={`https://static.justgokul.dev/assets/projects_mobile.svg`}
                 alt="projects"
@@ -131,7 +131,7 @@ const RenderPostSnippetSection = ({
             priority
           />
         </div>
-        <div className="relative flex h-40 w-60 lg:hidden">
+        <div className="relative flex h-36 w-64 lg:hidden">
           <Image
             src={`https://static.justgokul.dev/assets/latest_${type}_mobile.svg`}
             alt="latestPosts"

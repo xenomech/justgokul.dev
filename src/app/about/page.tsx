@@ -31,7 +31,7 @@ export default async function page() {
           {/* stack */}
           <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row md:gap-8">
             <div className="illustration">
-              <div className="relative hidden h-40 w-32 md:flex">
+              <div className="relative hidden h-40 w-44 md:flex">
                 <Image
                   src={`https://static.justgokul.dev/assets/tools_i_use_desktop.svg`}
                   alt="Projects"
@@ -74,7 +74,7 @@ export default async function page() {
           {/* socials */}
           <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row-reverse md:gap-8">
             <div className="illustration">
-              <div className="relative hidden h-32 w-32 md:flex">
+              <div className="relative hidden h-40 w-32 md:flex">
                 <Image
                   src={`https://static.justgokul.dev/assets/socials_desktop.svg`}
                   alt="Projects"
