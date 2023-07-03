@@ -63,7 +63,6 @@ export default function Snippets() {
         <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
           <div className="illustration">
             <div className="relative hidden h-40 w-36 md:flex">
-
               <Image
                 src="https://static.justgokul.dev/assets/threads_desktop.svg"
                 alt="snippets"

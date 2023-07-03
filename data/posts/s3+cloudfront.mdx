@@ -1,0 +1,99 @@
+---
+title: S3 🪣 + Cloudfront 🌐  = AWSomeness ✨
+slug: s3_cloudfront_awsomeness
+date: 2023-07-01
+category: Code
+excerpt: Asset delivery with ease
+draft: false
+---
+
+It's been 2-3 days since I deployed my new blog to the public. After that, I had great real-world insights into how my site was performing worldwide. Page load speed, latency, etc., can have a huge impact on the user experience of a website or web application. Even though my asset-heavy site performs 'oK' with Vercel's CDN, I wanted to improve it. The FCP and LCP insight from 135 data points are 3.58s and 3.07s, respectively. It resulted in an overall score of 57. In my pursuit to fix this, I had a few options in mind, like Cloudinary, ImageKit etc. But I wanted to try out AWS. I don't think I have to emphasise that AWS is awesome. So I just headed over to the AWS console and wired it up (Obviously, after reading the docs for a few hours or so 😂).
+
+### Prerequisite:
+
+#### What is an S3 bucket?
+
+The Simple Storage Service(S3) is a storage solution from AWS. It is basically an online storage service that allows you to store and retrieve data, such as images, videos, documents, and more. An "S3 bucket" refers to a storage container in S3. Each bucket has a unique name and can be located in a specific AWS region.
+
+#### What is a CDN?
+
+CDN stands for Content Delivery Network. It is a distributed network of servers that work together to deliver web content, such as images, videos, scripts, and other static or dynamic files, to end-users based on their geographic location.
+CloudFront is a CDN offered by Amazon Web Services, which securely transfers content to the clients, with speed.
+
+### Step 1: Create a bucket!
+
+This is a fairly simple step, head over to the AWS console and search for S3 and create a bucket turning off "Block all public access". Basically, a public bucket 😂 (some settings are confusing). Set object ownership to however you have your account configured. After uploading the assets, let's move to the next step.
+
+<Image
+  src="/media/blog/S3_Cloudfront/S3-bucket.png"
+  width="900"
+  height="1024"
+  alt="S3 bucket options"
+/>
+
+### Step 2: Add a custom domain(optional)
+
+This was something that I wanted to do to keep my domain structure clean. I wanted `static.justgokul.dev` to be the root of all my static assets. For that, I had to request an SSL/TLS certificate from ACM(Amazon Certificate Manager).
+
+To do this, search for **ACM** in the AWS console -> request certificate -> request a public certificate -> and enter your domain name (static.justgokul.dev in my case), then create. After creation, go to the certificate and check the domains section to find a CNAME record.
+
+<Image
+  src="/media/blog/S3_Cloudfront/AWS-Certificate-Manager.png"
+  width="900"
+  height="900"
+  alt="S3 bucket options"
+/>
+
+For people using Route 53, add the record, and you are good to go. But for me, in my case, I have to add it to my Google domain's DNS records.
+
+```
+Host name                       Type        Data
+-------------------------       -----       -------------------------
+_xN.static.justgokul.dev        CNAME       _xM.acm-validations.aws.
+
+```
+
+Reference: [How CNAME records for ACM work](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html), [Add a custom domain managed by Google Domains](https://docs.aws.amazon.com/amplify/latest/userguide/to-add-a-custom-domain-managed-by-google-domains.html)
+
+After the validation is done, we can move to the next step.
+
+### Step 3: Create a Cloudfront distribution
+
+To create a CloudFront distribution, search for **cloudfront** in the AWS console and click create a distribution.
+
+1. Choose the origin domain so that it points to the S3 bucket we created <br/>(e.g.: name.s3.amazonaws.com)
+2. Change the **'Viewer protocol policy'** to **'Redirect HTTP to HTTPS'**
+3. In the Settings section: Add **'Alternate domain name'** (`static.justgokul.dev` in my case).; and choose the SSL certificate that we created earlier.
+
+This creates a cloudfront distribution for our storage bucket.
+
+The next step is to add the cloudfront url to the DNS record of our domain provider.
+
+```
+Host name                       Type        Data
+-------------------------       -----       -------------------------
+static                          CNAME       Distribution domain name
+```
+
+This will allow us to access the distribution using `static.justgokul.dev`.
+Now any assets present in the bucket can be accessed globaly through the CDN via the url.
+
+eg: [https://static.justgokul.dev/matrix.png](https://static.justgokul.dev/matrix.png)
+
+Now as I am using NextJs I have a tiny little step to do. In my `next.config.js` add my static assets domain.
+
+```js
+const nextConfig = {
+  images: {
+    domains: ['static.justgokul.dev'],
+  },
+};
+```
+
+Now I can access all the assests using the full url.
+
+Reference: [NextJs docs](https://nextjs.org/docs/app/building-your-application/optimizing/images)
+
+With this we have a proper CDN delivering assets and a 'clean & light' codebase. And Thats it!! wasnt that simple!?
+
+More fun stuff awaits! Happy hacking!
