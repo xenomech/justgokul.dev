@@ -35,6 +35,7 @@ export default function Snippets() {
               <Image
                 src="https://static.justgokul.dev/assets/snippets_desktop.svg"
                 alt="snippets"
+                className="object-contain"
                 fill
               />
             </div>
@@ -42,6 +43,7 @@ export default function Snippets() {
               <Image
                 src="https://static.justgokul.dev/assets/snippets_mobile.svg"
                 alt="snippets"
+                className="object-contain"
                 fill
               />
             </div>
@@ -65,14 +67,16 @@ export default function Snippets() {
             <div className="relative hidden h-40 w-36 md:flex">
               <Image
                 src="https://static.justgokul.dev/assets/threads_desktop.svg"
-                alt="snippets"
+                alt="threads"
+                className="object-contain"
                 fill
               />
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
               <Image
                 src="https://static.justgokul.dev/assets/threads_mobile.svg"
-                alt="snippets"
+                alt="threads"
+                className="object-contain"
                 fill
               />
             </div>

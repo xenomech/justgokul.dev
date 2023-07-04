@@ -41,6 +41,7 @@ export default function Home() {
               <Image
                 src={`https://static.justgokul.dev/assets/publications_desktop.svg`}
                 alt="publications"
+                className="object-contain"
                 fill
                 priority
               />
@@ -49,6 +50,7 @@ export default function Home() {
               <Image
                 src={`https://static.justgokul.dev/assets/publications_mobile.svg`}
                 alt="publications"
+                className="object-contain"
                 fill
                 priority
               />
@@ -82,6 +84,7 @@ export default function Home() {
               <Image
                 src={`https://static.justgokul.dev/assets/projects_desktop.svg`}
                 alt="Projects"
+                className="object-contain"
                 fill
                 priority
               />
@@ -90,6 +93,7 @@ export default function Home() {
               <Image
                 src={`https://static.justgokul.dev/assets/projects_mobile.svg`}
                 alt="projects"
+                className="object-contain"
                 fill
                 priority
               />
@@ -127,6 +131,7 @@ const RenderPostSnippetSection = ({
           <Image
             src={`https://static.justgokul.dev/assets/latest_${type}_desktop.svg`}
             alt="latestPosts"
+            className="object-contain"
             fill
             priority
           />
@@ -135,6 +140,7 @@ const RenderPostSnippetSection = ({
           <Image
             src={`https://static.justgokul.dev/assets/latest_${type}_mobile.svg`}
             alt="latestPosts"
+            className="object-contain"
             fill
             priority
           />
