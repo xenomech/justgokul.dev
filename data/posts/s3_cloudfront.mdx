@@ -7,7 +7,7 @@ excerpt: Asset delivery with ease
 draft: false
 ---
 
-It's been 2-3 days since I deployed my new blog to the public. After that, I had great real-world insights into how my site was performing worldwide. Page load speed, latency, etc., can have a huge impact on the user experience of a website or web application. Even though my asset-heavy site performs 'oK' with Vercel's CDN, I wanted to improve it. The FCP and LCP insight from 135 data points are 3.58s and 3.07s, respectively. It resulted in an overall score of 57. In my pursuit to fix this, I had a few options in mind, like Cloudinary, ImageKit etc. But I wanted to try out AWS. I don't think I have to emphasise that AWS is awesome. So I just headed over to the AWS console and wired it up (Obviously, after reading the docs for a few hours or so 😂).
+It's been 2-3 days since I deployed my new blog to the public. After that, I had great real-world insights into how my site was performing worldwide. Page load speed, latency, etc., can have a huge impact on the user experience of a website or web application. Even though my asset-heavy site performs 'oK' with Vercel's CDN, I wanted to improve it. The FCP and LCP insight from 135 data points are 3.58s and 3.07s, respectively. It resulted in an overall score of 57. In my pursuit to improve this, I had a few options in mind, like Cloudinary, ImageKit etc. But I wanted to try out AWS. I don't think I have to emphasise that AWS is awesome. So I just headed over to the AWS console and wired it up (Obviously, after reading the docs for a few hours or so 😂).
 
 ### Prerequisite:
 
@@ -25,7 +25,7 @@ CloudFront is a CDN offered by AWS, which securely transfers content to the clie
 This is a fairly simple step, head over to the AWS console and search for S3 and create a bucket turning off "Block all public access". Basically, a public bucket 😂 (some settings are confusing). Set object ownership to however you have your account configured. After uploading the assets, let's move to the next step.
 
 <Image
-  src="/media/blog/S3_Cloudfront/S3-bucket.png"
+  src="https://static.justgokul.dev/media/blog/S3_Cloudfront/S3-bucket.png"
   width="900"
   height="1024"
   alt="S3 bucket options"
@@ -38,7 +38,7 @@ This was something that I wanted to do to keep my domain structure clean. I want
 To do this, search for **ACM** in the AWS console -> request certificate -> request a public certificate -> and enter your domain name (static.justgokul.dev in my case), then create. After creation, go to the certificate and check the domains section to find a CNAME record.
 
 <Image
-  src="/media/blog/S3_Cloudfront/AWS-Certificate-Manager.png"
+  src="https://static.justgokul.dev/media/blog/S3_Cloudfront/AWS-Certificate-Manager.png"
   width="900"
   height="900"
   alt="S3 bucket options"
