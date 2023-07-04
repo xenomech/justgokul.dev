@@ -7,7 +7,7 @@ excerpt: Asset delivery with ease
 draft: false
 ---
 
-It's been 2-3 days since I deployed my new blog to the public. After that, I had great real-world insights into how my site was performing worldwide. Page load speed, latency, etc., can have a huge impact on the user experience of a website or web application. Even though my asset-heavy site performs 'oK' with Vercel's CDN, I wanted to improve it. The FCP and LCP insight from 135 data points are 3.58s and 3.07s, respectively. It resulted in an overall score of 57. In my pursuit to improve this, I had a few options in mind, like Cloudinary, ImageKit etc. But I wanted to try out AWS. I don't think I have to emphasise that AWS is awesome. So I just headed over to the AWS console and wired it up (Obviously, after reading the docs for a few hours or so 😂).
+It has been a few days since I deployed my new blog to the public. After that, I had great real-world insights into how my site was performing worldwide. Page load speed, latency, etc., can have a huge impact on the user experience of a website or web application. Even though my asset-heavy site performs 'oK' with Vercel's CDN, I wanted to improve it. The FCP and LCP insight from 135 data points are 3.58s and 3.07s, respectively. It resulted in an overall score of 57. In my pursuit to improve this, I had a few options in mind, like Cloudinary, ImageKit etc. But I wanted to try out AWS. I don't think I have to emphasise that AWS is awesome. So I just headed over to the AWS console and wired it up (Obviously, after reading the docs for a few hours or so 😂).
 
 ### Prerequisite:
 
@@ -33,7 +33,7 @@ This is a fairly simple step, head over to the AWS console and search for S3 and
 
 ### Step 2: Add a custom domain(optional)
 
-This was something that I wanted to do to keep my domain structure clean. I wanted `static.justgokul.dev` to be the root of all my static assets. For that, I had to request an SSL/TLS certificate from ACM(Amazon Certificate Manager).
+This was something that I wanted to do to keep my domains and subdomains more accessible. I wanted `static.justgokul.dev` to be the root of all my static assets. For that, I had to request an SSL/TLS certificate from ACM(Amazon Certificate Manager).
 
 To do this, search for **ACM** in the AWS console -> request certificate -> request a public certificate -> and enter your domain name (static.justgokul.dev in my case), then create. After creation, go to the certificate and check the domains section to find a CNAME record.
 
@@ -94,6 +94,6 @@ Now I can access all the assests using the full url.
 
 Reference: [NextJs docs](https://nextjs.org/docs/app/building-your-application/optimizing/images)
 
-With this, we have a CDN delivering assets plus a clean and light codebase. Thats it!! Wasn't that simple!?
+With this, we have a CDN delivering assets plus a clean and light codebase. Thats it!!
 
 More fun stuff awaits! Happy hacking!
