@@ -30,6 +30,7 @@ export default function Footer() {
             {NAV_LINKS.map((item) => (
               <Link
                 key={item}
+                aria-label={item}
                 className="capitalize text-dawn-900 transition-all duration-150 ease-in-out hover:text-black"
                 href={`/${item.toLowerCase()}`}
               >
@@ -39,7 +40,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-6">
             {SOCIALS.map((item) => (
-              <Link key={item.name} href={item.url}>
+              <Link key={item.name} href={item.url} aria-label={item.name}>
                 <item.icon className="h-4 w-4 text-dawn-900 transition-all duration-150 ease-in-out hover:text-black" />
               </Link>
             ))}

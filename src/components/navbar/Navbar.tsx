@@ -31,7 +31,7 @@ export default function Navbar() {
 
         <div className="flex lg:hidden">
           <Modal.Root open={open} onOpenChange={setOpen}>
-            <Modal.Trigger>
+            <Modal.Trigger aria-label="Mobile navbar open">
               <MenuIcon className="h-6 w-6 text-dawn-900 hover:text-black" />
             </Modal.Trigger>
             <Modal.Portal>
@@ -84,16 +84,23 @@ const NavItems = ({ className, clickHandler }: NavItemType) => {
             <Link
               className="capitalize text-dawn-900 transition-all duration-150 ease-in-out hover:text-black"
               href={`/${item.toLowerCase()}`}
+              aria-label={item}
             >
               {item}
             </Link>
           )}
         </div>
       ))}
-      <Link href="https://twitter.com/justgokuldotdev">
+      <Link
+        href="https://twiiter.com/justgokuldotdev"
+        aria-label="twitter connect button"
+      >
         <TwitterIcon className="h-4 w-4 text-dawn-900 transition-all duration-150 ease-in-out hover:text-black" />
       </Link>
-      <Link href="https://github.com/xenomech">
+      <Link
+        href="https://github.com/xenomech"
+        aria-label="github connect button"
+      >
         <GithubIcon className="h-4 w-4 text-dawn-900 transition-all duration-150 ease-in-out hover:text-black" />
       </Link>
     </div>
