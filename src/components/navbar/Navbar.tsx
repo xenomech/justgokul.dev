@@ -90,7 +90,7 @@ const NavItems = ({ className, clickHandler }: NavItemType) => {
           )}
         </div>
       ))}
-      <Link href="https://twiiter.com/justgokuldotdev">
+      <Link href="https://twitter.com/justgokuldotdev">
         <TwitterIcon className="h-4 w-4 text-dawn-900 transition-all duration-150 ease-in-out hover:text-black" />
       </Link>
       <Link href="https://github.com/xenomech">

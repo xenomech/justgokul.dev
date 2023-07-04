@@ -65,7 +65,7 @@ export const SOCIALS = [
   {
     name: 'Twitter',
     icon: TwitterIcon,
-    url: 'https://twiiter.com/justgokuldotdev',
+    url: 'https://twitter.com/justgokuldotdev',
   },
   {
     name: 'Github',
