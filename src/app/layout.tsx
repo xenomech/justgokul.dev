@@ -72,7 +72,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff"></meta>
       </head>
       <body className={`${inter.variable} ${sourceCodePro.variable}`}>
-        <div className="bg -z-30"></div>
         <Navbar />
         {children}
         <Footer />

@@ -58,8 +58,8 @@ export default async function page() {
                 >
                   <div className="relative h-10 w-10">
                     <Image
-                      className="pointer-events-none"
-                      src={`/media/stack/${item}.png`}
+                      className="pointer-events-none bg-contain"
+                      src={`https://static.justgokul.dev/media/stack/${item}.png`}
                       alt={item}
                       fill
                     />
@@ -104,8 +104,8 @@ export default async function page() {
                 >
                   <div className="relative h-8 w-8">
                     <Image
-                      className="pointer-events-none"
-                      src={`/media/social/${item.name}.svg`}
+                      className="pointer-events-none bg-contain"
+                      src={`https://static.justgokul.dev/media/social/${item.name}.svg`}
                       alt={item.name}
                       fill
                     />
