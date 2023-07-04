@@ -5,11 +5,11 @@
 @import 'tokenColors.scss';
 @import 'mdx.scss';
 
-.bg {
-  @apply fixed left-0 top-0 min-h-full min-w-full scale-150 bg-[url('https://static.justgokul.dev/matrix.png')] bg-cover bg-repeat opacity-30 bg-blend-multiply lg:scale-110;
-}
 body {
-  @apply bg-base-100 font-inter;
+  @apply font-inter;
+  background: fixed 0 0/20px 20px
+      radial-gradient(rgba(0, 0, 0, 0.1) 1px, #f7f1e8 0),
+    fixed 10px 10px /20px 20px radial-gradient(rgba(0, 0, 0, 0.1) 1px, #f7f1e8 0);
 }
 
 .heading {
@@ -17,6 +17,9 @@ body {
 }
 .subheading {
   @apply text-2xl text-black opacity-30 md:text-3xl;
+}
+.home-banner {
+  @apply bg-[url('https://static.justgokul.dev/hero-bg-desktop.png')] bg-cover bg-center;
 }
 .blog-banner {
   @apply bg-cover bg-left-top lg:bg-[url('https://static.justgokul.dev/concentric-circles.png')];
