@@ -33,6 +33,7 @@ export default function Blog() {
               <Image
                 src="https://static.justgokul.dev/assets/posts_desktop.svg"
                 alt="latestPosts"
+                className="object-contain"
                 fill
               />
             </div>
@@ -40,6 +41,7 @@ export default function Blog() {
               <Image
                 src="https://static.justgokul.dev/assets/posts_mobile.svg"
                 alt="latestPosts"
+                className="object-contain"
                 fill
               />
             </div>
