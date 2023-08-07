@@ -24,8 +24,11 @@ export const PROJECTS = [
     title: 'Quick Share',
     url: 'https://share.justgokul.dev',
   },
+  {
+    title: 'Preview',
+    url: 'https://github.com/xenomech/Preview',
+  },
 ];
-
 export const TWEET_ID = [
   {
     title: 'Photo dumps',
