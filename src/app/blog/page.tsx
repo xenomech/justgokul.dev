@@ -1,7 +1,7 @@
 import { allPosts } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import Button from '@/components/button/Button';
-import ListCard from '@/components/list/ListCard';
+import { ListSection } from '@/components/section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
 
@@ -33,8 +33,8 @@ export default function Blog() {
             </p>
           </div>
         </section>
-        <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row lg:-mt-56 lg:ml-80">
-          <div className="illustration">
+        <section className="relative mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row lg:-mt-56 lg:ml-80">
+          <div className="illustration sticky top-20">
             <div className="relative hidden h-36 w-40 md:flex">
               <Image
                 src="https://static.justgokul.dev/assets/posts_desktop.svg"
@@ -52,18 +52,7 @@ export default function Blog() {
               />
             </div>
           </div>
-          <div className="posts w-full md:w-2/3">
-            {posts.map((item) => (
-              <ListCard
-                title={item.title}
-                slug={item.slug}
-                readingTime={item.readingTime}
-                date={item.date}
-                type="blog"
-                key={item.slug}
-              />
-            ))}
-          </div>
+          <ListSection type="blog" data={posts} />
         </section>
       </div>
     </div>
