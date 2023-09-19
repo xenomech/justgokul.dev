@@ -4,6 +4,7 @@ slug: ratingComponent
 date: 2021-09-16
 excerpt: A rating component
 category: Code
+language: ['JavaScript']
 draft: false
 ---
 
@@ -14,15 +15,15 @@ A rating component showcasing Optimistic UI Updates, built using react and redux
 </a>
 
 ```js
-import { useState } from "react";
-import { MdStar } from "react-icons/md";
-import { CgSpinner } from "react-icons/cg";
+import { useState } from 'react';
+import { MdStar } from 'react-icons/md';
+import { CgSpinner } from 'react-icons/cg';
 
 export const RatingComponent = ({ init, onRatingChange, loading }) => {
   const [hover, setHover] = useState(null);
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         {[...Array(5)].map((star, starIndex) => {
           return (
             <label key={starIndex + 1}>
@@ -38,7 +39,7 @@ export const RatingComponent = ({ init, onRatingChange, loading }) => {
               <MdStar
                 className="cursor-pointer transition duration-500 ease-in-out"
                 size="4rem"
-                color={starIndex + 1 <= (hover || init) ? "#ffc107" : "#dedede"}
+                color={starIndex + 1 <= (hover || init) ? '#ffc107' : '#dedede'}
                 onMouseEnter={() => {
                   setHover(starIndex + 1);
                 }}
@@ -49,13 +50,13 @@ export const RatingComponent = ({ init, onRatingChange, loading }) => {
             </label>
           );
         })}
-        <div className="flex justify-center items-center p-2">
-          <p className="p-4 w-15 rounded-xl border-2 text-4xl ">{init}</p>
+        <div className="flex items-center justify-center p-2">
+          <p className="w-15 rounded-xl border-2 p-4 text-4xl ">{init}</p>
         </div>
         <div>
           <CgSpinner
             size="3rem"
-            className={loading ? "animate-spin" : "invisible"}
+            className={loading ? 'animate-spin' : 'invisible'}
           />
         </div>
       </div>
@@ -64,7 +65,11 @@ export const RatingComponent = ({ init, onRatingChange, loading }) => {
 };
 ```
 
-Read more : 
-<a href="https://engineering.surveysparrow.com/the-magic-of-optimistic-ui-updates-311351df28b" target="_blank">
+Read more :
+
+<a
+  href="https://engineering.surveysparrow.com/the-magic-of-optimistic-ui-updates-311351df28b"
+  target="_blank"
+>
   The Magic of Optimistic UI Updates with React and Redux
 </a>
