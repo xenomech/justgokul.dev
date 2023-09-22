@@ -13,6 +13,7 @@ export type FrontMatterType = {
   category: string;
   readingTime: string;
   slug: string;
+  language: string[];
 };
 export const sortFrontMatter = (
   data: Post[] | Snippet[]
@@ -29,6 +30,7 @@ export const sortFrontMatter = (
       category: _.category,
       readingTime: _.readingTime.text,
       slug: _.slug,
+      language: _.language,
     };
   });
 };

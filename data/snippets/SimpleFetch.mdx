@@ -4,6 +4,7 @@ slug: simpleFetch
 date: 2021-05-10
 excerpt: Fetch data from a random url on page load
 category: Code
+language: ['JavaScript']
 draft: false
 ---
 
@@ -18,14 +19,14 @@ Fetch random thumbnail images from <a href="https://jsonplaceholder.typicode.com
 </a>
 
 ```js
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export default function App() {
   const [imgdat, setImgdat] = useState([]);
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/photos")
+      .get('https://jsonplaceholder.typicode.com/photos')
       .then(({ data }) => {
         setImgdat(data);
       });

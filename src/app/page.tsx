@@ -122,11 +122,11 @@ const RenderPostSnippetSection = ({
 }: RenderPostSnippetSectionType) => {
   return (
     <section
-      className={`flex w-full flex-col items-start justify-between gap-4 lg:flex-row ${
+      className={`relative flex w-full flex-col items-start justify-between gap-4 lg:flex-row ${
         inverse && 'lg:flex-row-reverse'
       }`}
     >
-      <div className="illustration">
+      <div className="illustration sticky top-20">
         <div className="relative hidden h-40 w-60 lg:flex">
           <Image
             src={`https://static.justgokul.dev/assets/latest_${type}_desktop.svg`}
@@ -146,7 +146,7 @@ const RenderPostSnippetSection = ({
           />
         </div>
       </div>
-      <div className="posts w-full md:w-[650px]">
+      <div className="posts dash w-full rounded-md p-4 md:w-[650px]">
         {data.slice(0, 5).map((item) => (
           <ListCard
             title={item.title}

@@ -4,6 +4,7 @@ slug: githubDataFetch
 date: 2021-06-20
 excerpt: Search github
 category: Code
+language: ['JavaScript']
 draft: false
 ---
 
@@ -14,12 +15,12 @@ Search Github using as small NodeJs program which accepts the search query from 
 </a>
 
 ```js
-const readline = require("readline").createInterface({
+const readline = require('readline').createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-const fetch = require("node-fetch");
-readline.question("Enter query : ", (query) => {
+const fetch = require('node-fetch');
+readline.question('Enter query : ', (query) => {
   fetch(`https://api.github.com/search/repositories?q=${query}`)
     .then((response) => response.json())
     .then((data) => {
