@@ -76,7 +76,7 @@ export default function Snippets() {
               />
             </div>
           </div>
-          <div className="posts w-full md:w-2/3">
+          <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4">
             {TWEET_ID.map((item) => (
               <ListCard
                 key={item.slug}
