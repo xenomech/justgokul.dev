@@ -1,8 +1,8 @@
 import { allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { TWEET_ID } from '@/assets/store';
-import Button from '@/components/button/Button';
-import ListCard from '@/components/list/ListCard';
+import { Button } from '@/components/button';
+import { ListCard } from '@/components/list';
 import { ListSection } from '@/components/section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ export default function Snippets() {
         </section>
 
         <section className="relative mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row">
-          <div className="illustration sticky top-20">
+          <div className="illustration md:sticky md:top-20">
             <div className="relative hidden h-40 w-40 md:flex">
               <Image
                 src="https://static.justgokul.dev/assets/snippets_desktop.svg"
@@ -82,7 +82,7 @@ export default function Snippets() {
                 key={item.slug}
                 title={item.title}
                 slug={item.slug}
-                type="tweet"
+                type="twitter"
               />
             ))}
           </div>

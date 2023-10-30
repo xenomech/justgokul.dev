@@ -1,7 +1,7 @@
 import { ArrowIcon } from '@/assets/icons';
 import { TWEET_ID } from '@/assets/store';
-import Button from '@/components/button/Button';
-import Embed from '@/components/twitter/Embed';
+import { Button } from '@/components/button';
+import { Embed } from '@/components/twitter';
 
 export default async function Tweet({ params }: { params: { slug: string } }) {
   const tweet = TWEET_ID.filter((item) => item.slug === params.slug)[0];

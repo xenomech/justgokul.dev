@@ -1,5 +1,5 @@
-import Footer from '@/components/footer/Footer';
-import Navbar from '@/components/navbar/Navbar';
+import { Footer } from '@/components/footer';
+import { Navbar } from '@/components/navbar';
 import '@/styles/globals.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Source_Code_Pro } from 'next/font/google';

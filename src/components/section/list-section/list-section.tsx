@@ -1,4 +1,4 @@
-import ListCard from '@/components/list/ListCard';
+import { ListCard } from '@/components/list';
 import { FrontMatterType } from '@/lib/common';
 
 type ListSectionType = {

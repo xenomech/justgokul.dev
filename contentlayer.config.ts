@@ -5,8 +5,7 @@ import {
 } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeCodeTitles from 'rehype-code-titles';
-import rehypePrism from 'rehype-prism-plus';
+import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
@@ -57,8 +56,7 @@ export default makeSource({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
-      rehypeCodeTitles,
-      rehypePrism,
+      rehypePrettyCode,
       [
         rehypeAutolinkHeadings,
         {

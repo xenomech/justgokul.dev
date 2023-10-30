@@ -3,17 +3,19 @@ import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 
 type PropType = {
-  type?: string;
+  type?: 'Primary' | 'Navigator';
   className?: string;
   children: React.ReactNode;
-  action?: string;
+  action?: 'Back' | 'Link';
   url?: string;
+  isDisabled?: boolean;
 };
 export default function Button({
   type,
   className,
   children,
   action,
+  isDisabled,
   url,
 }: PropType) {
   const router = useRouter();
@@ -37,15 +39,13 @@ export default function Button({
       case 'Back':
         router.back();
         break;
-      case 'CopyLink':
-        break;
       case 'Link':
         window.open(url);
         break;
     }
   }
   return (
-    <button className={style} onClick={buttonAction}>
+    <button className={style} onClick={buttonAction} disabled={isDisabled}>
       {children}
     </button>
   );

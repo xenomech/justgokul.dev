@@ -1,11 +1,12 @@
 import { allPosts, allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { PROJECTS, PUBLICATIONS } from '@/assets/store';
-import Button from '@/components/button/Button';
-import Chips from '@/components/chips/Chips';
-import ListCard from '@/components/list/ListCard';
+import { Button } from '@/components/button';
+import { Chips } from '@/components/chips';
+import { ListCard } from '@/components/list';
 import { FrontMatterType, sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
+
 export default function Home() {
   const posts = sortFrontMatter(allPosts);
   const snippets = sortFrontMatter(allSnippets);
@@ -111,7 +112,7 @@ export default function Home() {
 }
 
 type RenderPostSnippetSectionType = {
-  type: string;
+  type: 'snippets' | 'blog';
   inverse?: boolean;
   data: FrontMatterType[];
 };
@@ -126,7 +127,7 @@ const RenderPostSnippetSection = ({
         inverse && 'lg:flex-row-reverse'
       }`}
     >
-      <div className="illustration sticky top-20">
+      <div className="illustration md:sticky md:top-20">
         <div className="relative hidden h-40 w-60 lg:flex">
           <Image
             src={`https://static.justgokul.dev/assets/latest_${type}_desktop.svg`}

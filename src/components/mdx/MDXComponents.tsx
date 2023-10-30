@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import Gallery from './Gallery';
-import RoundedImage from './RoundedImage';
+import Gallery from './gallery';
+import RoundedImage from './rounded-image';
 type GenericComponentType = {
   className: string;
   children: React.ReactNode;

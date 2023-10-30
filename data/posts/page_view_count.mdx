@@ -178,19 +178,26 @@ export default async function handler(req, res) {
 Let's create a component, `PageViews`, to show the count.
 
 ```js
-import useSWR from "swr";
+import useSWR from 'swr';
 
 export default function PageViews({ slug }) {
-	const { data, error } = useSWR(`/api/pageVisits/${slug}`, async (input) => {
-		const res = await fetch(input);
-		return res.json();
-	});
-	return (
-			{data ?
-				<p className="font-medium text-gray-600 dark:text-gray-300 mr-1">{data?.views?.toLocaleString()} views</p> :
-				<p className="font-medium text-gray-600 dark:text-gray-300 mr-1 animate-pulse">• views</p>}
-		</div>
-	)
+  const { data, error } = useSWR(`/api/pageVisits/${slug}`, async (input) => {
+    const res = await fetch(input);
+    return res.json();
+  });
+  return (
+    <div>
+      {data ? (
+        <p className="mr-1 font-medium text-gray-600 dark:text-gray-300">
+          {data?.views?.toLocaleString()} views
+        </p>
+      ) : (
+        <p className="mr-1 animate-pulse font-medium text-gray-600 dark:text-gray-300">
+          • views
+        </p>
+      )}
+    </div>
+  );
 }
 ```
 
