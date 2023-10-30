@@ -112,7 +112,7 @@ export default function Home() {
 }
 
 type RenderPostSnippetSectionType = {
-  type: string;
+  type: 'snippets' | 'blog';
   inverse?: boolean;
   data: FrontMatterType[];
 };
