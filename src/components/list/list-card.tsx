@@ -30,10 +30,10 @@ export default function ListCard({
           {date && readingTime && <span className="hidden md:flex"> • </span>}
           {readingTime && <span>{readingTime}</span>}
           {type !== 'twitter' && (
-            <>
-              <span className="hidden md:flex"> • </span>
+            <span className="hidden md:flex">
+              <span> • </span>
               <CountPrimitive slug={slug} />
-            </>
+            </span>
           )}
         </div>
         {/* <div className="flex items-center justify-between gap-2">
