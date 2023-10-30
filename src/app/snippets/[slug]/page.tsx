@@ -1,7 +1,7 @@
 import { allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
-import Button from '@/components/button/Button';
-import MDXComponents from '@/components/mdx/MDXComponents';
+import { Button } from '@/components/button';
+import { MDXComponents } from '@/components/mdx';
 import { convertDateToString } from '@/lib/common';
 import { getMDXComponent } from 'next-contentlayer/hooks';
 
@@ -12,7 +12,7 @@ export default function Snippet({ params }: PropType) {
   const Component = getMDXComponent(currentSnippet.body.code);
 
   return (
-    <div className="md:mx-auto mx-4 max-w-4xl py-48">
+    <div className="mx-4 max-w-4xl py-48 md:mx-auto">
       <div className="px-3 md:p-5">
         <div className="pb-5">
           <Button

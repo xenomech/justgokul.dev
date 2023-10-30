@@ -1,5 +1,6 @@
 import { ArrowIcon } from '@/assets/icons';
 import Link from 'next/link';
+import { CountPrimitive } from '../count';
 
 type PropType = {
   title: string;
@@ -7,8 +8,7 @@ type PropType = {
   views?: number;
   readingTime?: string;
   date?: string;
-  type?: string;
-  // language?: string[];
+  type?: 'blog' | 'snippets' | 'twitter';
 };
 
 export default function ListCard({
@@ -17,8 +17,7 @@ export default function ListCard({
   readingTime,
   type,
   date,
-}: // language,
-PropType) {
+}: PropType) {
   return (
     <Link
       className="flex w-full items-center justify-between border-b-[1px] border-black border-opacity-5 px-2 py-4 transition-all duration-100 ease-in-out hover:translate-x-2"
@@ -26,11 +25,17 @@ PropType) {
     >
       <div className="flex flex-col items-start justify-start gap-3">
         <p className="max-w-xs text-lg font-semibold md:max-w-lg">{title}</p>
-        <p className="flex flex-col items-start justify-between gap-2 text-sm opacity-60 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-2 text-sm opacity-60 md:flex-row md:items-center">
           {date && <span>Posted {date}</span>}
           {date && readingTime && <span className="hidden md:flex"> • </span>}
           {readingTime && <span>{readingTime}</span>}
-        </p>
+          {type !== 'twitter' && (
+            <>
+              <span className="hidden md:flex"> • </span>
+              <CountPrimitive slug={slug} />
+            </>
+          )}
+        </div>
         {/* <div className="flex items-center justify-between gap-2">
           {language &&
             language.map((item, idx) => <Badge key={idx + 1} text={item} />)}

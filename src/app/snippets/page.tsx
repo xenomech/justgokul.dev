@@ -1,8 +1,8 @@
 import { allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { TWEET_ID } from '@/assets/store';
-import Button from '@/components/button/Button';
-import ListCard from '@/components/list/ListCard';
+import { Button } from '@/components/button';
+import { ListCard } from '@/components/list';
 import { ListSection } from '@/components/section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
@@ -82,7 +82,7 @@ export default function Snippets() {
                 key={item.slug}
                 title={item.title}
                 slug={item.slug}
-                type="tweet"
+                type="twitter"
               />
             ))}
           </div>

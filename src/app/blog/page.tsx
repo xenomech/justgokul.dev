@@ -1,6 +1,6 @@
 import { allPosts } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
-import Button from '@/components/button/Button';
+import { Button } from '@/components/button';
 import { ListSection } from '@/components/section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';

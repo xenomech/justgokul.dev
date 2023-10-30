@@ -1,6 +1,6 @@
 import { ArrowIcon } from '@/assets/icons';
-import { SOCIALS, STACK } from '@/assets/store';
-import Button from '@/components/button/Button';
+import { SOCIALS } from '@/assets/store';
+import { Button } from '@/components/button';
 import Image from 'next/image';
 
 export default async function page() {
@@ -29,7 +29,7 @@ export default async function page() {
 
         <div className="flex w-full flex-col-reverse items-center justify-between gap-4 lg:flex-row">
           {/* stack */}
-          <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row md:gap-8">
+          {/* <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row md:gap-8">
             <div className="illustration">
               <div className="relative hidden h-40 w-44 md:flex">
                 <Image
@@ -72,7 +72,7 @@ export default async function page() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* socials */}
           <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row-reverse md:gap-8">
             <div className="illustration">

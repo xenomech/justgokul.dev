@@ -1,11 +1,12 @@
 import { allPosts, allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { PROJECTS, PUBLICATIONS } from '@/assets/store';
-import Button from '@/components/button/Button';
-import Chips from '@/components/chips/Chips';
-import ListCard from '@/components/list/ListCard';
+import { Button } from '@/components/button';
+import { Chips } from '@/components/chips';
+import { ListCard } from '@/components/list';
 import { FrontMatterType, sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
+
 export default function Home() {
   const posts = sortFrontMatter(allPosts);
   const snippets = sortFrontMatter(allSnippets);
