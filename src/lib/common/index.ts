@@ -34,3 +34,16 @@ export const sortFrontMatter = (
     };
   });
 };
+
+export const returnSelectedFields = (data: Post[] | Snippet[]) => {
+  return data.map((_) => {
+    return {
+      title: _.title,
+      date: _.date,
+      draft: _.draft,
+      category: _.category,
+      readingTime: _.readingTime,
+      slug: _.slug,
+    };
+  });
+};
