@@ -20,7 +20,7 @@ export default async function handler(
         postSlugList.includes(req.query.slug as string) ||
         snippetSlugList.includes(req.query.slug as string)
       ) {
-        await SupabaseAdmin.rpc('updateViews_staging', {
+        await SupabaseAdmin.rpc('updateViews_production', {
           slug: req.query.slug,
         });
         return res.status(200).json({
@@ -29,13 +29,13 @@ export default async function handler(
       }
     } catch (error) {
       return res.json({
-        error: 'An Error has occured',
+        error: 'An Error has occurred',
       });
     }
   }
   if (req.method === 'GET') {
     try {
-      const { data, error } = await SupabaseAdmin.from('page_views_staging')
+      const { data, error } = await SupabaseAdmin.from('page_views_production')
         .select('views')
         .filter('post', 'eq', req.query.slug);
       if (data) {
@@ -47,7 +47,7 @@ export default async function handler(
       }
     } catch (error) {
       return res.json({
-        error: 'An Error has occured',
+        error: 'An Error has occurred',
       });
     }
   }

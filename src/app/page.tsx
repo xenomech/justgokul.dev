@@ -127,7 +127,7 @@ const RenderPostSnippetSection = ({
         inverse && 'lg:flex-row-reverse'
       }`}
     >
-      <div className="illustration sticky top-20">
+      <div className="illustration lg:sticky lg:top-20">
         <div className="relative hidden h-40 w-60 lg:flex">
           <Image
             src={`https://static.justgokul.dev/assets/latest_${type}_desktop.svg`}

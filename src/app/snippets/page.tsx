@@ -36,7 +36,7 @@ export default function Snippets() {
         </section>
 
         <section className="relative mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row">
-          <div className="illustration sticky top-20">
+          <div className="illustration md:sticky md:top-20">
             <div className="relative hidden h-40 w-40 md:flex">
               <Image
                 src="https://static.justgokul.dev/assets/snippets_desktop.svg"
