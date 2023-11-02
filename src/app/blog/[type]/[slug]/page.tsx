@@ -1,14 +1,15 @@
-import { allPosts } from '.contentlayer/generated';
+import { allDocuments } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { Button } from '@/components/button';
 import { CountCompound } from '@/components/count';
 import { MDXComponents } from '@/components/mdx';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
-type PropType = { params: { slug: string } };
+type PropType = { params: { slug: string; type: string } };
 
 export default function Post({ params }: PropType) {
-  const currentPost = allPosts.filter(
+  console.log(params.type);
+  const currentPost = allDocuments.filter(
     (_: { slug: string }) => _.slug === params.slug
   )[0];
   const Component = useMDXComponent(currentPost.body.code);
