@@ -1,4 +1,8 @@
-import { allPosts, allSnippets } from '.contentlayer/generated';
+import {
+  allPersonals,
+  allSnippets,
+  allTechnicals,
+} from '.contentlayer/generated';
 import { returnSelectedFields } from '@/lib/common';
 import { SupabaseAdmin } from '@/lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -9,15 +13,25 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      const postSlugList = returnSelectedFields(allPosts).map((_) => {
-        return _.slug;
-      });
+      const technicalPostsSlugList = returnSelectedFields(allTechnicals).map(
+        (_) => {
+          return _.slug;
+        }
+      );
+
+      const personalPostsSlugList = returnSelectedFields(allPersonals).map(
+        (_) => {
+          return _.slug;
+        }
+      );
+
       const snippetSlugList = returnSelectedFields(allSnippets).map((_) => {
         return _.slug;
       });
 
       if (
-        postSlugList.includes(req.query.slug as string) ||
+        technicalPostsSlugList.includes(req.query.slug as string) ||
+        personalPostsSlugList.includes(req.query.slug as string) ||
         snippetSlugList.includes(req.query.slug as string)
       ) {
         await SupabaseAdmin.rpc('updateViews_production', {
