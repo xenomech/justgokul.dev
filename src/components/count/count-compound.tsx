@@ -1,12 +1,18 @@
 'use client';
-import { Post, Snippet } from '.contentlayer/generated';
+import { Personal, Snippet, Technical } from '.contentlayer/generated';
 import { convertDateToString } from '@/lib/common';
 import React from 'react';
 import CountPrimitive from './count-primitive';
 
 // TODO: update to a better mobile and desktop design
 
-function CountCompound({ slug, data }: { slug: string; data: Post | Snippet }) {
+function CountCompound({
+  slug,
+  data,
+}: {
+  slug: string;
+  data: Technical | Personal | Snippet;
+}) {
   React.useEffect(() => {
     const URL = `/api/page_views/${slug}`;
     if (!sessionStorage.getItem(`page:[${data.title}]`)) {
