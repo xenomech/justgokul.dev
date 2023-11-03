@@ -8,7 +8,6 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 type PropType = { params: { slug: string; type: string } };
 
 export default function Post({ params }: PropType) {
-  console.log(params.type);
   const currentPost = allDocuments.filter(
     (_: { slug: string }) => _.slug === params.slug
   )[0];

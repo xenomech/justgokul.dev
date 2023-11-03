@@ -7,8 +7,8 @@ import Image from 'next/image';
 
 // TODO: Filter
 export default function Blog() {
-  const allPosts = sortFrontMatter(allPersonals).concat(
-    sortFrontMatter(allTechnicals)
+  const allPosts = sortFrontMatter(allTechnicals).concat(
+    sortFrontMatter(allPersonals)
   );
   return (
     <div className="mx-4 max-w-7xl pb-20 pt-14 font-inter lg:mx-auto">

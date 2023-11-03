@@ -155,6 +155,7 @@ const RenderPostSnippetSection = ({
             readingTime={item.readingTime}
             date={item.date}
             type={type}
+            contentType={item.contentType}
             key={item.slug}
           />
         ))}

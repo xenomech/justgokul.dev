@@ -8,7 +8,8 @@ type PropType = {
   views?: number;
   readingTime?: string;
   date?: string;
-  type?: 'blog' | 'snippets' | 'twitter';
+  type: 'blog' | 'snippets' | 'twitter';
+  contentType: string;
 };
 
 export default function ListCard({
@@ -17,11 +18,14 @@ export default function ListCard({
   readingTime,
   type,
   date,
+  contentType,
 }: PropType) {
   return (
     <Link
       className="flex w-full items-center justify-between border-b-[1px] border-black border-opacity-5 px-2 py-4 transition-all duration-100 ease-in-out hover:translate-x-2"
-      href={`${type}/${slug}`}
+      href={
+        type === 'blog' ? `${type}/${contentType}/${slug}` : `${type}/${slug}`
+      }
     >
       <div className="flex flex-col items-start justify-start gap-3">
         <p className="max-w-xs text-lg font-semibold md:max-w-lg">{title}</p>
