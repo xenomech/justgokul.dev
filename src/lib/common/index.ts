@@ -14,7 +14,7 @@ export type FrontMatterType = {
   readingTime: string;
   slug: string;
   contentType: string;
-  language: string[];
+  language?: string[];
 };
 export const sortFrontMatter = (
   data: Technical[] | Personal[] | Snippet[]

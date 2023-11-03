@@ -24,15 +24,15 @@ const fields: Record<string, FieldDef> = {
   slug: { type: 'string', required: true },
   date: { type: 'date', required: true },
   excerpt: { type: 'string', required: true },
-  category: { type: 'string', required: true },
+  category: { type: 'list', of: { type: 'string' }, required: true },
   contentType: { type: 'string', required: true },
-  language: { type: 'list', of: { type: 'string' }, required: true },
+  language: { type: 'list', of: { type: 'string' } },
   draft: { type: 'boolean', required: true },
 };
 
 export const TechnicalPost = defineDocumentType(() => ({
   name: 'Technical',
-  filePathPattern: `posts/tech/*.mdx`,
+  filePathPattern: `posts/technical/*.mdx`,
   contentType: 'mdx',
   fields,
   computedFields,

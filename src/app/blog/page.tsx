@@ -1,4 +1,4 @@
-import { allPosts } from '.contentlayer/generated';
+import { allPersonals, allTechnicals } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { Button } from '@/components/button';
 import { ListSection } from '@/components/section';
@@ -7,7 +7,9 @@ import Image from 'next/image';
 
 // TODO: Filter
 export default function Blog() {
-  const posts = sortFrontMatter(allPosts);
+  const allPosts = sortFrontMatter(allPersonals).concat(
+    sortFrontMatter(allTechnicals)
+  );
   return (
     <div className="mx-4 max-w-7xl pb-20 pt-14 font-inter lg:mx-auto">
       <div className="flex flex-col items-start justify-start gap-9 md:gap-28">
@@ -24,7 +26,7 @@ export default function Blog() {
             <div className="flex items-center gap-2">
               <h1 className="heading">Blog</h1>
               <p className="-mt-9 flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-black border-opacity-30 bg-base-100 p-2 font-semibold leading-none  ">
-                {posts?.length}
+                {allPosts?.length}
               </p>
             </div>
             <p className="subheading max-w-2xl">
@@ -52,7 +54,7 @@ export default function Blog() {
               />
             </div>
           </div>
-          <ListSection type="blog" data={posts} />
+          <ListSection type="blog" data={allPosts} />
         </section>
       </div>
     </div>

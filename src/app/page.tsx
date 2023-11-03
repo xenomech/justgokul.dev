@@ -1,4 +1,4 @@
-import { allPosts, allSnippets } from '.contentlayer/generated';
+import { allSnippets, allTechnicals } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { PROJECTS, PUBLICATIONS } from '@/assets/store';
 import { Button } from '@/components/button';
@@ -8,7 +8,7 @@ import { FrontMatterType, sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
 
 export default function Home() {
-  const posts = sortFrontMatter(allPosts);
+  const posts = sortFrontMatter(allTechnicals);
   const snippets = sortFrontMatter(allSnippets);
   return (
     <div className="mx-4 max-w-7xl pb-28 pt-44 lg:mx-auto">
