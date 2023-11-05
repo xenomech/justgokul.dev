@@ -9,7 +9,7 @@ type PropType = {
   readingTime?: string;
   date?: string;
   type: 'blog' | 'snippets' | 'twitter';
-  contentType: string;
+  contentType?: string;
 };
 
 export default function ListCard({
