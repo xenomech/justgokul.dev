@@ -10,7 +10,7 @@ export type FrontMatterType = {
   title: string;
   date: string;
   draft: boolean;
-  category: string;
+  category: string[];
   readingTime: string;
   slug: string;
   contentType: string;
@@ -51,4 +51,12 @@ export const returnSelectedFields = (
       slug: _.slug,
     };
   });
+};
+
+export const getAllSlugsAsList = (
+  technical: Technical[],
+  personal: Personal[],
+  snippet: Snippet[]
+) => {
+  return [...technical, ...personal, ...snippet].map((_) => _.slug);
 };
