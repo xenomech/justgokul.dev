@@ -22,7 +22,7 @@ export default function ListCard({
 }: PropType) {
   return (
     <Link
-      className="flex w-full items-center justify-between border-b-[1px] border-black border-opacity-5 px-2 py-4 transition-all duration-100 ease-in-out hover:translate-x-2"
+      className="flex w-full items-center justify-between border-b-[1px] border-black border-opacity-5 px-2 py-4 transition-all duration-100 ease-in-out group hover:translate-x-2"
       href={
         type === 'blog' ? `${type}/${contentType}/${slug}` : `${type}/${slug}`
       }
@@ -45,7 +45,7 @@ export default function ListCard({
             language.map((item, idx) => <Badge key={idx + 1} text={item} />)}
         </div> */}
       </div>
-      <ArrowIcon className="h-4 w-4 text-black" />
+      <ArrowIcon className="h-4 w-4 -rotate-45 text-black group-hover:rotate-0 transition-all ease-in-out duration-100" />
     </Link>
   );
 }
