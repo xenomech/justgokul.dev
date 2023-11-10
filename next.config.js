@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['static.justgokul.dev'],
+    domains: ['static.justgokul.dev', 'avatars.githubusercontent.com'],
   },
 };
 
