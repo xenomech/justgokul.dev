@@ -1,6 +1,8 @@
+import { Callout } from '@/components/callout';
 import classNames from 'classnames';
 import Gallery from './gallery';
 import RoundedImage from './rounded-image';
+
 type GenericComponentType = {
   className: string;
   children: React.ReactNode;
@@ -36,6 +38,7 @@ const MDXComponents = {
   Flex,
   Grid,
   Gallery,
+  Callout,
 };
 
 export default MDXComponents;

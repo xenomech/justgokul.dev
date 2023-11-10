@@ -32,7 +32,7 @@ export default function Post({ params }: PropType) {
             <CountCompound slug={params.slug} data={currentPost} />
           </div>
         </div>
-        <article className="dark:prose-dark prose min-w-full py-2 xl:prose-xl">
+        <article className="dark:prose-dark prose min-w-full py-2 xl:prose-base">
           <Component components={MDXComponents} />
         </article>
       </div>

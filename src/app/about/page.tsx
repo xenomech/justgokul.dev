@@ -1,6 +1,9 @@
 import { ArrowIcon } from '@/assets/icons';
 import { SOCIALS } from '@/assets/store';
 import { Button } from '@/components/button';
+import { ProfileImage } from '@/components/github';
+import { ListCard } from '@/components/list';
+import { ProjectSection } from '@/components/section/project-section';
 import Image from 'next/image';
 
 export default async function page() {
@@ -26,10 +29,12 @@ export default async function page() {
             </p>
           </div>
         </section>
-
-        <div className="flex w-full flex-col-reverse items-center justify-between gap-4 lg:flex-row">
+        <div className="flex items-center justify-end w-full">
+          <ProfileImage />
+        </div>
+        <div className="flex w-full flex-col items-center justify-between gap-4 lg:flex-row">
           {/* stack */}
-          {/* <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row md:gap-8">
+          <div className="flex flex-col items-start justify-start gap-4 md:mx-auto w-full md:flex-row md:gap-8">
             <div className="illustration">
               <div className="relative hidden h-40 w-44 md:flex">
                 <Image
@@ -50,31 +55,17 @@ export default async function page() {
                 />
               </div>
             </div>
-            <div className="dash grid grid-cols-3 gap-4 rounded-lg p-4 md:grid-cols-4">
-              {STACK.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center justify-center justify-self-center rounded-lg border-[1px] border-black border-opacity-10 bg-base-100 p-2 transition-all duration-150 ease-in-out hover:scale-110"
-                >
-                  <div className="relative h-10 w-10">
-                    <Image
-                      className="pointer-events-none bg-contain"
-                      src={`https://static.justgokul.dev/media/stack/${item}.png`}
-                      alt={item}
-                      fill
-                    />
-                  </div>
-                </div>
-              ))}
-              <div className="flex items-center justify-center rounded-lg border-[1px] border-black border-opacity-10 bg-base-100 p-2 transition-all duration-150 ease-in-out hover:scale-110">
-                <div className="relative flex h-10 w-10 items-center justify-center font-semibold">
-                  + 6
-                </div>
-              </div>
+            <div className="dash gap-4 rounded-lg p-4 w-full">
+              <ListCard
+                title="My garage is full of scraps"
+                type="blog"
+                contentType="personal"
+                slug="qwiqwjdlqwdnq"
+              />
             </div>
-          </div> */}
+          </div>
           {/* socials */}
-          <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row-reverse md:gap-8">
+          <div className="flex flex-col items-start md:items-end justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row-reverse md:gap-8">
             <div className="illustration">
               <div className="relative hidden h-40 w-32 md:flex">
                 <Image
@@ -95,7 +86,7 @@ export default async function page() {
                 />
               </div>
             </div>
-            <div className="dash grid grid-cols-3 gap-4 rounded-lg p-4 md:grid-cols-4">
+            <div className="dash flex gap-4 rounded-lg p-4">
               {SOCIALS.map((item) => (
                 <a
                   href={item.url}
@@ -115,6 +106,7 @@ export default async function page() {
             </div>
           </div>
         </div>
+        <ProjectSection />
       </div>
     </div>
   );

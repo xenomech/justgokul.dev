@@ -1,7 +1,7 @@
 import { allPersonals, allTechnicals } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { Button } from '@/components/button';
-import { ListSection } from '@/components/section';
+import { ListSection } from '@/components/section/list-section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
 

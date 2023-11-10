@@ -5,9 +5,9 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from './icons';
-
+import { CONTENT, IProject, ISocials, ITweet } from './types';
 //add type def for constants
-export const PROJECTS = [
+export const PROJECTS: IProject[] = [
   {
     title: 'Pokédroid',
     url: 'https://pokedroid.justgokul.dev',
@@ -29,7 +29,7 @@ export const PROJECTS = [
     url: 'https://github.com/xenomech/Preview',
   },
 ];
-export const TWEET_ID = [
+export const TWEET_ID: ITweet[] = [
   {
     title: 'Photo dumps',
     id: ['1669706245299904516'],
@@ -62,9 +62,9 @@ export const TWEET_ID = [
   },
 ];
 
-export const NAV_LINKS = ['Blog', 'Snippets', 'About'];
+export const NAV_LINKS: string[] = ['Blog', 'Snippets', 'About'];
 
-export const SOCIALS = [
+export const SOCIALS: ISocials[] = [
   {
     name: 'Twitter',
     icon: TwitterIcon,
@@ -92,7 +92,7 @@ export const SOCIALS = [
   },
 ];
 
-export const STACK = [
+export const STACK: string[] = [
   'vscode',
   'figma',
   'tailwind',
@@ -113,3 +113,10 @@ export const PUBLICATIONS = [
     },
   },
 ];
+
+export const CONTENT_TYPE: Record<CONTENT, string> = {
+  TECHNICAL: 'technical',
+  PERSONAL: 'personal',
+};
+
+export const GH_USERNAME: string = 'xenomech';

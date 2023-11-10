@@ -3,7 +3,7 @@ import { ArrowIcon } from '@/assets/icons';
 import { TWEET_ID } from '@/assets/store';
 import { Button } from '@/components/button';
 import { ListCard } from '@/components/list';
-import { ListSection } from '@/components/section';
+import { ListSection } from '@/components/section/list-section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
 
@@ -23,8 +23,8 @@ export default function Snippets() {
               <p>Go Back</p>
             </Button>
             <div className="flex items-center gap-2">
-              <h1 className="heading">Snippets & Threads</h1>
-              <p className="-mt-9 flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-black border-opacity-30 bg-base-100 p-2 font-semibold leading-none  ">
+              <h1 className="heading w-9/12 sm:w-auto">Snippets & Threads</h1>
+              <p className="-mt-9 flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-black border-opacity-30 bg-base-100 p-2 font-semibold leading-none">
                 {snippets?.length + TWEET_ID?.length}
               </p>
             </div>
