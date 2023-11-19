@@ -31,7 +31,11 @@ export default function Snippets() {
               />
             </div>
           </div>
-          <ListContainer type="snippets" data={snippets} />
+          <ListContainer
+            type="snippets"
+            data={snippets}
+            className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4"
+          />
         </section>
 
         <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">

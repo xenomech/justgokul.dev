@@ -1,5 +1,4 @@
-import { PROJECTS } from '@/assets/store';
-import { Chips } from '@/components/chips';
+import { ChipsContainer } from '@/components/containers';
 import Image from 'next/image';
 
 export const ProjectSection = () => {
@@ -25,11 +24,7 @@ export const ProjectSection = () => {
           />
         </div>
       </div>
-      <div className="dash flex w-full flex-wrap gap-6 rounded-lg p-6 md:w-[540px]">
-        {PROJECTS.map((item) => (
-          <Chips key={item.title} title={item.title} url={item.url} />
-        ))}
-      </div>
+      <ChipsContainer className="dash flex w-full flex-wrap gap-6 rounded-lg p-6 md:w-[540px]" />
     </div>
   );
 };

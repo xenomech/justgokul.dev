@@ -30,7 +30,11 @@ export default function Blog() {
               />
             </div>
           </div>
-          <ListContainer type="blog" data={posts} />
+          <ListContainer
+            type="blog"
+            data={posts}
+            className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4"
+          />
         </section>
       </div>
     </div>
