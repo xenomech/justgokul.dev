@@ -5,7 +5,7 @@ import { Button } from '@/components/button';
 import { Embed } from '@/components/twitter';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default async function Tweet() {
+export default function Tweet() {
   const searchParams = useSearchParams();
 
   const tweetIds = searchParams?.getAll('id');

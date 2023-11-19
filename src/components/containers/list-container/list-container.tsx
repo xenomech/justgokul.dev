@@ -1,5 +1,6 @@
 import { CONTENT_TYPE } from '@/assets/store';
 import { ListCard } from '@/components/list';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
 import { FrontMatterType } from '@/lib/common/transforms';
 import { cn } from '@/lib/common/utils';
 

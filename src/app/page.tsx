@@ -1,4 +1,4 @@
-import { allSnippets } from '.contentlayer/generated';
+import { allSnippets, allTechnicals } from '.contentlayer/generated';
 import {
   HomeBanner,
   LatestContentSection,

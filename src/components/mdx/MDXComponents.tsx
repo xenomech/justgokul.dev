@@ -1,3 +1,4 @@
+import { Callout } from '@/components/callout';
 import { cn } from '@/lib/common/utils';
 import { Gallery } from './gallery';
 import { RoundedImage } from './rounded-image';

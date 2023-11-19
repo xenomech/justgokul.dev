@@ -6,6 +6,7 @@ interface ListCardProps {
   title: string;
   slug: string;
   views?: number;
+  contentType?: string;
   readingTime?: string;
   date?: string;
   type?: 'blog' | 'snippets' | 'tweets';
@@ -15,6 +16,7 @@ export const ListCard = ({
   title,
   slug,
   readingTime,
+  contentType,
   type,
   date,
 }: ListCardProps) => {

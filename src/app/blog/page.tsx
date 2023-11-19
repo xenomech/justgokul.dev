@@ -1,6 +1,7 @@
 import { ListContainer } from '@/components/containers';
 import { BlogBanner } from '@/components/sections';
 import { sortFrontMatter } from '@/lib/common/transforms';
+import { allPersonals, allTechnicals } from 'contentlayer/generated';
 import Image from 'next/image';
 
 // TODO: Filter
@@ -11,7 +12,7 @@ export default function Blog() {
   return (
     <div className="mx-4 max-w-7xl pb-20 pt-14 font-inter lg:mx-auto">
       <div className="flex flex-col items-start justify-start gap-9 md:gap-28">
-        <BlogBanner numberOfPosts={posts?.length} />
+        <BlogBanner numberOfPosts={allPosts?.length} />
         <section className="relative mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row lg:-mt-56 lg:ml-80">
           <div className="illustration md:sticky md:top-20">
             <div className="relative hidden h-36 w-40 md:flex">
@@ -33,7 +34,7 @@ export default function Blog() {
           </div>
           <ListContainer
             type="blog"
-            data={posts}
+            data={allPosts}
             className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4"
           />
         </section>

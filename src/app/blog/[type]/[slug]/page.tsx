@@ -1,5 +1,6 @@
 import { MDXComponents } from '@/components/mdx';
 import { ContentBanner } from '@/components/sections';
+import { allDocuments } from 'contentlayer/generated';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 type PropType = { params: { slug: string; type: string } };
