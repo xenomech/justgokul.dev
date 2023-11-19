@@ -1,14 +1,20 @@
 import { CONTENT_TYPE } from '@/assets/store';
 import { ListCard } from '@/components/list';
 import { FrontMatterType } from '@/lib/common/transforms';
+import { cn } from '@/lib/common/utils';
 
 interface ListContainerProps {
+  className?: string;
   data: FrontMatterType[];
   type: 'blog' | 'snippets';
 }
-export const ListContainer = ({ data, type }: ListContainerProps) => {
+export const ListContainer = ({
+  data,
+  type,
+  className,
+}: ListContainerProps) => {
   return (
-    <div className="posts dash min-h-full w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4">
+    <div className={cn(className)}>
       <div>
         <Tabs className="md:h-[800px]" defaultValue={CONTENT_TYPE.TECHNICAL}>
           <TabsList className="flex gap-2">
