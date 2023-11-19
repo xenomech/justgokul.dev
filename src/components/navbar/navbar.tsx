@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 //TODO:: cmd + K implementation
-export default function Navbar() {
+export const Navbar = () => {
   const [open, setOpen] = useState(false);
   // const postMatter = sortFrontMatter(allPosts);
   // const snippetMatter = sortFrontMatter(allSnippets);
@@ -58,7 +58,7 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
 
 type NavItemType = {
   className?: string;

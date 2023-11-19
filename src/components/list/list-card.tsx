@@ -2,27 +2,25 @@ import { ArrowIcon } from '@/assets/icons';
 import Link from 'next/link';
 import { CountPrimitive } from '../count';
 
-type PropType = {
+interface ListCardProps {
   title: string;
   slug: string;
   views?: number;
   readingTime?: string;
   date?: string;
-  type: 'blog' | 'snippets' | 'twitter';
-  contentType?: string;
-};
+  type?: 'blog' | 'snippets' | 'tweets';
+}
 
-export default function ListCard({
+export const ListCard = ({
   title,
   slug,
   readingTime,
   type,
   date,
-  contentType,
-}: PropType) {
+}: ListCardProps) => {
   return (
     <Link
-      className="flex w-full items-center justify-between border-b-[1px] border-black border-opacity-5 px-2 py-4 transition-all duration-100 ease-in-out group hover:translate-x-2"
+      className="group flex w-full items-center justify-between border-b-[1px] border-black border-opacity-5 px-2 py-4 transition-all duration-100 ease-in-out hover:translate-x-2"
       href={
         type === 'blog' ? `${type}/${contentType}/${slug}` : `${type}/${slug}`
       }
@@ -33,8 +31,8 @@ export default function ListCard({
           {date && <span>Posted {date}</span>}
           {date && readingTime && <span className="hidden md:flex"> • </span>}
           {readingTime && <span>{readingTime}</span>}
-          {type !== 'twitter' && (
-            <span className="hidden gap-2 md:flex">
+          {type !== 'tweets' && (
+            <span className="hidden md:flex">
               <span> • </span>
               <CountPrimitive slug={slug} />
             </span>
@@ -45,7 +43,7 @@ export default function ListCard({
             language.map((item, idx) => <Badge key={idx + 1} text={item} />)}
         </div> */}
       </div>
-      <ArrowIcon className="h-4 w-4 -rotate-45 text-black group-hover:rotate-0 transition-all ease-in-out duration-100" />
+      <ArrowIcon className="h-4 w-4 -rotate-45 text-black transition-all duration-100 ease-in-out group-hover:rotate-0" />
     </Link>
   );
-}
+};

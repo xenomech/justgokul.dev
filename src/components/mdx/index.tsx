@@ -1,1 +1,1 @@
-export { default as MDXComponents } from './MDXComponents';
+export * from './MDXComponents';

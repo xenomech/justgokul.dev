@@ -4,10 +4,12 @@ import {
   allSnippets,
   allTechnicals,
 } from '.contentlayer/generated';
-import { getAllSlugsAsList } from '@/lib/common';
+import { getAllSlugsAsList } from '@/lib/common/transforms';
 import { SupabaseAdmin } from '@/lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+
+// use union types for responses
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

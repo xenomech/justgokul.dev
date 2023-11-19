@@ -1,18 +1,17 @@
 import { CONTENT_TYPE } from '@/assets/store';
 import { ListCard } from '@/components/list';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
-import { FrontMatterType } from '@/lib/common';
+import { FrontMatterType } from '@/lib/common/transforms';
 
-type ListContainerType = {
+interface ListContainerProps {
   data: FrontMatterType[];
   type: 'blog' | 'snippets';
-};
-export const ListContainer = ({ data, type }: ListContainerType) => {
+}
+export const ListContainer = ({ data, type }: ListContainerProps) => {
   return (
-    <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4 min-h-full">
+    <div className="posts dash min-h-full w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4">
       <div>
         <Tabs className="md:h-[800px]" defaultValue={CONTENT_TYPE.TECHNICAL}>
-          <TabsList className="gap-2 flex">
+          <TabsList className="flex gap-2">
             {Object.values(CONTENT_TYPE).map((item) => (
               <TabsTrigger className="capitalize" key={item} value={item}>
                 {item}

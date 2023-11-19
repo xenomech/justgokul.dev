@@ -1,17 +1,17 @@
 import { ListCard } from '@/components/list';
-import { FrontMatterType } from '@/lib/common';
+import { FrontMatterType } from '@/lib/common/transforms';
 import Image from 'next/image';
 
-type LatestContentSectionType = {
+interface LatestContentSectionProps {
   type: 'snippets' | 'blog';
   inverse?: boolean;
   data: FrontMatterType[];
-};
+}
 export const LatestContentSection = ({
   type,
   inverse,
   data,
-}: LatestContentSectionType) => {
+}: LatestContentSectionProps) => {
   return (
     <section
       className={`relative flex w-full flex-col items-start justify-between gap-4 lg:flex-row ${
