@@ -1,10 +1,5 @@
-import {
-  allDocuments,
-  allPersonals,
-  allSnippets,
-  allTechnicals,
-} from '.contentlayer/generated';
-import { getAllSlugsAsList } from '@/lib/common/transforms';
+import { allPersonals, allSnippets, allTechnicals } from '.contentlayer/generated';
+import { returnSelectedFields } from '@/lib/common/transforms';
 import { SupabaseAdmin } from '@/lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -16,22 +11,30 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      const allSlugList = getAllSlugsAsList(
-        allTechnicals,
-        allPersonals,
-        allSnippets
+      const technicalPostsSlugList = returnSelectedFields(allTechnicals).map(
+        (_) => {
+          return _.slug;
+        }
       );
 
-      const contentType = allDocuments.find(
-        (item) => item.slug === req.query.slug
-      )?.contentType;
+      const personalPostsSlugList = returnSelectedFields(allPersonals).map(
+        (_) => {
+          return _.slug;
+        }
+      );
 
-      if (allSlugList.includes(req.query.slug as string)) {
-        await SupabaseAdmin.rpc('view_count_update_prod', {
+      const snippetSlugList = returnSelectedFields(allSnippets).map((_) => {
+        return _.slug;
+      });
+
+      if (
+        technicalPostsSlugList.includes(req.query.slug as string) ||
+        personalPostsSlugList.includes(req.query.slug as string) ||
+        snippetSlugList.includes(req.query.slug as string)
+      ) {
+        await SupabaseAdmin.rpc('updateViews_production', {
           slug: req.query.slug,
-          content_type: contentType,
         });
-
         return res.status(200).json({
           message: `viewCountUpdated`,
         });
@@ -44,10 +47,9 @@ export default async function handler(
   }
   if (req.method === 'GET') {
     try {
-      const { data, error } = await SupabaseAdmin.from('views_production')
+      const { data, error } = await SupabaseAdmin.from('page_views_production')
         .select('views')
         .filter('post', 'eq', req.query.slug);
-
       if (data) {
         return res.status(200).json({
           views: data[0]?.views || null,
