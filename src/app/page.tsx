@@ -1,11 +1,12 @@
 import { allSnippets, allTechnicals } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
-import { PUBLICATIONS } from '@/assets/store';
 import { Button } from '@/components/button';
-import { ListCard } from '@/components/list';
-import { ProjectSection } from '@/components/section/project-section';
-import { FrontMatterType, sortFrontMatter } from '@/lib/common';
-import Image from 'next/image';
+import {
+  LatestContentSection,
+  ProjectSection,
+  PublicationsSection,
+} from '@/components/sections';
+import { sortFrontMatter } from '@/lib/common';
 
 export default function Home() {
   const posts = sortFrontMatter(allTechnicals);
@@ -33,107 +34,12 @@ export default function Home() {
           </Button>
         </section>
         <div className="mx-auto flex flex-col items-center justify-center gap-28 md:max-w-4xl">
-          <RenderPostSnippetSection type="blog" data={posts} />
-          <RenderPostSnippetSection type="snippets" data={snippets} inverse />
+          <LatestContentSection type="blog" data={posts} />
+          <LatestContentSection type="snippets" data={snippets} inverse />
         </div>
-        <div className="flex w-full flex-col items-start justify-between gap-4 md:mx-auto md:max-w-4xl md:flex-row">
-          <div className="illustration md:-mt-20">
-            <div className="relative hidden h-40 w-52 md:flex">
-              <Image
-                src={`https://static.justgokul.dev/assets/publications_desktop.svg`}
-                alt="publications"
-                className="object-contain"
-                fill
-                priority
-              />
-            </div>
-            <div className="relative flex h-40 w-60 md:hidden">
-              <Image
-                src={`https://static.justgokul.dev/assets/publications_mobile.svg`}
-                alt="publications"
-                className="object-contain"
-                fill
-                priority
-              />
-            </div>
-          </div>
-          <div className="dash flex w-full flex-wrap gap-6 rounded-lg p-6">
-            {PUBLICATIONS.map((item) => (
-              <div
-                key={item.title}
-                className="flex flex-col items-start justify-start gap-2"
-              >
-                <a
-                  href={item.url}
-                  className="text-lg font-semibold transition-all duration-150 ease-in-out hover:translate-x-2"
-                >
-                  {item.title}
-                </a>
-                <a
-                  href={item.publishedIn.publisherBaseUrl}
-                  className="text-sm opacity-60 transition-all duration-150 ease-in-out hover:scale-105"
-                >
-                  {item.publishedIn.publisherLabel}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
+        <PublicationsSection />
         <ProjectSection />
       </div>
     </div>
   );
 }
-
-type RenderPostSnippetSectionType = {
-  type: 'snippets' | 'blog';
-  inverse?: boolean;
-  data: FrontMatterType[];
-};
-const RenderPostSnippetSection = ({
-  type,
-  inverse,
-  data,
-}: RenderPostSnippetSectionType) => {
-  return (
-    <section
-      className={`relative flex w-full flex-col items-start justify-between gap-4 lg:flex-row ${
-        inverse && 'lg:flex-row-reverse'
-      }`}
-    >
-      <div className="illustration lg:sticky lg:top-20">
-        <div className="relative hidden h-40 w-60 lg:flex">
-          <Image
-            src={`https://static.justgokul.dev/assets/latest_${type}_desktop.svg`}
-            alt="latestPosts"
-            className="object-contain"
-            fill
-            priority
-          />
-        </div>
-        <div className="relative flex h-36 w-64 lg:hidden">
-          <Image
-            src={`https://static.justgokul.dev/assets/latest_${type}_mobile.svg`}
-            alt="latestPosts"
-            className="object-contain"
-            fill
-            priority
-          />
-        </div>
-      </div>
-      <div className="posts dash w-full rounded-md p-4 md:w-[650px]">
-        {data.slice(0, 5).map((item) => (
-          <ListCard
-            title={item.title}
-            slug={item.slug}
-            readingTime={item.readingTime}
-            date={item.date}
-            type={type}
-            contentType={item.contentType}
-            key={item.slug}
-          />
-        ))}
-      </div>
-    </section>
-  );
-};

@@ -1,7 +1,7 @@
 import { allPersonals, allTechnicals } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { Button } from '@/components/button';
-import { ListSection } from '@/components/section/list-section';
+import { ListContainer } from '@/components/containers';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
 
@@ -54,7 +54,7 @@ export default function Blog() {
               />
             </div>
           </div>
-          <ListSection type="blog" data={allPosts} />
+          <ListContainer type="blog" data={posts} />
         </section>
       </div>
     </div>

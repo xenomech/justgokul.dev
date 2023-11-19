@@ -3,11 +3,11 @@ import { ListCard } from '@/components/list';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
 import { FrontMatterType } from '@/lib/common';
 
-type ListSectionType = {
+type ListContainerType = {
   data: FrontMatterType[];
   type: 'blog' | 'snippets';
 };
-export const ListSection = ({ data, type }: ListSectionType) => {
+export const ListContainer = ({ data, type }: ListContainerType) => {
   return (
     <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4 min-h-full">
       <div>
