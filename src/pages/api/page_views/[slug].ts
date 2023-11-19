@@ -1,8 +1,10 @@
 import { allPosts, allSnippets } from '.contentlayer/generated';
-import { returnSelectedFields } from '@/lib/common';
+import { returnSelectedFields } from '@/lib/common/transforms';
 import { SupabaseAdmin } from '@/lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+
+// use union types for responses
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

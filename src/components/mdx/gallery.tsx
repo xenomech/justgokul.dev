@@ -1,14 +1,14 @@
-import classNames from 'classnames';
+import { cn } from '@/lib/common/utils';
 import Image from 'next/image';
 
-type PropType = {
+type GalleryProps = {
   className?: string;
   srcArray: { url: string; alt: string; className: string }[];
 };
-export default function Gallery({ className, srcArray }: PropType) {
+export const Gallery = ({ className, srcArray }: GalleryProps) => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'mx-auto flex flex-wrap items-center justify-center gap-4',
         className
       )}
@@ -29,4 +29,4 @@ export default function Gallery({ className, srcArray }: PropType) {
       ))}
     </div>
   );
-}
+};

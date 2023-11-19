@@ -2,22 +2,22 @@ import { ArrowIcon } from '@/assets/icons';
 import Link from 'next/link';
 import { CountPrimitive } from '../count';
 
-type PropType = {
+interface ListCardProps {
   title: string;
   slug: string;
   views?: number;
   readingTime?: string;
   date?: string;
-  type?: 'blog' | 'snippets' | 'twitter';
-};
+  type?: 'blog' | 'snippets' | 'tweets';
+}
 
-export default function ListCard({
+export const ListCard = ({
   title,
   slug,
   readingTime,
   type,
   date,
-}: PropType) {
+}: ListCardProps) => {
   return (
     <Link
       className="flex w-full items-center justify-between border-b-[1px] border-black border-opacity-5 px-2 py-4 transition-all duration-100 ease-in-out hover:translate-x-2"
@@ -29,7 +29,7 @@ export default function ListCard({
           {date && <span>Posted {date}</span>}
           {date && readingTime && <span className="hidden md:flex"> • </span>}
           {readingTime && <span>{readingTime}</span>}
-          {type !== 'twitter' && (
+          {type !== 'tweets' && (
             <span className="hidden md:flex">
               <span> • </span>
               <CountPrimitive slug={slug} />
@@ -44,4 +44,4 @@ export default function ListCard({
       <ArrowIcon className="h-4 w-4 text-black" />
     </Link>
   );
-}
+};

@@ -1,17 +1,17 @@
 import { OpenExternal } from '@/assets/icons';
-import classNames from 'classnames';
+import { cn } from '@/lib/common/utils';
 import Link from 'next/link';
 
-type PropType = {
+interface ChipsProps {
   className?: string;
   title: string;
   url: string;
-};
-export default function Chips({ className, url, title }: PropType) {
+}
+export const Chips = ({ className, url, title }: ChipsProps) => {
   return (
     <Link href={url} target="_blank">
       <div
-        className={classNames(
+        className={cn(
           'flex items-center justify-center gap-4 rounded-lg border-[1px] border-black border-opacity-10 bg-base-100 px-3 py-2 transition-all duration-150 ease-in-out hover:scale-105',
           className
         )}
@@ -23,4 +23,4 @@ export default function Chips({ className, url, title }: PropType) {
       </div>
     </Link>
   );
-}
+};

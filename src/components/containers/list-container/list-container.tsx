@@ -1,11 +1,11 @@
 import { ListCard } from '@/components/list';
-import { FrontMatterType } from '@/lib/common';
+import { FrontMatterType } from '@/lib/common/transforms';
 
-type ListContainerType = {
+interface ListContainerProps {
   data: FrontMatterType[];
   type: 'blog' | 'snippets';
-};
-export const ListContainer = ({ data, type }: ListContainerType) => {
+}
+export const ListContainer = ({ data, type }: ListContainerProps) => {
   return (
     <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4">
       <div>

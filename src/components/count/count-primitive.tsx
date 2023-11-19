@@ -1,7 +1,9 @@
 'use client';
 import useSWR from 'swr';
-
-function CountPrimitive({ slug }: { slug: string }) {
+interface CountPrimitiveProps {
+  slug: string;
+}
+export const CountPrimitive = ({ slug }: CountPrimitiveProps) => {
   const { data, isLoading } = useSWR(
     `/api/page_views/${slug}`,
     async (input) => {
@@ -16,6 +18,4 @@ function CountPrimitive({ slug }: { slug: string }) {
       {data && <p className="mr-1 ">{data?.views?.toLocaleString()} views</p>}
     </div>
   );
-}
-
-export default CountPrimitive;
+};

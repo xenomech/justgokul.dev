@@ -2,7 +2,7 @@ import { NAV_LINKS, SOCIALS } from '@/assets/store';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <footer className="mx-4 mb-9 rounded-lg border-[1px] border-black border-opacity-10 bg-base-100 p-6 opacity-80 md:mx-auto md:max-w-xl lg:w-[900px] lg:max-w-full">
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
@@ -67,4 +67,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};

@@ -1,13 +1,13 @@
 'use client';
 import { CloseIcon } from '@/assets/icons';
-import { FrontMatterType } from '@/lib/common';
+import { FrontMatterType } from '@/lib/common/transforms';
 import * as Modal from '@radix-ui/react-alert-dialog';
 import React from 'react';
 
-type PropType = {
+interface CommandProps {
   data: FrontMatterType[];
-};
-const CommandMenu = ({ data }: PropType) => {
+}
+const CommandMenu = ({ data }: CommandProps) => {
   const [open, setOpen] = React.useState(false);
   // const [search, setSearch] = React.useState('');
 
