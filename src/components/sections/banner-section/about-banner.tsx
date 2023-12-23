@@ -5,6 +5,7 @@ import { Button } from '@/components/button';
 import { GH_URL, GetGitProfile } from '@/lib/api';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { SocialsSection } from '../socials-section';
 
@@ -18,7 +19,7 @@ export const AboutBanner = () => {
     <section className="flex w-full flex-col items-start justify-center max-w-4xl mx-auto p-2 mt-4 rounded-lg dash gap-8">
       <div className="flex flex-col items-start justify-start gap-6 relative h-60 bg-orange-300/60 w-full p-4 rounded-md">
         <Button
-          className="flex items-center justify-center gap-2"
+          className="flex items-center justify-center gap-2 z-10"
           variant="navigator"
           onClick={() => router.back()}
         >
@@ -43,20 +44,39 @@ export const AboutBanner = () => {
           between.🚀 #SoftwareEngineer #TechEnthusiast #Freelancer
         </p> */}
       </div>
-      <div className="mt-20">
-        <SocialsSection />
+      <div className="mt-20 w-full">
+        <div className="flex items-center justify-between">
+          <div className="max-w-xs">
+            <h1>{data?.name}</h1>
+            <h1>{data?.login}</h1>
+            <p>{data?.bio}</p>
+            <p></p>
+          </div>
+          <SocialsSection />
+        </div>
       </div>
     </section>
   );
 };
 
 const FancyEmojiBG = () => {
+  const RANDOM_EMOJIS = [
+    ...EMOJI_LIST.sort(() => Math.random() - 0.5),
+    ...EMOJI_LIST.sort(() => Math.random() - 1),
+  ];
+  const [mounted, setMounted] = useState<boolean>(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return;
+  }
   return (
     <>
-      <div className="absolute top-0 left-0 right-0 bottom-0">
-        <div className="flex justify-center items-center flex-wrap gap-2">
-          {EMOJI_LIST.map((item) => (
-            <span className="text-2xl" key={item}>
+      <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden">
+        <div className="flex justify-center items-center flex-wrap gap-6 mt-2 infinte-scroll opacity-60">
+          {RANDOM_EMOJIS.map((item, index) => (
+            <span className="text-2xl" key={index + 2}>
               {item}
             </span>
           ))}

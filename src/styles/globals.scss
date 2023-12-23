@@ -6,8 +6,8 @@
 
 body {
   @apply font-inter;
-  background: fixed 0 0/20px 20px
-      radial-gradient(rgba(0, 0, 0, 0.1) 1px, #f7f1e8 0),
+  background:
+    fixed 0 0/20px 20px radial-gradient(rgba(0, 0, 0, 0.1) 1px, #f7f1e8 0),
     fixed 10px 10px /20px 20px radial-gradient(rgba(0, 0, 0, 0.1) 1px, #f7f1e8 0);
 }
 
@@ -64,4 +64,17 @@ body {
 
 .highlight {
   background-color: rgba(243, 128, 32, 0.8);
+}
+
+.infinte-scroll {
+  animation: inifiniteScroll 20s linear infinite;
+}
+
+@keyframes inifiniteScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-500px);
+  }
 }
