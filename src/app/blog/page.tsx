@@ -16,7 +16,8 @@ export default function Blog() {
             <Button
               className="flex items-center justify-center gap-2"
               type="Navigator"
-              action="Back"
+              action="Navigate"
+              url='/'
             >
               <ArrowIcon className="h-4 w-4 rotate-180" />
               <p>Go Back</p>

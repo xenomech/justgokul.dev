@@ -3,6 +3,7 @@ import { TWEET_ID } from '@/assets/store';
 import { Button } from '@/components/button';
 import { Embed } from '@/components/twitter';
 
+// NOT USED ANY MORE
 export default async function Tweet({ params }: { params: { slug: string } }) {
   const tweet = TWEET_ID.filter((item) => item.slug === params.slug)[0];
   return (
@@ -12,7 +13,8 @@ export default async function Tweet({ params }: { params: { slug: string } }) {
           <Button
             className="flex items-center justify-center gap-2"
             type="Navigator"
-            action="Back"
+            action="Navigate"
+            url='/'
           >
             <ArrowIcon className="h-4 w-4 rotate-180" />
             <p>Go Back</p>

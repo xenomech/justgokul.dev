@@ -2,7 +2,6 @@ import { allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
 import { TWEET_ID } from '@/assets/store';
 import { Button } from '@/components/button';
-import { ListCard } from '@/components/list';
 import { ListSection } from '@/components/section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
@@ -17,7 +16,8 @@ export default function Snippets() {
             <Button
               className="flex items-center justify-center gap-2"
               type="Navigator"
-              action="Back"
+              action="Navigate"
+              url="/"
             >
               <ArrowIcon className="h-4 w-4 rotate-180" />
               <p>Go Back</p>
@@ -57,7 +57,7 @@ export default function Snippets() {
           <ListSection type="snippets" data={snippets} />
         </section>
 
-        <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
+        {/* <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
           <div className="illustration">
             <div className="relative hidden h-40 w-36 md:flex">
               <Image
@@ -86,7 +86,7 @@ export default function Snippets() {
               />
             ))}
           </div>
-        </section>
+        </section> */}
       </div>
     </div>
   );

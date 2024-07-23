@@ -6,8 +6,8 @@ type PropType = {
   type?: 'Primary' | 'Navigator';
   className?: string;
   children: React.ReactNode;
-  action?: 'Back' | 'Link';
-  url?: string;
+  action?: 'Navigate' | 'Link';
+  url: string;
   isDisabled?: boolean;
 };
 export default function Button({
@@ -36,8 +36,8 @@ export default function Button({
   }
   function buttonAction() {
     switch (action) {
-      case 'Back':
-        router.back();
+      case 'Navigate':
+        router.push(url);
         break;
       case 'Link':
         window.open(url);
