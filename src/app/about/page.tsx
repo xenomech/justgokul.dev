@@ -1,7 +1,5 @@
 import { ArrowIcon } from '@/assets/icons';
-import { SOCIALS } from '@/assets/store';
 import { Button } from '@/components/button';
-import Image from 'next/image';
 
 export default async function page() {
   return (
@@ -25,8 +23,16 @@ export default async function page() {
               #Freelancer
             </p>
           </div>
+          <Button
+            type="Primary"
+            className="flex items-center justify-center gap-2 transition-all duration-100 ease-in-out hover:scale-105"
+            action="Link"
+            url="https://share.justgokul.dev"
+          >
+            <p className="font-medium">Contact Me</p>
+            <ArrowIcon className="h-3 w-3" />
+          </Button>
         </section>
-
         <div className="flex w-full flex-col-reverse items-center justify-between gap-4 lg:flex-row">
           {/* stack */}
           {/* <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row md:gap-8">
@@ -74,7 +80,7 @@ export default async function page() {
             </div>
           </div> */}
           {/* socials */}
-          <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row-reverse md:gap-8">
+          {/* <div className="flex flex-col items-start justify-start gap-4 md:mx-auto md:max-w-xl md:flex-row-reverse md:gap-8">
             <div className="illustration">
               <div className="relative hidden h-40 w-32 md:flex">
                 <Image
@@ -111,7 +117,7 @@ export default async function page() {
                 </a>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -19,21 +19,21 @@ Let us start by configuring Supabase.
   <Image
     alt={`create table`}
     tails={'p-2'}
-    src={`https://static.justgokul.dev/media/blog/SupabasePageCount/CreateTable.png`}
+    src={`/media/blog/SupabasePageCount/CreateTable.png`}
     width={500}
     height={600}
     priority
   />
-  Here, we use **id** as the primary key, **post** to store the slug, and **views**
-  to store the number of views each gets. The Supabase interface allows us easily
-  manage Tables, Functions, Triggers, etc. Row-level security (RLS) is a PostgreSQL
-  security feature. It allows us to define policies to control how each row should
-  behave when it is accessed by different roles. However, in this use case, we need
-  not turn this on. Next, we should create a database function for updating the table
-  when a page is visited.
+  Here, we use **id** as the primary key, **post** to store the slug, and
+  **views** to store the number of views each gets. The Supabase interface
+  allows us easily manage Tables, Functions, Triggers, etc. Row-level security
+  (RLS) is a PostgreSQL security feature. It allows us to define policies to
+  control how each row should behave when it is accessed by different roles.
+  However, in this use case, we need not turn this on. Next, we should create a
+  database function for updating the table when a page is visited.
 </Grid>
-3. Head to the **Database** section from the side panel and open **Functions** to
-create a new function.
+3. Head to the **Database** section from the side panel and open **Functions**
+to create a new function.
 
 <Grid>
 
@@ -42,7 +42,7 @@ Database functionality can be extended with the help of user-defined functions a
 <Image
     alt={`create database function`}
     tails={"p-2"}
-    src={`https://static.justgokul.dev/media/blog/SupabasePageCount/DatabaseFunction.png`}
+    src={`/media/blog/SupabasePageCount/DatabaseFunction.png`}
     width={500}
     height={700}
     priority
