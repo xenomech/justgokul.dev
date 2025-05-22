@@ -5,7 +5,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['static.justgokul.dev'],
+    remotePatterns: [
+      {
+        hostname: 'raw.githubusercontent.com',
+      },
+    ],
   },
 };
 

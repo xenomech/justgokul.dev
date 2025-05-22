@@ -40,7 +40,7 @@ export default function Home() {
           <div className="illustration md:-mt-20">
             <div className="relative hidden h-40 w-52 md:flex">
               <Image
-                src={`https://static.justgokul.dev/assets/publications_desktop.svg`}
+                src={`/assets/publications_desktop.svg`}
                 alt="publications"
                 className="object-contain"
                 fill
@@ -49,7 +49,7 @@ export default function Home() {
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
               <Image
-                src={`https://static.justgokul.dev/assets/publications_mobile.svg`}
+                src={`/assets/publications_mobile.svg`}
                 alt="publications"
                 className="object-contain"
                 fill
@@ -83,7 +83,7 @@ export default function Home() {
           <div className="illustration md:-mt-20">
             <div className="relative hidden h-36 w-36 md:flex">
               <Image
-                src={`https://static.justgokul.dev/assets/projects_desktop.svg`}
+                src={`/assets/projects_desktop.svg`}
                 alt="Projects"
                 className="object-contain"
                 fill
@@ -92,7 +92,7 @@ export default function Home() {
             </div>
             <div className="relative flex h-36 w-44 md:hidden">
               <Image
-                src={`https://static.justgokul.dev/assets/projects_mobile.svg`}
+                src={`/assets/projects_mobile.svg`}
                 alt="projects"
                 className="object-contain"
                 fill
@@ -130,7 +130,7 @@ const RenderPostSnippetSection = ({
       <div className="illustration lg:sticky lg:top-20">
         <div className="relative hidden h-40 w-60 lg:flex">
           <Image
-            src={`https://static.justgokul.dev/assets/latest_${type}_desktop.svg`}
+            src={`/assets/latest_${type}_desktop.svg`}
             alt="latestPosts"
             className="object-contain"
             fill
@@ -139,7 +139,7 @@ const RenderPostSnippetSection = ({
         </div>
         <div className="relative flex h-36 w-64 lg:hidden">
           <Image
-            src={`https://static.justgokul.dev/assets/latest_${type}_mobile.svg`}
+            src={`/assets/latest_${type}_mobile.svg`}
             alt="latestPosts"
             className="object-contain"
             fill

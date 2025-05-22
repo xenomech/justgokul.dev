@@ -36,20 +36,10 @@ export default function Blog() {
         <section className="relative mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row lg:-mt-56 lg:ml-80">
           <div className="illustration md:sticky md:top-20">
             <div className="relative hidden h-36 w-40 md:flex">
-              <Image
-                src="https://static.justgokul.dev/assets/posts_desktop.svg"
-                alt="latestPosts"
-                className="object-contain"
-                fill
-              />
+              <Image src="/assets/posts_desktop.svg" alt="latestPosts" fill />
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
-              <Image
-                src="https://static.justgokul.dev/assets/posts_mobile.svg"
-                alt="latestPosts"
-                className="object-contain"
-                fill
-              />
+              <Image src="/assets/posts_mobile.svg" alt="latestPosts" fill />
             </div>
           </div>
           <ListSection type="blog" data={posts} />

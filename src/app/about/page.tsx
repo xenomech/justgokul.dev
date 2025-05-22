@@ -33,7 +33,7 @@ export default async function page() {
             <div className="illustration">
               <div className="relative hidden h-40 w-44 md:flex">
                 <Image
-                  src={`https://static.justgokul.dev/assets/tools_i_use_desktop.svg`}
+                  src={`/assets/tools_i_use_desktop.svg`}
                   alt="Projects"
                   className="object-contain"
                   fill
@@ -42,7 +42,7 @@ export default async function page() {
               </div>
               <div className="relative flex h-40 w-40 md:hidden">
                 <Image
-                  src={`https://static.justgokul.dev/assets/tools_i_use_mobile.svg`}
+                  src={`/assets/tools_i_use_mobile.svg`}
                   alt="projects"
                   className="object-contain"
                   fill
@@ -78,18 +78,16 @@ export default async function page() {
             <div className="illustration">
               <div className="relative hidden h-40 w-32 md:flex">
                 <Image
-                  src={`https://static.justgokul.dev/assets/socials_desktop.svg`}
-                  alt="socials"
-                  className="object-contain"
+                  src={`/assets/socials_desktop.svg`}
+                  alt="Projects"
                   fill
                   priority
                 />
               </div>
               <div className="relative flex h-40 w-40 md:hidden">
                 <Image
-                  src={`https://static.justgokul.dev/assets/socials_mobile.svg`}
-                  alt="socials"
-                  className="object-contain"
+                  src={`/assets/socials_mobile.svg`}
+                  alt="projects"
                   fill
                   priority
                 />

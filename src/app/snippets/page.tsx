@@ -35,23 +35,13 @@ export default function Snippets() {
           </div>
         </section>
 
-        <section className="relative mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row">
-          <div className="illustration md:sticky md:top-20">
-            <div className="relative hidden h-40 w-40 md:flex">
-              <Image
-                src="https://static.justgokul.dev/assets/snippets_desktop.svg"
-                alt="snippets"
-                className="object-contain"
-                fill
-              />
+        <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row">
+          <div className="illustration">
+            <div className="relative hidden h-36 w-40 md:flex">
+              <Image src="/assets/snippets_desktop.svg" alt="snippets" fill />
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
-              <Image
-                src="https://static.justgokul.dev/assets/snippets_mobile.svg"
-                alt="snippets"
-                className="object-contain"
-                fill
-              />
+              <Image src="/assets/snippets_mobile.svg" alt="snippets" fill />
             </div>
           </div>
           <ListSection type="snippets" data={snippets} />
@@ -59,21 +49,11 @@ export default function Snippets() {
 
         <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
           <div className="illustration">
-            <div className="relative hidden h-40 w-36 md:flex">
-              <Image
-                src="https://static.justgokul.dev/assets/threads_desktop.svg"
-                alt="threads"
-                className="object-contain"
-                fill
-              />
+            <div className="relative hidden h-36 w-40 md:flex">
+              <Image src="/assets/threads_desktop.svg" alt="snippets" fill />
             </div>
             <div className="relative flex h-40 w-60 md:hidden">
-              <Image
-                src="https://static.justgokul.dev/assets/threads_mobile.svg"
-                alt="threads"
-                className="object-contain"
-                fill
-              />
+              <Image src="/assets/threads_mobile.svg" alt="snippets" fill />
             </div>
           </div>
           <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4">
