@@ -22,7 +22,7 @@ body {
   @apply text-2xl text-black opacity-30 md:text-3xl;
 }
 .home-banner {
-  @apply bg-[url('https://static.justgokul.dev/hero-bg-desktop.png')] bg-cover bg-center;
+  @apply bg-[url('/hero-bg-desktop.png')] bg-cover bg-center;
 }
 .blog-banner {
   @apply bg-cover bg-left-top lg:bg-[url('/concentric-circles.png')];
