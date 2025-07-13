@@ -1,8 +1,6 @@
 import { allSnippets } from '.contentlayer/generated';
 import { ArrowIcon } from '@/assets/icons';
-import { TWEET_ID } from '@/assets/store';
 import { Button } from '@/components/button';
-import { ListCard } from '@/components/list';
 import { ListSection } from '@/components/section';
 import { sortFrontMatter } from '@/lib/common';
 import Image from 'next/image';
@@ -23,9 +21,9 @@ export default function Snippets() {
               <p>Go Back</p>
             </Button>
             <div className="flex items-center gap-2">
-              <h1 className="heading">Snippets & Threads</h1>
+              <h1 className="heading">Snippets</h1>
               <p className="-mt-9 flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-black border-opacity-30 bg-base-100 p-2 font-semibold leading-none  ">
-                {snippets?.length + TWEET_ID?.length}
+                {snippets?.length}
               </p>
             </div>
             <p className="subheading max-w-2xl">
@@ -47,26 +45,26 @@ export default function Snippets() {
           <ListSection type="snippets" data={snippets} />
         </section>
 
-        <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
-          <div className="illustration">
-            <div className="relative hidden h-36 w-40 md:flex">
-              <Image src="/assets/threads_desktop.svg" alt="snippets" fill />
-            </div>
-            <div className="relative flex h-40 w-60 md:hidden">
-              <Image src="/assets/threads_mobile.svg" alt="snippets" fill />
-            </div>
-          </div>
-          <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4">
-            {TWEET_ID.map((item) => (
-              <ListCard
-                key={item.slug}
-                title={item.title}
-                slug={item.slug}
-                type="twitter"
-              />
-            ))}
-          </div>
-        </section>
+        {/* <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
+           <div className="illustration"> 
+             <div className="relative hidden h-36 w-40 md:flex"> 
+               <Image src="/assets/threads_desktop.svg" alt="snippets" fill /> 
+             </div> 
+             <div className="relative flex h-40 w-60 md:hidden"> 
+               <Image src="/assets/threads_mobile.svg" alt="snippets" fill /> 
+             </div> 
+           </div> 
+           <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4"> 
+             {TWEET_ID.map((item) => ( 
+               <ListCard 
+                 key={item.slug} 
+                 title={item.title} 
+                 slug={item.slug} 
+                 type="twitter" 
+               /> 
+             ))} 
+           </div> 
+         </section>  */}
       </div>
     </div>
   );
