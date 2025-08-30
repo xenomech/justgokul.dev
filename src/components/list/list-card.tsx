@@ -8,7 +8,7 @@ type PropType = {
   views?: number;
   readingTime?: string;
   date?: string;
-  type?: 'blog' | 'snippets' | 'twitter';
+  type?: 'blog' | 'snippets' | 'twitter' | 'photography';
 };
 
 export default function ListCard({

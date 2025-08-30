@@ -49,9 +49,25 @@ export const Snippet = defineDocumentType(() => ({
   computedFields,
 }));
 
+export const Photography = defineDocumentType(() => ({
+  name: 'Photography',
+  filePathPattern: `photography/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    slug: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    excerpt: { type: 'string', required: true },
+    category: { type: 'string', required: true },
+    language: { type: 'list', of: { type: 'string' }, required: true },
+    draft: { type: 'boolean', required: true },
+  },
+  computedFields,
+}));
+
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Post, Snippet],
+  documentTypes: [Post, Snippet, Photography],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

@@ -3,7 +3,7 @@ import { FrontMatterType } from '@/lib/common';
 
 type ListSectionType = {
   data: FrontMatterType[];
-  type: 'blog' | 'snippets';
+  type: 'blog' | 'snippets' | 'photography';
 };
 export const ListSection = ({ data, type }: ListSectionType) => {
   return (

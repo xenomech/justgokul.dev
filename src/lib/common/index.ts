@@ -1,5 +1,5 @@
 // common functions to simplify the codebase
-import { Post, Snippet } from '.contentlayer/generated';
+import { Photography, Post, Snippet } from '.contentlayer/generated';
 import format from 'date-fns/format';
 
 export const convertDateToString = (date: string): string => {
@@ -16,13 +16,13 @@ export type FrontMatterType = {
   language: string[];
 };
 export const sortFrontMatter = (
-  data: Post[] | Snippet[]
+  data: Post[] | Snippet[] | Photography[]
 ): FrontMatterType[] => {
   const posts = data.sort(
-    (a: Post | Snippet, b: Post | Snippet) =>
+    (a: Post | Snippet | Photography, b: Post | Snippet | Photography) =>
       +new Date(b.date) - +new Date(a.date)
   );
-  return posts.map((_: Post | Snippet) => {
+  return posts.map((_: Post | Snippet | Photography) => {
     return {
       title: _.title,
       date: convertDateToString(_.date),
@@ -35,7 +35,7 @@ export const sortFrontMatter = (
   });
 };
 
-export const returnSelectedFields = (data: Post[] | Snippet[]) => {
+export const returnSelectedFields = (data: Post[] | Snippet[] | Photography[]) => {
   return data.map((_) => {
     return {
       title: _.title,
