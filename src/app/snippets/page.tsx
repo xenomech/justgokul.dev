@@ -44,27 +44,6 @@ export default function Snippets() {
           </div>
           <ListSection type="snippets" data={snippets} />
         </section>
-
-        {/* <section className="mx-auto flex w-full max-w-4xl flex-col items-start justify-between md:flex-row-reverse">
-           <div className="illustration"> 
-             <div className="relative hidden h-36 w-40 md:flex"> 
-               <Image src="/assets/threads_desktop.svg" alt="snippets" fill /> 
-             </div> 
-             <div className="relative flex h-40 w-60 md:hidden"> 
-               <Image src="/assets/threads_mobile.svg" alt="snippets" fill /> 
-             </div> 
-           </div> 
-           <div className="posts dash w-full rounded-lg border-[1px] border-black border-opacity-10 p-4 md:w-3/4"> 
-             {TWEET_ID.map((item) => ( 
-               <ListCard 
-                 key={item.slug} 
-                 title={item.title} 
-                 slug={item.slug} 
-                 type="twitter" 
-               /> 
-             ))} 
-           </div> 
-         </section>  */}
       </div>
     </div>
   );
