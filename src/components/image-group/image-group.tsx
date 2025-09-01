@@ -77,13 +77,9 @@ function getOffset(idx: number) {
 }
 
 // ===== CUSTOM CARD COMPONENT =====
-interface CustomCardProps {
+interface CustomCardProps extends Pick<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onKeyDown' | 'style' | 'className'> {
   card: CardData;
   layoutId: string;
-  className: string;
-  style: React.CSSProperties;
-  onClick: (_e: React.MouseEvent) => void;
-  onKeyDown: (_e: React.KeyboardEvent) => void;
   textSizes: {
     title: string;
     description: string;
@@ -97,12 +93,12 @@ function CustomCard({
   card, 
   layoutId, 
   className, 
-  style, 
-  onClick, 
-  onKeyDown, 
+  style,
   textSizes, 
   padding,
-  showIcon = false 
+  showIcon = false,
+  onClick,
+  onKeyDown
 }: CustomCardProps) {
   return (
     <motion.div
@@ -110,9 +106,9 @@ function CustomCard({
       layoutId={layoutId}
       className={`${className} border border-gray-200`}
       style={style}
-      onClick={onClick}
       role="button"
       tabIndex={0}
+      onClick={onClick}
       onKeyDown={onKeyDown}
     >
       <div className={`h-full w-full flex flex-col justify-center items-center text-gray-800 ${padding} text-center`}>
@@ -244,10 +240,10 @@ function MobileExpandedCardGrid({ cards, onCollapse }: ExpandedCardGridProps) {
                   layoutId={commonProps.layoutId}
                   className={commonProps.className}
                   style={commonProps.style}
-                  onClick={commonProps.onClick}
-                  onKeyDown={commonProps.onKeyDown}
                   textSizes={MOBILE_CONFIG.textSizes}
                   padding="p-4"
+                  onClick={commonProps.onClick}
+                  onKeyDown={commonProps.onKeyDown}
                 />
               );
             }
@@ -384,10 +380,10 @@ function TabletExpandedCardGrid({ cards, onCollapse }: ExpandedCardGridProps) {
                   layoutId={commonProps.layoutId}
                   className={commonProps.className}
                   style={commonProps.style}
-                  onClick={commonProps.onClick}
-                  onKeyDown={commonProps.onKeyDown}
                   textSizes={TABLET_CONFIG.textSizes}
                   padding="p-6"
+                  onClick={commonProps.onClick}
+                  onKeyDown={commonProps.onKeyDown}
                 />
               );
             }
@@ -525,11 +521,11 @@ function DesktopExpandedCardGrid({ cards, onCollapse }: ExpandedCardGridProps) {
                   layoutId={commonProps.layoutId}
                   className={commonProps.className}
                   style={commonProps.style}
-                  onClick={commonProps.onClick}
-                  onKeyDown={commonProps.onKeyDown}
                   textSizes={DESKTOP_CONFIG.textSizes}
                   padding="p-8"
                   showIcon={true}
+                  onClick={commonProps.onClick}
+                  onKeyDown={commonProps.onKeyDown}
                 />
               );
             }
