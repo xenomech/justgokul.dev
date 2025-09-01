@@ -60,6 +60,7 @@ export const Photography = defineDocumentType(() => ({
     excerpt: { type: 'string', required: true },
     category: { type: 'string', required: true },
     language: { type: 'list', of: { type: 'string' }, required: true },
+    lookupImages: { type: 'list', of: { type: 'string' }, required: true },
     draft: { type: 'boolean', required: true },
   },
   computedFields,

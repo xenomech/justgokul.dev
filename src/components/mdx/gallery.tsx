@@ -1,11 +1,22 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 
-type PropType = {
+interface GalleryImage {
+  url: string;
+  alt: string;
+  className: string;
+}
+
+interface GalleryProps {
   className?: string;
-  srcArray: { url: string; alt: string; className: string }[];
-};
-export default function Gallery({ className, srcArray }: PropType) {
+  srcArray: GalleryImage[];
+}
+
+export default function Gallery({ className, srcArray }: GalleryProps) {
+  if (!srcArray || srcArray.length === 0) {
+    return null;
+  }
+
   return (
     <div
       className={classNames(
@@ -13,7 +24,7 @@ export default function Gallery({ className, srcArray }: PropType) {
         className
       )}
     >
-      {srcArray?.map((item) => (
+      {srcArray.map((item) => (
         <div
           className="relative flex h-[130px] w-[130px] items-center justify-center md:h-[165px] md:w-[165px]"
           key={item.url}

@@ -1,6 +1,6 @@
 // common functions to simplify the codebase
 import { Photography, Post, Snippet } from '.contentlayer/generated';
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 
 export const convertDateToString = (date: string): string => {
   return format(new Date(date), 'PPPP');
@@ -14,28 +14,31 @@ export type FrontMatterType = {
   readingTime: string;
   slug: string;
   language: string[];
+  lookupImages?: string[]
 };
 export const sortFrontMatter = (
-  data: Post[] | Snippet[] | Photography[]
+  data: (Post | Snippet | Photography)[]
 ): FrontMatterType[] => {
   const posts = data.sort(
-    (a: Post | Snippet | Photography, b: Post | Snippet | Photography) =>
-      +new Date(b.date) - +new Date(a.date)
+    (a, b) => +new Date(b.date) - +new Date(a.date)
   );
-  return posts.map((_: Post | Snippet | Photography) => {
+  return posts.map((item) => {
     return {
-      title: _.title,
-      date: convertDateToString(_.date),
-      draft: _.draft,
-      category: _.category,
-      readingTime: _.readingTime.text,
-      slug: _.slug,
-      language: _.language,
+      title: item.title,
+      date: convertDateToString(item.date),
+      draft: item.draft,
+      category: item.category,
+      readingTime: (item as any).readingTime?.text ?? "",
+      slug: item.slug,
+      language: item.language,
+      lookupImages: (item as any).lookupImages ?? [],
     };
   });
 };
 
-export const returnSelectedFields = (data: Post[] | Snippet[] | Photography[]) => {
+export const returnSelectedFields = (
+  data: Post[] | Snippet[] | Photography[]
+) => {
   return data.map((_) => {
     return {
       title: _.title,

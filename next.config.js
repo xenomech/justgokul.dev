@@ -9,6 +9,9 @@ const nextConfig = {
       {
         hostname: 'raw.githubusercontent.com',
       },
+      {
+        hostname: 'uykefkymhklgwfhqqskt.supabase.co',
+      },
     ],
   },
 };

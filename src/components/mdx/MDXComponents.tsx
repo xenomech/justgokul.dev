@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import Gallery from './gallery';
 import RoundedImage from './rounded-image';
-type GenericComponentType = {
+
+interface GenericComponentProps {
   className: string;
   children: React.ReactNode;
-};
+}
 
-function Flex({ className, children }: GenericComponentType) {
+function Flex({ className, children }: GenericComponentProps) {
   return (
     <div
       className={classNames(
@@ -19,7 +20,7 @@ function Flex({ className, children }: GenericComponentType) {
   );
 }
 
-function Grid({ className, children }: GenericComponentType) {
+function Grid({ className, children }: GenericComponentProps) {
   return (
     <div
       className={classNames(
@@ -31,6 +32,7 @@ function Grid({ className, children }: GenericComponentType) {
     </div>
   );
 }
+
 const MDXComponents = {
   Image: RoundedImage,
   Flex,

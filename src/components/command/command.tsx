@@ -1,7 +1,7 @@
 'use client';
-import { CloseIcon } from '@/assets/icons';
 import { FrontMatterType } from '@/lib/common';
 import * as Modal from '@radix-ui/react-alert-dialog';
+import { X } from 'lucide-react';
 import React from 'react';
 
 type PropType = {
@@ -48,7 +48,7 @@ const CommandMenu = ({ data }: PropType) => {
                 onClick={() => setOpen(false)}
                 className="w-fit rounded-full border-[1px] border-black border-opacity-30 bg-base-100 p-2 shadow-lg"
               >
-                <CloseIcon className="h-6 w-6 text-dawn-900 hover:text-black" />
+                <X className="h-6 w-6 text-dawn-900 hover:text-black" />
               </button>
               <div className="flex w-full flex-col items-start justify-center gap-4 rounded-md border-[1px] border-black border-opacity-30 bg-base-100 p-4 shadow-lg">
                 <h3 className="rounded-lg border-[1px] border-black border-opacity-10 px-2 py-1  capitalize text-dawn-900">

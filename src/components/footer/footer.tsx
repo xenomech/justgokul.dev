@@ -17,7 +17,10 @@ export default function Footer() {
               priority
             />
             <div className="mt-4">
-              <p className="font-semibold">Gokul Suresh · <Link href="/blog/photography">Personal</Link> <Link href="/blog">Blog</Link></p>
+              <p className="font-semibold">
+                Gokul Suresh · <Link href="/blog/photography">Personal</Link>{' '}
+                <Link href="/blog">Blog</Link>
+              </p>
               <p className="mt-1 text-dawn-900">
                 Blog content managed using contentlayer.
               </p>

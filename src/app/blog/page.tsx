@@ -1,8 +1,8 @@
 import { allPosts } from '.contentlayer/generated';
-import { ArrowIcon } from '@/assets/icons';
 import { Button } from '@/components/button';
 import { ListSection } from '@/components/section';
 import { sortFrontMatter } from '@/lib/common';
+import { MoveRight } from 'lucide-react';
 import Image from 'next/image';
 
 // TODO: Filter
@@ -18,7 +18,7 @@ export default function Blog() {
               type="Navigator"
               action="Back"
             >
-              <ArrowIcon className="h-4 w-4 rotate-180" />
+              <MoveRight className="h-4 w-4 rotate-180" />
               <p>Go Back</p>
             </Button>
             <div className="flex items-center gap-2">

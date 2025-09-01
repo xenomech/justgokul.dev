@@ -1,10 +1,9 @@
 import { allPhotographies } from '.contentlayer/generated';
-import { ArrowIcon } from '@/assets/icons';
 import { Button } from '@/components/button';
 import { CountCompound } from '@/components/count';
 import { MDXComponents } from '@/components/mdx';
+import { MoveRight } from 'lucide-react';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-
 type PropType = { params: { slug: string } };
 
 export default function PhotographyPost({ params }: PropType) {
@@ -21,7 +20,7 @@ export default function PhotographyPost({ params }: PropType) {
             type="Navigator"
             action="Back"
           >
-            <ArrowIcon className="h-4 w-4 rotate-180" />
+            <MoveRight className="h-4 w-4 rotate-180" />
             <p>Go Back</p>
           </Button>
           <h1 className="my-2 pt-4 text-3xl font-semibold sm:text-4xl">

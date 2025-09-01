@@ -1,4 +1,4 @@
-import { ArrowIcon } from '@/assets/icons';
+import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
 import { CountPrimitive } from '../count';
 
@@ -41,7 +41,7 @@ export default function ListCard({
             language.map((item, idx) => <Badge key={idx + 1} text={item} />)}
         </div> */}
       </div>
-      <ArrowIcon className="h-4 w-4 text-black" />
+              <MoveRight className="h-4 w-4 text-black" />
     </Link>
   );
 }

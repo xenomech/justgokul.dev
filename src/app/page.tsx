@@ -1,10 +1,10 @@
 import { allPosts, allSnippets } from '.contentlayer/generated';
-import { ArrowIcon } from '@/assets/icons';
 import { PROJECTS, PUBLICATIONS } from '@/assets/store';
 import { Button } from '@/components/button';
 import { Chips } from '@/components/chips';
 import { ListCard } from '@/components/list';
 import { FrontMatterType, sortFrontMatter } from '@/lib/common';
+import { MoveRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
             url="https://share.justgokul.dev"
           >
             <p className="font-medium">Connect</p>
-            <ArrowIcon className="h-3 w-3" />
+            <MoveRight className="h-3 w-3" />
           </Button>
         </section>
         <div className="mx-auto flex flex-col items-center justify-center gap-28 md:max-w-4xl">

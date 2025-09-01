@@ -9,10 +9,10 @@
 }
 body {
   @apply font-inter;
+  @apply hide-scroll;
   background:
     fixed 0 0/20px 20px radial-gradient(rgba(0, 0, 0, 0.1) 1px, #ffffff 0),
-    fixed 10px 10px /20px 20px
-      radial-gradient(rgba(0, 0, 0, 0.1) 1px, #ffffff 0);
+    fixed 10px 10px /20px 20px radial-gradient(rgba(0, 0, 0, 0.1) 1px, #ffffff 0);
 }
 
 .heading {
@@ -68,4 +68,13 @@ body {
 
 .highlight {
   background-color: rgba(243, 128, 32, 0.8);
+}
+
+
+.hide-scroll {
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+  -ms-overflow-style: none; 
+  scrollbar-width: none !important; 
 }

@@ -1,5 +1,5 @@
-import { OpenExternal } from '@/assets/icons';
 import classNames from 'classnames';
+import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 type PropType = {
@@ -19,7 +19,7 @@ export default function Chips({ className, url, title }: PropType) {
         <div className="flex items-center justify-center gap-2">
           <p className="font-medium capitalize">{title}</p>
         </div>
-        <OpenExternal className="h-4 w-4 text-black text-opacity-60" />
+        <ExternalLink className="h-4 w-4 text-black text-opacity-60" />
       </div>
     </Link>
   );

@@ -1,5 +1,5 @@
-import { ArrowIcon } from '@/assets/icons';
 import { Button } from '@/components/button';
+import { MoveRight } from 'lucide-react';
 
 export default async function page() {
   return (
@@ -12,7 +12,7 @@ export default async function page() {
               type="Navigator"
               action="Back"
             >
-              <ArrowIcon className="h-4 w-4 rotate-180" />
+              <MoveRight className="h-4 w-4 rotate-180" />
               <p>Go Back</p>
             </Button>
             <h1 className="heading">About</h1>
@@ -30,7 +30,7 @@ export default async function page() {
             url="https://share.justgokul.dev"
           >
             <p className="font-medium">Contact Me</p>
-            <ArrowIcon className="h-3 w-3" />
+            <MoveRight className="h-3 w-3" />
           </Button>
         </section>
         <div className="flex w-full flex-col-reverse items-center justify-between gap-4 lg:flex-row">

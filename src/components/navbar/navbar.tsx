@@ -1,7 +1,8 @@
 'use client';
-import { CloseIcon, GithubIcon, MenuIcon, TwitterIcon } from '@/assets/icons';
+import { GithubIcon, TwitterIcon } from '@/assets/icons';
 import { NAV_LINKS } from '@/assets/store';
 import * as Modal from '@radix-ui/react-alert-dialog';
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -32,7 +33,7 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <Modal.Root open={open} onOpenChange={setOpen}>
             <Modal.Trigger aria-label="Mobile navbar open">
-              <MenuIcon className="h-6 w-6 text-dawn-900 hover:text-black" />
+              <Menu className="h-6 w-6 text-dawn-900 hover:text-black" />
             </Modal.Trigger>
             <Modal.Portal>
               <Modal.Overlay className="fixed inset-0 z-20 bg-base-100 bg-opacity-80 backdrop-blur-sm transition-opacity duration-100 ease-in-out" />
@@ -48,7 +49,7 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className="rounded-full border-[1px] border-black border-opacity-30 bg-base-100 p-2 shadow-lg"
                   >
-                    <CloseIcon className="h-6 w-6 text-dawn-900 hover:text-black" />
+                    <X className="h-6 w-6 text-dawn-900 hover:text-black" />
                   </button>
                 </div>
               </Modal.Content>
