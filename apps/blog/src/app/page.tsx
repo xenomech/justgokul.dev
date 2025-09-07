@@ -18,16 +18,29 @@ export default function Home() {
   const snippets = transformAndSortSnippets(allSnippets);
 
   const galleryImages = [
-    { src: '/media/home/index6.JPG', alt: 'Life captured' },
-    { src: '/media/home/index3.JPG', alt: 'Memories' },
     {
-      src: '/media/home/index7.JPG',
+      src: 'https://uykefkymhklgwfhqqskt.supabase.co/storage/v1/object/public/photos_for_the_timebeing/lost_but_not_gone/index6.jpg',
+      alt: 'Life captured',
+    },
+    {
+      src: 'https://uykefkymhklgwfhqqskt.supabase.co/storage/v1/object/public/photos_for_the_timebeing/lost_but_not_gone/index3.JPG',
+      alt: 'Memories',
+    },
+    {
+      src: 'https://uykefkymhklgwfhqqskt.supabase.co/storage/v1/object/public/photos_for_the_timebeing/lost_but_not_gone/index7.jpg',
       alt: 'Home moments',
       priority: true,
       objectPosition: 'object-bottom' as const,
     },
-    { src: '/media/home/index5.jpg', alt: 'moments' },
-    { src: '/media/home/index2.JPG', alt: 'Life captured', objectPosition: 'object-top' as const },
+    {
+      src: 'https://uykefkymhklgwfhqqskt.supabase.co/storage/v1/object/public/photos_for_the_timebeing/lost_but_not_gone/index5.jpg',
+      alt: 'moments',
+    },
+    {
+      src: 'https://uykefkymhklgwfhqqskt.supabase.co/storage/v1/object/public/photos_for_the_timebeing/lost_but_not_gone/index2.JPG',
+      alt: 'Life captured',
+      objectPosition: 'object-top' as const,
+    },
   ];
 
   return (
