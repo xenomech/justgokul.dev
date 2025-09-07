@@ -3,7 +3,7 @@ export const NAV_LINKS = ['blog', 'snippets', 'stories', 'about'];
 export const SOCIAL_LINKS = [
   {
     name: 'Twitter',
-    url: 'https://twitter.com/justgokuldotdev',
+    url: 'https://x.com/justgokuldotdev',
     platform: 'twitter' as const,
   },
   {
