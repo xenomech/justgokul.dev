@@ -2,19 +2,22 @@
   "name": "@repo/utils",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./date": {
       "types": "./dist/date.d.ts",
-      "default": "./dist/date.js"
+      "import": "./dist/date.js",
+      "require": "./dist/date.cjs"
     }
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "eslint src/",
     "type-check": "tsc --noEmit"
   },
@@ -22,6 +25,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint": "^9.15.0",
+    "tsup": "^8.5.0",
     "typescript": "^5.9.2"
   },
   "dependencies": {
