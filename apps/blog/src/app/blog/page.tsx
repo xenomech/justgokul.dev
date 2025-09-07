@@ -5,11 +5,13 @@ import { Button } from '@repo/ui';
 import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ViewTracker } from '@/components/view-track';
 
 export default function Blog() {
   const posts = transformAndSortPosts(allPosts);
   return (
     <div className="font-inter mx-4 py-40 md:mx-auto md:max-w-xl lg:mx-auto lg:max-w-4xl">
+      <ViewTracker slug="blog" title="Blog" />
       <div className="flex flex-col items-start justify-start gap-9 md:gap-28">
         <section className="flex w-full flex-col items-start justify-center gap-4">
           <div className="flex flex-col items-start justify-start gap-6">

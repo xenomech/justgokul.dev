@@ -3,6 +3,7 @@ import { ExperienceSection } from './_components/experience-section';
 import { HeroSection } from './_components/hero-section';
 import { ProjectsSection } from './_components/projects-section';
 import { SocialSection } from './_components/social-section';
+import { ViewTracker } from '@/components/view-track';
 
 function SectionWithSeparator({ children }: { children: React.ReactNode }) {
   return (
@@ -18,6 +19,7 @@ function SectionWithSeparator({ children }: { children: React.ReactNode }) {
 export default function AboutPage() {
   return (
     <div className="font-inter mx-4 max-w-4xl py-40 lg:mx-auto">
+      <ViewTracker slug="about" title="About" />
       <div className="space-y-10">
         <SectionWithSeparator>
           <HeroSection />

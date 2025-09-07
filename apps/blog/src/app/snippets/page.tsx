@@ -5,11 +5,13 @@ import { Button } from '@repo/ui';
 import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ViewTracker } from '@/components/view-track';
 
 export default function Snippets() {
   const snippets = transformAndSortSnippets(allSnippets);
   return (
     <div className="font-inter mx-4 max-w-4xl py-40 lg:mx-auto">
+      <ViewTracker slug="snippets" title="Snippets" />
       <div className="flex flex-col items-start justify-start gap-9 md:gap-28">
         <section className="flex w-full flex-col items-start justify-center gap-4">
           <div className="flex flex-col items-start justify-start gap-6">

@@ -4,11 +4,13 @@ import { transformAndSortStories } from '@/lib/common';
 import { Button } from '@repo/ui';
 import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
+import { ViewTracker } from '@/components/view-track';
 
 export default function Stories() {
   const posts = transformAndSortStories(allStories);
   return (
     <div className="font-inter mx-4 py-40">
+      <ViewTracker slug="stories" title="Stories" />
       <div className="flex flex-col items-start justify-start gap-9 md:gap-28">
         <section className="flex w-full max-w-4xl flex-col items-start justify-center gap-4 lg:mx-auto">
           <div className="flex flex-col items-start justify-start gap-6">
