@@ -13,7 +13,7 @@ export function SocialSection() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Social Links */}
         <div className="min-w-0 space-y-6">
-          <h4 className="text-xl font-semibold text-gray-900">Digital Hangouts</h4>
+          <h4 className="text-xl font-semibold text-gray-900">Socials</h4>
           <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
             {SOCIALS.map(social => {
               const IconComponent = social.icon;
@@ -42,7 +42,7 @@ export function SocialSection() {
 
         {/* Publications */}
         <div className="space-y-6">
-          <h4 className="text-xl font-semibold text-gray-900">Published Thoughts</h4>
+          <h4 className="text-xl font-semibold text-gray-900">Publications</h4>
           <div className="space-y-4">
             {PUBLICATIONS.map((pub, index) => (
               <Link

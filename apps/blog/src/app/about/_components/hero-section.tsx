@@ -61,7 +61,7 @@ export function HeroSection() {
                 src={USER_INFO.profileImage}
                 alt={USER_INFO.name}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100"></div>
