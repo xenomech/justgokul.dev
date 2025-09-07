@@ -9,21 +9,15 @@ type CountPrimitiveProps = {
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-export default function CountPrimitive({ slug, count }: CountPrimitiveProps) {
+export default function CountPrimitive({ slug }: CountPrimitiveProps) {
   const { data, isLoading } = useSWR(slug ? `/api/page_views/${slug}` : null, fetcher, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
   });
-
-  const displayCount = count !== undefined ? count : data?.views;
-
-  if (displayCount === null || displayCount === undefined) {
-    return null;
-  }
 
   return (
     <div className="flex items-center gap-1">
-      <span className={isLoading ? 'animate-pulse' : ''}>{isLoading ? ' • ' : displayCount}</span>
+      <span className={isLoading ? 'animate-pulse' : ''}>{isLoading ? ' • ' : data?.views}</span>
       <span>views</span>
     </div>
   );
