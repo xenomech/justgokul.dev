@@ -8,14 +8,26 @@ import { convertDateToString } from '@repo/utils';
 
 type PropType = { params: { slug: string } };
 
-export default function Post({ params }: PropType) {
+export default async function Post({ params }: PropType) {
   const currentPost = allStories.filter((_: { slug: string }) => _.slug === params.slug)[0];
 
   if (!currentPost) {
     return <div>Post not found</div>;
   }
 
+  try {
+    await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/page_views/${params.slug}`,
+      {
+        method: 'POST',
+      }
+    );
+  } catch (error) {
+    console.error('Failed to track page view:', error);
+  }
+
   const Component = useMDXComponent(currentPost.body.code);
+
   return (
     <div className="mx-4 max-w-4xl py-48 md:mx-auto">
       <div className="px-3 md:p-5">

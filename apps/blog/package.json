@@ -21,7 +21,7 @@
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
     "@supabase/supabase-js": "^2.38.4",
-    "@vercel/analytics": "^1.1.1",
+    "@vercel/analytics": "^1.5.0",
     "cheerio": "^1.1.2",
     "contentlayer2": "^0.5.8",
     "github-slugger": "^2.0.0",

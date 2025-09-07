@@ -16,6 +16,17 @@ export default async function Snippet({ params }: PropType) {
     return <div>Snippet not found</div>;
   }
 
+  try {
+    await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/page_views/${slug}`,
+      {
+        method: 'POST',
+      }
+    );
+  } catch (error) {
+    console.error('Failed to track page view:', error);
+  }
+
   const Component = getMDXComponent(currentSnippet.body.code);
 
   return (

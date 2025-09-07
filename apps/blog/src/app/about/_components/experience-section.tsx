@@ -15,7 +15,7 @@ export function ExperienceSection() {
               className={`cursor-pointer transition-all duration-200 ease-out hover:translate-x-1 ${index !== EXPERIENCE.length - 1 ? 'border-b' : ''}`}
             >
               <div className="flex gap-4 p-4">
-                <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center overflow-hidden rounded-full bg-white shadow-md shadow-gray-800/5 ring-1 ring-gray-900/5">
+                <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center overflow-hidden bg-white shadow-md shadow-gray-800/5 ring-1 ring-gray-900/5">
                   {exp.logo ? (
                     <Image src={exp.logo} fill alt={exp.company} className="object-cover" />
                   ) : (
