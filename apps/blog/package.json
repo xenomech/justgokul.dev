@@ -1,0 +1,55 @@
+{
+  "name": "blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "check-types": "tsc --noEmit",
+    "download-icons": "node scripts/download-stack-icons.js"
+  },
+  "dependencies": {
+    "@octokit/graphql": "^9.0.1",
+    "@octokit/rest": "^22.0.0",
+    "@repo/ui": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@supabase/supabase-js": "^2.38.4",
+    "@vercel/analytics": "^1.1.1",
+    "cheerio": "^1.1.2",
+    "contentlayer2": "^0.5.8",
+    "github-slugger": "^2.0.0",
+    "lucide-react": "^0.542.0",
+    "next": "^14.2.32",
+    "next-contentlayer2": "^0.5.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "reading-time": "^1.5.0",
+    "swr": "^2.2.4"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^22.15.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.16",
+    "eslint-config-next": "15.5.2",
+    "postcss": "^8.4.31",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-pretty-code": "^0.13.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "sass": "^1.63.6",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.9.2"
+  }
+}

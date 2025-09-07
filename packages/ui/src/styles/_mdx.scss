@@ -1,0 +1,10 @@
+.image-grid {
+  column-fill: balance;
+  
+  > * {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+  }
+}

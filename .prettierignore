@@ -1,4 +1,28 @@
-.yarn
-.next
-dist
-node_modules
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.next/
+.contentlayer/
+.turbo/
+
+# Environment files
+.env*
+
+# Logs
+*.log
+
+# Package managers
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

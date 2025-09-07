@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# Run lint-staged for staged files
+pnpm lint-staged
 
-yarn lint
+# Run type checking across all packages
+pnpm run check-types
