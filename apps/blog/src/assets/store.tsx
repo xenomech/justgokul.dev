@@ -148,5 +148,6 @@ export const USER_INFO = {
   github: 'xenomech',
   contactUrl: 'https://share.justgokul.dev',
   email: 'hello@justgokul.dev',
-  profileImage: '/IMG_0510_2.jpg',
+  profileImage:
+    'https://uykefkymhklgwfhqqskt.supabase.co/storage/v1/object/public/photos_for_the_timebeing/lost_but_not_gone/index3.JPG',
 };
