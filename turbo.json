@@ -3,7 +3,7 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "env": ["SUPABASE_URL", "SUPABASE_API_KEY"],
+      "env": ["SUPABASE_URL", "SUPABASE_API_KEY", "NEXT_PUBLIC_MIXPANEL_TOKEN"],
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
