@@ -1,4 +1,5 @@
 import mixpanel from 'mixpanel-browser';
+import { track } from '@vercel/analytics/react';
 
 class Analytics {
   private mixpanel: typeof mixpanel;
@@ -58,6 +59,7 @@ class Analytics {
 
     try {
       this.mixpanel.track(event, properties);
+      track(event, properties);
       if (!this.isProduction) {
         console.log(`Analytics event tracked: ${event}`, properties);
       }
