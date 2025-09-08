@@ -13,21 +13,30 @@ class Analytics {
 
   init(token: string): void {
     if (this.initialized) {
-      if (!this.isProduction) {
-        console.warn('Analytics already initialized');
-      }
+      console.log('Analytics already initialized');
       return;
     }
 
     try {
+      console.log('Initializing analytics with token:', token);
       this.mixpanel.init(token, {
         debug: !this.isProduction,
         track_pageview: true,
         persistence: 'localStorage',
-        batch_requests: true,
-        batch_size: 50,
-        batch_flush_interval_ms: 10000,
+        ignore_dnt: false,
+        secure_cookie: true,
+        cross_site_cookie: false,
+        disable_persistence: false,
+        opt_out_tracking_by_default: false,
       });
+
+      const sessionId = this.getOrCreateSessionId();
+      this.mixpanel.register({
+        session_id: sessionId,
+        blog_name: 'justgokul.dev',
+        visitor_type: 'anonymous',
+      });
+      this.mixpanel.identify(`anonymous_user_${sessionId}`);
 
       this.initialized = true;
       if (!this.isProduction) {
@@ -42,9 +51,9 @@ class Analytics {
   track(event: string, properties?: Record<string, any>): void {
     if (!this.initialized) {
       if (!this.isProduction) {
-        console.warn('Analytics not initialized. Call init() first.');
+        console.log('Analytics not initialized. Call init() first.');
       }
-      return;
+      this.init(process.env.NEXT_PUBLIC_MIXPANEL_TOKEN as string);
     }
 
     try {
@@ -86,6 +95,27 @@ class Analytics {
 
   isInitialized(): boolean {
     return this.initialized;
+  }
+
+  private getOrCreateSessionId(): string {
+    const existingSessionId = localStorage.getItem('blog_session_id');
+    const sessionTimestamp = localStorage.getItem('blog_session_timestamp');
+    const currentTime = Date.now();
+    const sessionTimeout = 30 * 60 * 1000;
+
+    if (
+      existingSessionId &&
+      sessionTimestamp &&
+      currentTime - parseInt(sessionTimestamp) < sessionTimeout
+    ) {
+      localStorage.setItem('blog_session_timestamp', currentTime.toString());
+      return existingSessionId;
+    }
+
+    const newSessionId = `session_${currentTime}_${Math.random().toString(36).substring(2, 11)}`;
+    localStorage.setItem('blog_session_id', newSessionId);
+    localStorage.setItem('blog_session_timestamp', currentTime.toString());
+    return newSessionId;
   }
 }
 
