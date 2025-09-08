@@ -1,7 +1,7 @@
 import { PROJECTS } from '@/assets/store';
-import Link from 'next/link';
 import { GitHubContributionsSection } from './gh-section';
 import { Chips } from '@repo/ui';
+import { TrackedLink } from '@/components/tracked-link';
 
 export function ProjectsSection() {
   return (
@@ -20,9 +20,16 @@ export function ProjectsSection() {
           <div className="dash rounded-xl border bg-white">
             <div className="flex h-fit w-full flex-wrap gap-6 p-6">
               {PROJECTS.map(item => (
-                <Link key={item.title} href={item.url} target="_blank" rel="noopener noreferrer">
+                <TrackedLink
+                  key={item.title}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  eventName="about_project_clicked"
+                  eventProperties={{ location: 'about_projects', project_name: item.title }}
+                >
                   <Chips text={item.title} showExternalIcon={true} />
-                </Link>
+                </TrackedLink>
               ))}
             </div>
           </div>

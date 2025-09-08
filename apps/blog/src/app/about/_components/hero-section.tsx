@@ -1,17 +1,22 @@
 import { Button } from '@repo/ui';
 import { MoveRight, MapPin, ExternalLink, Activity } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { USER_INFO } from '@/assets/store';
+import { TrackedLink } from '@/components/tracked-link';
 
 export function HeroSection() {
   return (
     <section className="relative">
-      <Link href="/" className="mb-8 inline-block">
+      <TrackedLink
+        href="/"
+        className="mb-8 inline-block"
+        eventName="about_go_back_clicked"
+        eventProperties={{ location: 'about_hero', destination: 'home' }}
+      >
         <Button variant="back" leftIcon={<MoveRight className="h-4 w-4 rotate-180" />}>
           Go Back
         </Button>
-      </Link>
+      </TrackedLink>
 
       <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-3">
         <div className="space-y-8 lg:col-span-2">
@@ -38,18 +43,26 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <Link href={USER_INFO.contactUrl} target="_blank" rel="noopener noreferrer">
+            <TrackedLink
+              href={USER_INFO.contactUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              eventName="about_contact_clicked"
+              eventProperties={{ location: 'about_hero', action: 'contact' }}
+            >
               <Button variant="primary" rightIcon={<ExternalLink className="h-4 w-4" />}>
                 Get In Touch
               </Button>
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href={`https://github.com/${USER_INFO.github}`}
               target="_blank"
               rel="noopener noreferrer"
+              eventName="about_github_clicked"
+              eventProperties={{ location: 'about_hero', platform: 'github' }}
             >
               <Button variant="navigator">GitHub</Button>
-            </Link>
+            </TrackedLink>
           </div>
         </div>
 

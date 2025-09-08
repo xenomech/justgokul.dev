@@ -1,5 +1,6 @@
 import { EXPERIENCE } from '@/assets/store';
 import Image from 'next/image';
+import { TrackedLink } from '@/components/tracked-link';
 
 export function ExperienceSection() {
   return (
@@ -9,11 +10,8 @@ export function ExperienceSection() {
       </h2>
       <div className="dash rounded-2xl border border-gray-100 bg-white p-2">
         <div className="space-y-4">
-          {EXPERIENCE.map((exp, index) => (
-            <div
-              key={index}
-              className={`cursor-pointer transition-all duration-200 ease-out hover:translate-x-1 ${index !== EXPERIENCE.length - 1 ? 'border-b' : ''}`}
-            >
+          {EXPERIENCE.map((exp, index) => {
+            const ExperienceContent = (
               <div className="flex gap-4 p-4">
                 <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center overflow-hidden bg-white shadow-md shadow-gray-800/5 ring-1 ring-gray-900/5">
                   {exp.logo ? (
@@ -48,8 +46,34 @@ export function ExperienceSection() {
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+
+            return (
+              <div
+                key={index}
+                className={`transition-all duration-200 ease-out hover:translate-x-1 ${index !== EXPERIENCE.length - 1 ? 'border-b' : ''}`}
+              >
+                {exp.url ? (
+                  <TrackedLink
+                    href={exp.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                    eventName="about_experience_clicked"
+                    eventProperties={{
+                      location: 'about_experience',
+                      company: exp.company,
+                      role: exp.role,
+                    }}
+                  >
+                    {ExperienceContent}
+                  </TrackedLink>
+                ) : (
+                  <div className="cursor-default">{ExperienceContent}</div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

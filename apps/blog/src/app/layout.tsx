@@ -1,5 +1,6 @@
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { CustomAnalytics, TrackPageView } from '@/components/analytics';
 import '@/styles/globals.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -55,7 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
         <Analytics />
+        <CustomAnalytics />
         <SpeedInsights />
+        <TrackPageView />
       </body>
     </html>
   );
