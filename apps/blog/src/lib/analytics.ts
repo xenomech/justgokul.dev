@@ -19,7 +19,7 @@ class Analytics {
     }
 
     try {
-      console.log('Initializing analytics with token:', token);
+      console.log('Initializing analytics with token:', token, this.isProduction);
       this.mixpanel.init(token, {
         debug: !this.isProduction,
         track_pageview: true,
