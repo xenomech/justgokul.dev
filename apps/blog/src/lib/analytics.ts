@@ -19,16 +19,10 @@ class Analytics {
     }
 
     try {
-      console.log('Initializing analytics with token:', token, this.isProduction);
       this.mixpanel.init(token, {
         debug: !this.isProduction,
         track_pageview: true,
         persistence: 'localStorage',
-        ignore_dnt: false,
-        secure_cookie: true,
-        cross_site_cookie: false,
-        disable_persistence: false,
-        opt_out_tracking_by_default: false,
       });
 
       const sessionId = this.getOrCreateSessionId();
@@ -121,5 +115,5 @@ class Analytics {
   }
 }
 
-export const analytics = new Analytics();
+const analytics = new Analytics();
 export default analytics;
