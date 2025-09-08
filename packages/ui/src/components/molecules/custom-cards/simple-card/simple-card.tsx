@@ -43,11 +43,11 @@ export default function SimpleCard({
         </p>
       </div>
 
-      <div className="flex items-center justify-center gap-2 text-xs text-gray-500 md:gap-4">
+      <div className="flex items-center justify-center gap-2 text-xs text-gray-500 lg:gap-4">
         <div className="flex items-center gap-1.5">
           <Calendar className="h-3.5 w-3.5 text-gray-400 transition-colors duration-300" />
-          <span className="hidden font-medium md:block">{convertDateToString(date)}</span>
-          <span className="block font-medium md:hidden">{convertDateToString(date, '/')}</span>
+          <span className="hidden font-medium lg:block">{convertDateToString(date)}</span>
+          <span className="block font-medium lg:hidden">{convertDateToString(date, '/')}</span>
         </div>
 
         {readingTime && (

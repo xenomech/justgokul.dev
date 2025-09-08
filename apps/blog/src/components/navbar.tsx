@@ -84,10 +84,18 @@ const NavItems = ({ className, clickHandler }: NavItemType) => {
           )}
         </div>
       ))}
-      <Link href="https://x.com/justgokuldotdev" aria-label="twitter connect button">
+      <Link
+        href="https://x.com/justgokuldotdev"
+        aria-label="twitter connect button"
+        className="hidden md:block"
+      >
         <TwitterIcon className="text-dawn-900 h-4 w-4 transition-all duration-200 ease-out hover:scale-105 hover:text-black" />
       </Link>
-      <Link href="https://github.com/xenomech" aria-label="github connect button">
+      <Link
+        href="https://github.com/xenomech"
+        aria-label="github connect button"
+        className="hidden md:block"
+      >
         <GithubIcon className="text-dawn-900 h-4 w-4 transition-all duration-200 ease-out hover:scale-105 hover:text-black" />
       </Link>
     </div>

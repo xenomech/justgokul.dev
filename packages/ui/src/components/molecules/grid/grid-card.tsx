@@ -61,18 +61,21 @@ export default function GridCard({
         )}
 
         <div
-          className="flex flex-wrap items-center gap-1 text-xs"
+          className="mb-2 flex flex-wrap items-center gap-1 text-xs"
           style={{ color: pastelColors.text, opacity: 0.6 }}
         >
           {date && (
             <div className="flex min-w-0 items-center gap-1">
-              <span className="truncate">Posted {convertDateToString(date)}</span>
+              <span className="truncate">
+                <span className="hidden sm:inline">Posted </span>
+                {convertDateToString(date)}
+              </span>
             </div>
           )}
 
           {readingTime && (
             <div className="flex min-w-0 items-center gap-1">
-              <p>{' • '}</p>
+              <span className="hidden sm:inline">{' • '}</span>
               <span className="truncate">{readingTime}</span>
             </div>
           )}

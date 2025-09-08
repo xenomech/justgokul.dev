@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { convertDateToString } from '@repo/utils';
 import { ViewTracker } from '@/components/view-track';
+import { Separator } from '@/assets/icons';
 
 type PropType = { params: { slug: string } };
 

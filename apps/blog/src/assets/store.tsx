@@ -55,7 +55,7 @@ export const TWEET_ID = [
   },
 ];
 
-export const NAV_LINKS = ['Blog', 'Snippets', 'About'];
+export const NAV_LINKS = ['Blog', 'Snippets', 'Stories', 'About'];
 
 export const SOCIALS = [
   {
