@@ -1,3 +1,4 @@
+'use client';
 import { convertDateToString } from '@repo/utils';
 import { ListCard } from '@repo/ui';
 import Link from 'next/link';

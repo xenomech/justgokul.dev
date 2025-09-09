@@ -1,3 +1,4 @@
+'use client';
 import { MoveRight } from 'lucide-react';
 
 type PropType = {

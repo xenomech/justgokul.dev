@@ -1,3 +1,4 @@
+'use client';
 import ImageGroup from '../image-group/image-group';
 import { ReactNode, ComponentType } from 'react';
 import { generatePastelColor } from '../../../utils/utils';
