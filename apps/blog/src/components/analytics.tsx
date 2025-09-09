@@ -1,19 +1,34 @@
 'use client';
 import analytics from '@/lib/analytics';
-import { useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
 export function CustomAnalytics() {
+  const initialized = useRef(false);
+
   useEffect(() => {
-    analytics.init(process.env.NEXT_PUBLIC_MIXPANEL_TOKEN as string);
+    if (!initialized.current) {
+      analytics.init();
+      initialized.current = true;
+    }
   }, []);
 
   return null;
 }
 
 export function TrackPageView() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const lastTrackedPath = useRef<string>('');
+
   useEffect(() => {
-    analytics.trackPageView();
-  }, []);
+    const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
+
+    if (lastTrackedPath.current !== url) {
+      analytics.trackPageView();
+      lastTrackedPath.current = url;
+    }
+  }, [pathname, searchParams]);
 
   return null;
 }

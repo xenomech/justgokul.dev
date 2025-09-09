@@ -5,24 +5,39 @@ class Analytics {
   private mixpanel: typeof mixpanel;
   private initialized: boolean = false;
   private isProduction: boolean;
+  private isBrowser: boolean;
 
   constructor() {
     this.mixpanel = mixpanel;
     this.initialized = false;
     this.isProduction = process.env.NODE_ENV === 'production';
+    this.isBrowser = typeof window !== 'undefined';
   }
 
-  init(token: string): void {
+  init(): void {
+    if (!this.isBrowser) {
+      console.warn('Analytics init called on server side, skipping');
+      return;
+    }
+
     if (this.initialized) {
       console.log('Analytics already initialized');
+      return;
+    }
+
+    const token = process.env.NEXT_PUBLIC_MIXPANEL_TOKEN;
+    const apiHost = process.env.NEXT_PUBLIC_MIXPANEL_API_HOST;
+    if (!token || !apiHost) {
+      console.error('NEXT_PUBLIC_MIXPANEL_TOKEN or NEXT_PUBLIC_MIXPANEL_API_HOST not found');
       return;
     }
 
     try {
       this.mixpanel.init(token, {
         debug: !this.isProduction,
-        track_pageview: true,
+        track_pageview: false,
         persistence: 'localStorage',
+        api_host: apiHost,
       });
 
       const sessionId = this.getOrCreateSessionId();
@@ -39,16 +54,19 @@ class Analytics {
       }
     } catch (error) {
       console.error('Failed to initialize analytics:', error);
-      throw error;
     }
   }
 
   track(event: string, properties?: Record<string, any>): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
     if (!this.initialized) {
-      if (!this.isProduction) {
-        console.log('Analytics not initialized. Call init() first.');
+      this.init();
+      if (!this.initialized) {
+        return;
       }
-      this.init(process.env.NEXT_PUBLIC_MIXPANEL_TOKEN as string);
     }
 
     try {
@@ -62,8 +80,14 @@ class Analytics {
     }
   }
 
-  trackPageView(properties?: Record<string, any>): void {
-    const urlParams = new URLSearchParams(window.location.search);
+  trackPageView(url?: string, properties?: Record<string, any>): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    const currentUrl = url || window.location.href;
+    const currentPath = url ? new URL(url).pathname : window.location.pathname;
+    const urlParams = new URLSearchParams(url ? new URL(url).search : window.location.search);
     const utmParams: Record<string, string> = {};
 
     const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
@@ -74,18 +98,18 @@ class Analytics {
       }
     });
 
-    const eventName = `page_view_${window.location.pathname.replace(/\s+/g, '_').toLowerCase()}`;
     const eventProperties = {
-      page: window.location.pathname,
-      url: window.location.href,
+      page: currentPath,
+      url: currentUrl,
+      referrer: document.referrer,
       ...utmParams,
       ...properties,
     };
 
-    this.track(eventName, eventProperties);
+    this.track('page_view', eventProperties);
 
     if (!this.isProduction) {
-      console.log(`Analytics page view tracked: ${eventName}`, eventProperties);
+      console.log(`Analytics page view tracked for: ${currentPath}`, eventProperties);
     }
   }
 
@@ -94,24 +118,33 @@ class Analytics {
   }
 
   private getOrCreateSessionId(): string {
-    const existingSessionId = localStorage.getItem('blog_session_id');
-    const sessionTimestamp = localStorage.getItem('blog_session_timestamp');
-    const currentTime = Date.now();
-    const sessionTimeout = 30 * 60 * 1000;
-
-    if (
-      existingSessionId &&
-      sessionTimestamp &&
-      currentTime - parseInt(sessionTimestamp) < sessionTimeout
-    ) {
-      localStorage.setItem('blog_session_timestamp', currentTime.toString());
-      return existingSessionId;
+    if (!this.isBrowser) {
+      return '';
     }
 
-    const newSessionId = `session_${currentTime}_${Math.random().toString(36).substring(2, 11)}`;
-    localStorage.setItem('blog_session_id', newSessionId);
-    localStorage.setItem('blog_session_timestamp', currentTime.toString());
-    return newSessionId;
+    try {
+      const existingSessionId = localStorage.getItem('blog_session_id');
+      const sessionTimestamp = localStorage.getItem('blog_session_timestamp');
+      const currentTime = Date.now();
+      const sessionTimeout = 30 * 60 * 1000;
+
+      if (
+        existingSessionId &&
+        sessionTimestamp &&
+        currentTime - parseInt(sessionTimestamp) < sessionTimeout
+      ) {
+        localStorage.setItem('blog_session_timestamp', currentTime.toString());
+        return existingSessionId;
+      }
+
+      const newSessionId = `session_${currentTime}_${Math.random().toString(36).substring(2, 11)}`;
+      localStorage.setItem('blog_session_id', newSessionId);
+      localStorage.setItem('blog_session_timestamp', currentTime.toString());
+      return newSessionId;
+    } catch (error) {
+      console.error('Failed to manage session ID:', error);
+      return `session_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+    }
   }
 }
 
