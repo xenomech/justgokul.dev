@@ -18,17 +18,16 @@ export function CustomAnalytics() {
 
 export function TrackPageView() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const lastTrackedPath = useRef<string>('');
 
   useEffect(() => {
-    const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
+    const currentUrl = window.location.href;
 
-    if (lastTrackedPath.current !== url) {
+    if (lastTrackedPath.current !== currentUrl) {
       analytics.trackPageView();
-      lastTrackedPath.current = url;
+      lastTrackedPath.current = currentUrl;
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 }
