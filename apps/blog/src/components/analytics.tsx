@@ -1,6 +1,6 @@
 'use client';
 import analytics from '@/lib/analytics';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 export function CustomAnalytics() {

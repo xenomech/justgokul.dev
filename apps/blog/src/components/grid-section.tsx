@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import CountPrimitive from './count-primitive';
 import { type StoryContent } from '@/lib/common';
 import { StoryCardFactory, type CardType, type CardHandlers } from './story-cards';
+import analytics from '@/lib/analytics';
 
 export interface GridSectionItem extends StoryContent {
   views?: number;
@@ -22,12 +23,29 @@ export const GridSection = ({ data, basePath }: GridSectionProps) => {
     <div className="posts w-full p-4">
       <div className="grid grid-cols-1 place-items-center items-center justify-center gap-10 md:grid-cols-2 xl:grid-cols-3">
         {data.map((item: GridSectionItem, index: number) => {
+          const handleOnCardClick = () => {
+            analytics.track(`grid_custom_card_item_${item.title}_clicked`, {
+              title: item.title,
+              slug: item.slug,
+              type: basePath.replace('/', ''),
+              views: item.views,
+              reading_time: item.readingTime,
+            });
+            router.push(`${basePath}/${item.slug}`);
+          };
           const handleOnClick = () => {
+            analytics.track(`grid_default_card_item_${item.title}_clicked`, {
+              title: item.title,
+              slug: item.slug,
+              type: basePath.replace('/', ''),
+              views: item.views,
+              reading_time: item.readingTime,
+            });
             router.push(`${basePath}/${item.slug}`);
           };
 
           const handlers: CardHandlers = {
-            onClick: () => handleOnClick(),
+            onClick: () => handleOnCardClick(),
           };
 
           const { component: CardComponent, props: cardProps } =
