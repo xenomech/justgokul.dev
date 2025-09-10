@@ -144,7 +144,7 @@ export const USER_INFO = {
   title: 'Software Engineer',
   location: 'Bangalore, India',
   status: 'Available for work',
-  bio: "I'm a Software engineer currently working at Saturn AI, building features for the product. I primarily work with React, TypeScript, and modern frontend technologies, I also build backends that power my frontend and exploring architectures that help me make all of it alive.",
+  bio: "I'm a Software engineer currently working at Saturn AI, building features for the product. I primarily work with React, TypeScript, and modern frontend technologies, I also like to build backends that power my frontend and explore architectures that help me make all of it alive.",
   github: 'xenomech',
   contactUrl: 'https://share.justgokul.dev',
   email: 'hello@justgokul.dev',
